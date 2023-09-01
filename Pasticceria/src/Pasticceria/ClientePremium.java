@@ -11,5 +11,4 @@ public class ClientePremium extends Cliente {
 	public void VisualizzaCatalogo() { // da fare
 
 	}
-
 }
