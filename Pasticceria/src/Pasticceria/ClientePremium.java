@@ -3,8 +3,8 @@ package Pasticceria;
 
 public class ClientePremium extends Cliente {
 
-	public ClientePremium(String ID, String nome, String cognome, int eta) {
-		super(ID, nome, cognome, eta);
+	public ClientePremium(String ID, String nome, String cognome) {
+		super(ID, nome, cognome);
 	}
 
 	@Override
