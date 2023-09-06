@@ -10,7 +10,7 @@ public class Cliente {
 	public int NumOrdine;
 	public boolean Premium;
 
-	public Cliente(String ID, String nome, String cognome, int eta) {
+	public Cliente(String ID, String nome, String cognome) {
 		this.IDcliente = ID;
 		this.Nome = nome;
 		this.Cognome = cognome;
