@@ -1,5 +1,5 @@
 
-package Pasticceria;
+package model;
 
 public class ClientePremium extends Cliente {
 
