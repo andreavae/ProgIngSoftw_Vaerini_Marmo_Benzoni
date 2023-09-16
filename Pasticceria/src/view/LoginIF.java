@@ -64,11 +64,11 @@ public class LoginIF extends JFrame {
 		LoginContentPane.add(signButton);
 	}
 
-	public String getUsername() {
+	public String getUsernameField() {
 		return usernameField.getText();
 	}
 
-	public String getPassword() {
+	public String getPasswordField() {
 		return passwordField.getText();
 	}
 
