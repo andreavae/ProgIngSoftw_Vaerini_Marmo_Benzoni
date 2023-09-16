@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.User;
+import view.HomeIF;
 import view.LoginIF;
 
 public class LoginController {
@@ -30,6 +31,9 @@ public class LoginController {
 			user = new User(username, password);
 			if (user.isLoginValid()) {
 				JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
+				loginif.dispose();
+				HomeIF homeif = new HomeIF(username);
+				homeif.setVisible(true);
 
 			} else {
 				JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
