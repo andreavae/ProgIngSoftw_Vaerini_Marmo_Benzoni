@@ -24,7 +24,7 @@ public class User {
 	}
 
 	public boolean isLoginValid() {
-		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/beta");
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb");
 		connectdb.connect();
 		try {
 			connectdb.setStatement(connectdb.getConnection().createStatement());
