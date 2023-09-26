@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
+import view.SignIF;
 
 public class LoginController {
 	private LoginIF loginif;
@@ -18,6 +19,7 @@ public class LoginController {
 		this.user = user;
 
 		this.loginif.addLoginListener(new LoginListener());
+		this.loginif.openSignIF(new OpenSignIF());
 	}
 
 	class LoginListener implements ActionListener {
@@ -43,4 +45,16 @@ public class LoginController {
 
 	}
 
+	class OpenSignIF implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+
+			SignIF signif = new SignIF();
+			SignController signifcontoller = new SignController(signif, null);
+			signif.setVisible(true);
+			loginif.setVisible(false);
+		}
+	}
 }

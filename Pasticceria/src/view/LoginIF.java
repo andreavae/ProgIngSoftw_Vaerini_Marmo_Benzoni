@@ -76,7 +76,7 @@ public class LoginIF extends JFrame {
 		loginButton.addActionListener(listener);
 	}
 
-	public void addSignListener(ActionListener listener) {
+	public void openSignIF(ActionListener listener) {
 		signButton.addActionListener(listener);
 	}
 

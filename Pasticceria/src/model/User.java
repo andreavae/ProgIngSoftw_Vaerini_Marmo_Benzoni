@@ -73,4 +73,44 @@ public class User {
 		return corretto;
 
 	}
+
+	public boolean isSignValid() {
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
+		connectdb.connect();
+
+		ResultSet rs = null;
+		ArrayList<String> listautenti = new ArrayList<String>();
+
+		try {
+			connectdb.setStatement(connectdb.getConnection().createStatement());
+			String query = "SELECT Username FROM utenti";
+			rs = connectdb.getStatement().executeQuery(query);
+
+			while (rs.next()) {
+				String usernameFromDB = rs.getString("Username");
+				listautenti.add(usernameFromDB);
+
+			}
+
+		} catch (SQLException e) {
+			// Gestisci gli errori di query SQL qui
+		}
+		boolean corretto = false;
+		boolean flagusername = listautenti.contains(username);
+		System.out.println(flagusername);
+		if (!flagusername) {
+			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
+					+ password + "')";
+			try {
+				connectdb.setStatement(connectdb.getConnection().createStatement());
+				connectdb.getStatement().executeUpdate(queryregistrazione);
+			} catch (SQLException e) {
+
+			}
+		}
+
+		boolean checkusername = listautenti.contains(username);
+		return checkusername;
+
+	}
 }
