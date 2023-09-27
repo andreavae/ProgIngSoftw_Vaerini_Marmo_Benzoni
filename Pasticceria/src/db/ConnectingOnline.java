@@ -5,21 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectingOnline {
-	private String pathDB;
-	private Connection connection = null;
-	private Statement statement = null;
+public class ConnectingOnline { // gestione connessione al database online
+	private String pathDB; // contiene il percorso del database
+	private Connection connection = null; // rappresenta la connessione al database
+	private Statement statement = null; // variabile per le query
 
-	public ConnectingOnline(String path) {
+	public ConnectingOnline(String path) { // costruttore
 		pathDB = path;
 
 	}
 
-	public String getPathDB() {
+	public String getPathDB() { // ottiene percorso database
 		return pathDB;
 	}
 
-	public void setPathDB(String pathDB) {
+	public void setPathDB(String pathDB) { // imposta percorso database
 		this.pathDB = pathDB;
 	}
 
@@ -31,17 +31,17 @@ public class ConnectingOnline {
 		this.connection = connection;
 	}
 
-	public Statement getStatement() {
+	public Statement getStatement() { // ottiene query
 		return statement;
 	}
 
-	public void setStatement(Statement statement) {
+	public void setStatement(Statement statement) { // inserire query
 		this.statement = statement;
 	}
 
-	public void connect() {
+	public void connect() { // stabilire connessione al database
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver"); // caricamento driver per la connessione al db
 			connection = DriverManager.getConnection("jdbc:mysql:" + pathDB, "root", ""); // //127.0.0.1:3306/test
 			statement = connection.createStatement();
 			System.out.println("Connection to " + pathDB + " " + "successful");
@@ -58,7 +58,7 @@ public class ConnectingOnline {
 
 	}
 
-	public void close() {
+	public void close() { // chiudere connessione al database
 		try {
 			connection.close();
 			statement.close();

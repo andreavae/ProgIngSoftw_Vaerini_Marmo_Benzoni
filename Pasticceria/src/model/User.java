@@ -7,25 +7,26 @@ import java.util.ArrayList;
 import db.ConnectingOnline;
 
 public class User {
-	private String username;
+	private String username; // dichiarazione variabili
 	private String password;
 
-	public User(String username, String password) {
+	public User(String username, String password) { // costruttore
 		this.username = username;
 		this.password = password;
 	}
 
-	public String getUsername() {
+	public String getUsername() { // ottiene username
 		return username;
 	}
 
-	public String getPassword() {
+	public String getPassword() { // ottiene password
 		return password;
 	}
 
-	public boolean isLoginValid() {
-		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb");
-		connectdb.connect();
+	public boolean isLoginValid() { // effettua una verifica dell'accesso confrontando l'username e la password
+									// inseriti con quelli memorizzati nel database
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb"); // percorso database
+		connectdb.connect(); // apre connessione
 		try {
 			connectdb.setStatement(connectdb.getConnection().createStatement());
 		} catch (SQLException e) {
@@ -33,7 +34,7 @@ public class User {
 		}
 
 		ResultSet rs = null;
-		String query = "SELECT Username FROM utenti";
+		String query = "SELECT Username FROM utenti"; // query
 		try {
 			rs = connectdb.getStatement().executeQuery(query);
 		} catch (SQLException e) {
@@ -50,12 +51,15 @@ public class User {
 
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(username);
+		boolean flagusername = listautenti.contains(username); // variabile per verifica username
 
-		boolean flagpassword;
-		if (flagusername) {
+		boolean flagpassword; // variabile per verifica password
+		if (flagusername) { // verifica di username,
 			String pass = null;
-			String querypassword = "SELECT Password FROM utenti WHERE Username = '" + username + "'";
+			String querypassword = "SELECT Password FROM utenti WHERE Username = '" + username + "'"; // username true,
+																										// si cerca la
+																										// password
+																										// associata
 			try {
 				rs = connectdb.getStatement().executeQuery(querypassword);
 				if (rs.next()) {
@@ -69,38 +73,38 @@ public class User {
 
 			}
 		}
-		connectdb.close();
+		connectdb.close(); // chiusura connessione database
 		return corretto;
 
 	}
 
-	public boolean isSignValid() {
-		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
-		connectdb.connect();
+	public boolean isSignValid() { // verifica tentativo di validità della registrazione
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso database
+		connectdb.connect(); // apro connessione
 
-		ResultSet rs = null;
-		ArrayList<String> listautenti = new ArrayList<String>();
+		ResultSet rs = null; // archivio risultati query
+		ArrayList<String> listautenti = new ArrayList<String>(); // archivio utenti
 
 		try {
 			connectdb.setStatement(connectdb.getConnection().createStatement());
-			String query = "SELECT Username FROM utenti";
+			String query = "SELECT Username FROM utenti"; // query di selezione degli username
 			rs = connectdb.getStatement().executeQuery(query);
 
-			while (rs.next()) {
+			while (rs.next()) { // inserimeto utenti database nell'arraylist
 				String usernameFromDB = rs.getString("Username");
 				listautenti.add(usernameFromDB);
 
 			}
 
 		} catch (SQLException e) {
-			// Gestisci gli errori di query SQL qui
+			// Gestisci gli errori di query SQL
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(username);
+		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user è gia presente
 		System.out.println(flagusername);
-		if (!flagusername) {
+		if (!flagusername) { // username non presente
 			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
-					+ password + "')";
+					+ password + "')"; // query di inserimento nel database
 			try {
 				connectdb.setStatement(connectdb.getConnection().createStatement());
 				connectdb.getStatement().executeUpdate(queryregistrazione);
@@ -109,7 +113,7 @@ public class User {
 			}
 		}
 
-		boolean checkusername = listautenti.contains(username);
+		boolean checkusername = listautenti.contains(username); // verifica se utente è inserito nell'arraylist
 		return checkusername;
 
 	}
