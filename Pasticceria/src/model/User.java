@@ -105,6 +105,7 @@ public class User {
 		if (!flagusername) { // username non presente
 			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
 					+ password + "')"; // query di inserimento nel database
+			listautenti.add(username);
 			try {
 				connectdb.setStatement(connectdb.getConnection().createStatement());
 				connectdb.getStatement().executeUpdate(queryregistrazione);
