@@ -35,6 +35,7 @@ public class LoginController {
 				JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
 				loginif.dispose();
 				HomeIF homeif = new HomeIF(username);
+				HomeController homecontroller = new HomeController(homeif, user);
 				homeif.setVisible(true);
 
 			} else {
