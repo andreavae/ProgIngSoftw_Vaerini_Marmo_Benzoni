@@ -24,7 +24,7 @@ public class VisualizzaOrdineIF extends JFrame {
 	 * Create the frame.
 	 */
 	public VisualizzaOrdineIF(Carrello carrello) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(450, 300)); // Imposta le dimensioni minime
 		setLocationRelativeTo(null);
 		VisualizzaOrdineContentPane = new JPanel();
