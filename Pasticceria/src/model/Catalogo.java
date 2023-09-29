@@ -8,8 +8,8 @@ public class Catalogo {
 
 	public Catalogo() {
 		catalogo = new ArrayList<Prodotto>();
-		catalogo.add(new Prodotto("P01", "Cheesecake", 5));
-		catalogo.add(new Prodotto("P02", "Cubana", 10));
+		catalogo.add(new Prodotto("Cheesecake", "resources/cheesecake.jpg"));
+		catalogo.add(new Prodotto("Cubana", "resources/cubana.jpg"));
 	}
 
 	public List<Prodotto> getCatalogo() {
