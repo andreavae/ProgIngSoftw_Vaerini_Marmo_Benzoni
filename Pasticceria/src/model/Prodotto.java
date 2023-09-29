@@ -1,11 +1,15 @@
 
 package model;
 
+import javax.swing.ImageIcon;
+
 public class Prodotto {
 
-	public String IDprodotto;
-	public String Nome;
-	public float Prezzo;
+	private String IDprodotto;
+	private String Nome;
+	private float Prezzo;
+	private String pathImmagine;
+	private ImageIcon imageicon;
 
 	public Prodotto(String ID, String nome, float prezzo) {
 		this.IDprodotto = ID;
@@ -25,16 +29,12 @@ public class Prodotto {
 		return Prezzo;
 	}
 
-	public void setIDprodotto(String IDprodotto) {
-		this.IDprodotto = IDprodotto;
+	public String getPathImmagine() {
+		return pathImmagine;
 	}
 
-	public void setNome(String Nome) {
-		this.Nome = Nome;
-	}
-
-	public void setPrezzo(float prezzo) {
-		this.Prezzo = prezzo;
+	public ImageIcon getImageicon() {
+		return imageicon;
 	}
 
 }
