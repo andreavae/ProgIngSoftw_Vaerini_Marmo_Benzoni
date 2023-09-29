@@ -23,6 +23,7 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			NuovoOrdineIF nuovoordineif = new NuovoOrdineIF(utente);
+			CarrelloController carrellocontroller = new CarrelloController(utente, nuovoordineif, null);
 			// Catalogo catalogo = new Catalogo();
 			// OrdineController ordinecontroller = new OrdineController(null);
 			// Prodotto prodotto = new Prodotto("Nome Prodotto",

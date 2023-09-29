@@ -3,7 +3,6 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -19,10 +18,9 @@ import model.User;
 public class NuovoOrdineIF extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	private JButton addCheesecakeButton; // aggiungi cheesecake nel carrello
+	private JButton addCubanaButton; // aggiungi cubana nel carrello
+	private JButton VisualizzaOrdineButton;
 
 	/**
 	 * Create the frame.
@@ -50,10 +48,11 @@ public class NuovoOrdineIF extends JFrame {
 
 		String nomeProdotto = Cheesecake.getNome(); // Assumiamo che ci sia un metodo getNome()
 
-		JButton addCheesecakeButton = new JButton("Add");
+		addCheesecakeButton = new JButton("Add"); // JButton per inserire cheesecake
 		addCheesecakeButton.setBackground(new Color(255, 255, 255));
 		addCheesecakeButton.setBounds(29, 214, 80, 23);
 		contentPane.add(addCheesecakeButton);
+
 		JLabel CheesecakeLabel = new JLabel(nomeProdotto);
 		CheesecakeLabel.setBounds(29, 180, 80, 23);
 		contentPane.add(CheesecakeLabel);
@@ -84,18 +83,27 @@ public class NuovoOrdineIF extends JFrame {
 		CubanaLabel.setBounds(221, 184, 46, 14);
 		contentPane.add(CubanaLabel);
 
-		JButton addCubanaButton = new JButton("Add");
+		addCubanaButton = new JButton("Add");
 		addCubanaButton.setBounds(205, 214, 80, 23);
 		contentPane.add(addCubanaButton);
 
-		addCheesecakeButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// Gestisci l'azione del pulsante Add qui
-			}
-		});
+		VisualizzaOrdineButton = new JButton("Visualizza Ordine");
+		VisualizzaOrdineButton.setBounds(406, 508, 168, 23);
+		contentPane.add(VisualizzaOrdineButton);
 
 		setVisible(true);
+	}
+
+	public void addCheesecake(ActionListener listener) {
+		addCheesecakeButton.addActionListener(listener);
+	}
+
+	public void addCubana(ActionListener listern) {
+		addCubanaButton.addActionListener(listern);
+	}
+
+	public void visualizzaOrdine(ActionListener listener) {
+		VisualizzaOrdineButton.addActionListener(listener);
 	}
 
 }

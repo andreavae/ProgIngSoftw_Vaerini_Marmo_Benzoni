@@ -16,6 +16,10 @@ public class Prodotto {
 		this.pathImmagine = pathImmagine;
 	}
 
+	public Prodotto(String nome) {
+		this.Nome = nome;
+	}
+
 	public String getIDprodotto() {
 		return IDprodotto;
 	}
@@ -34,6 +38,11 @@ public class Prodotto {
 
 	public ImageIcon getImageicon() {
 		return imageicon;
+	}
+
+	@Override
+	public String toString() {
+		return Nome;
 	}
 
 }
