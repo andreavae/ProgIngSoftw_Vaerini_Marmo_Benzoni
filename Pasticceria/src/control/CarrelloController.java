@@ -28,7 +28,7 @@ public class CarrelloController {
 	class addCheesecake implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Prodotto Cheesecake = new Prodotto("Cheesecake");
+			Prodotto Cheesecake = new Prodotto("Cheesecake", 15);
 			carrello.addProdotto(Cheesecake);
 		}
 	}
@@ -37,7 +37,7 @@ public class CarrelloController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Prodotto Cubana = new Prodotto("Cubana");
+			Prodotto Cubana = new Prodotto("Cubana", 12);
 			carrello.addProdotto(Cubana);
 		}
 
@@ -49,6 +49,7 @@ public class CarrelloController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello());
 			VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(carrello);
+
 			visualizzaordineif.setVisible(true);
 		}
 

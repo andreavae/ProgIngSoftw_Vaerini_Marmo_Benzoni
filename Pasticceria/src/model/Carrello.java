@@ -18,6 +18,14 @@ public class Carrello {
 		return carrello;
 	}
 
+	public float getTotale() {
+		float conto = 0;
+		for (Prodotto p : carrello) {
+			conto = conto + p.getPrezzo();
+		}
+		return conto;
+	}
+
 	@Override
 	public String toString() {
 		return "Carrello [carrello=" + carrello + "]";

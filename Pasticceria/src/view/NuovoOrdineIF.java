@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import model.Prodotto;
 import model.User;
@@ -48,17 +49,19 @@ public class NuovoOrdineIF extends JFrame {
 
 		String nomeProdotto = Cheesecake.getNome(); // Assumiamo che ci sia un metodo getNome()
 
-		addCheesecakeButton = new JButton("Add"); // JButton per inserire cheesecake
-		addCheesecakeButton.setBackground(new Color(255, 255, 255));
+		addCheesecakeButton = new JButton("Add");
+		addCheesecakeButton.setBackground(Color.YELLOW);
+		addCheesecakeButton.setBorder(new LineBorder(Color.BLUE, 2));
 		addCheesecakeButton.setBounds(29, 214, 80, 23);
 		contentPane.add(addCheesecakeButton);
 
 		JLabel CheesecakeLabel = new JLabel(nomeProdotto);
-		CheesecakeLabel.setBounds(29, 180, 80, 23);
+		CheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		CheesecakeLabel.setBounds(40, 180, 80, 23);
 		contentPane.add(CheesecakeLabel);
 
-		JLabel CatalogoLabel = new JLabel("CATALOGO");
-		CatalogoLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel CatalogoLabel = new JLabel("ORDINA");
+		CatalogoLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 20));
 		CatalogoLabel.setBounds(221, 11, 161, 47);
 		contentPane.add(CatalogoLabel);
 
@@ -80,16 +83,27 @@ public class NuovoOrdineIF extends JFrame {
 		CubanaImagepanel.add(CubanaImageLabel, BorderLayout.WEST);
 
 		JLabel CubanaLabel = new JLabel("Cubana");
-		CubanaLabel.setBounds(221, 184, 46, 14);
+		CubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		CubanaLabel.setBounds(244, 184, 46, 14);
 		contentPane.add(CubanaLabel);
 
 		addCubanaButton = new JButton("Add");
-		addCubanaButton.setBounds(205, 214, 80, 23);
+		addCubanaButton.setBounds(221, 214, 80, 23);
 		contentPane.add(addCubanaButton);
 
 		VisualizzaOrdineButton = new JButton("Visualizza Ordine");
 		VisualizzaOrdineButton.setBounds(406, 508, 168, 23);
 		contentPane.add(VisualizzaOrdineButton);
+
+		JLabel prezzoCheesecakeLabel = new JLabel("15,00 €");
+		prezzoCheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoCheesecakeLabel.setBounds(50, 201, 46, 14);
+		contentPane.add(prezzoCheesecakeLabel);
+
+		JLabel prezzoCubanaLabel = new JLabel("12,00 €");
+		prezzoCubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoCubanaLabel.setBounds(244, 201, 46, 14);
+		contentPane.add(prezzoCubanaLabel);
 
 		setVisible(true);
 	}

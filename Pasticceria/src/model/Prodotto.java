@@ -16,8 +16,9 @@ public class Prodotto {
 		this.pathImmagine = pathImmagine;
 	}
 
-	public Prodotto(String nome) {
+	public Prodotto(String nome, float prezzo) {
 		this.Nome = nome;
+		this.Prezzo = prezzo;
 	}
 
 	public String getIDprodotto() {

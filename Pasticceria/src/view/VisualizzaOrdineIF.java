@@ -1,6 +1,8 @@
 package view;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.DefaultListModel;
@@ -34,7 +36,6 @@ public class VisualizzaOrdineIF extends JFrame {
 		JLabel VisualizzaOrdineLabel = new JLabel("ORDINE");
 		VisualizzaOrdineLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		VisualizzaOrdineLabel.setHorizontalAlignment(JLabel.CENTER); // Centra il testo
-
 		VisualizzaOrdineContentPane.add(VisualizzaOrdineLabel, BorderLayout.NORTH);
 
 		DefaultListModel<Prodotto> listModel = new DefaultListModel<>();
@@ -42,11 +43,26 @@ public class VisualizzaOrdineIF extends JFrame {
 			listModel.addElement(prodotto);
 		}
 		JList<Prodotto> lista = new JList<>(listModel);
-
 		JScrollPane scrollPane = new JScrollPane(lista);
 		VisualizzaOrdineContentPane.add(scrollPane, BorderLayout.CENTER);
 
+		JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+		// Aggiungi le due JLabel affiancate
+		float totale = carrello.getTotale();
+		JLabel label1 = new JLabel("Totale: " + totale + "€");
+		label1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		labelPanel.add(label1);
+
+		/*
+		 * JLabel label2 = new JLabel(""+totale+ " €"); // Sostituisci con il valore
+		 * effettivo del totale label2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		 * labelPanel.add(label2);
+		 */
+		// Aggiungi il pannello delle JLabel alla parte inferiore
+		VisualizzaOrdineContentPane.add(labelPanel, BorderLayout.SOUTH);
 		setVisible(true);
+
 	}
 
 }
