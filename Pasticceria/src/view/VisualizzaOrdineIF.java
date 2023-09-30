@@ -23,6 +23,7 @@ public class VisualizzaOrdineIF extends JFrame {
 
 	private JPanel VisualizzaOrdineContentPane;
 	private JButton BackButton;
+	private JButton ConfermaOrdineButton;
 
 	/**
 	 * Create the frame.
@@ -71,6 +72,12 @@ public class VisualizzaOrdineIF extends JFrame {
 		 */
 		// Aggiungi il pannello delle JLabel alla parte inferiore
 		VisualizzaOrdineContentPane.add(labelPanel, BorderLayout.SOUTH);
+
+		ConfermaOrdineButton = new JButton("Conferma Ordine");
+		ConfermaOrdineButton.setForeground(new Color(255, 255, 255));
+		ConfermaOrdineButton.setBackground(new Color(0, 128, 255));
+		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		labelPanel.add(ConfermaOrdineButton);
 		setVisible(true);
 
 	}
@@ -79,4 +86,7 @@ public class VisualizzaOrdineIF extends JFrame {
 		BackButton.addActionListener(listener);
 	}
 
+	public void conferma(ActionListener listener) {
+		ConfermaOrdineButton.addActionListener(listener);
+	}
 }
