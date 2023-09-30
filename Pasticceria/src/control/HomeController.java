@@ -16,6 +16,7 @@ public class HomeController {
 		this.utente = utente;
 
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
+
 	}
 
 	class openNuovoOrdineIF implements ActionListener {

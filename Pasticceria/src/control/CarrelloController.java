@@ -23,6 +23,8 @@ public class CarrelloController {
 		this.nuovoordineif.addCheesecake(new addCheesecake());
 		this.nuovoordineif.addCubana(new addCubana());
 		this.nuovoordineif.visualizzaOrdine(new visualizzaOrdine());
+		this.nuovoordineif.back(new back());
+
 	}
 
 	class addCheesecake implements ActionListener {
@@ -51,6 +53,16 @@ public class CarrelloController {
 			VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(carrello);
 			VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(visualizzaordineif);
 			visualizzaordineif.setVisible(true);
+		}
+
+	}
+
+	class back implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			nuovoordineif.setVisible(false);
+
 		}
 
 	}

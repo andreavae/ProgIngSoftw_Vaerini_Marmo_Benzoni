@@ -22,6 +22,7 @@ public class NuovoOrdineIF extends JFrame {
 	private JButton addCheesecakeButton; // aggiungi cheesecake nel carrello
 	private JButton addCubanaButton; // aggiungi cubana nel carrello
 	private JButton VisualizzaOrdineButton;
+	private JButton BackButton;
 
 	/**
 	 * Create the frame.
@@ -92,6 +93,9 @@ public class NuovoOrdineIF extends JFrame {
 		contentPane.add(addCubanaButton);
 
 		VisualizzaOrdineButton = new JButton("Visualizza Ordine");
+		VisualizzaOrdineButton.setForeground(new Color(255, 255, 255));
+		VisualizzaOrdineButton.setBackground(new Color(0, 128, 255));
+		VisualizzaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		VisualizzaOrdineButton.setBounds(406, 508, 168, 23);
 		contentPane.add(VisualizzaOrdineButton);
 
@@ -104,6 +108,13 @@ public class NuovoOrdineIF extends JFrame {
 		prezzoCubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoCubanaLabel.setBounds(244, 201, 46, 14);
 		contentPane.add(prezzoCubanaLabel);
+
+		BackButton = new JButton("Back");
+		BackButton.setForeground(new Color(255, 255, 255));
+		BackButton.setBackground(new Color(0, 128, 255));
+		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		BackButton.setBounds(20, 508, 89, 23);
+		contentPane.add(BackButton);
 
 		setVisible(true);
 	}
@@ -118,6 +129,10 @@ public class NuovoOrdineIF extends JFrame {
 
 	public void visualizzaOrdine(ActionListener listener) {
 		VisualizzaOrdineButton.addActionListener(listener);
+	}
+
+	public void back(ActionListener listener) {
+		BackButton.addActionListener(listener);
 	}
 
 }

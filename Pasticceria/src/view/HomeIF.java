@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -12,7 +13,8 @@ import javax.swing.border.EmptyBorder;
 public class HomeIF extends JFrame {
 
 	private JPanel HomeContentPane;
-	private JButton NuovoOrdineButton;
+	private JButton OrdineStandardButton;
+	private JButton OrdinePersonalizzatoButton;
 
 	/**
 	 * Create the frame.
@@ -29,7 +31,7 @@ public class HomeIF extends JFrame {
 		HomeContentPane.setLayout(null);
 
 		JLabel HomeLabel = new JLabel("HOME");
-		HomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		HomeLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		HomeLabel.setBounds(176, 11, 79, 39);
 		HomeContentPane.add(HomeLabel);
 
@@ -41,12 +43,26 @@ public class HomeIF extends JFrame {
 		UserInLabel.setBounds(46, 11, 72, 14);
 		HomeContentPane.add(UserInLabel);
 
-		NuovoOrdineButton = new JButton("Nuovo Ordine");
-		NuovoOrdineButton.setBounds(151, 72, 117, 23);
-		HomeContentPane.add(NuovoOrdineButton);
+		OrdineStandardButton = new JButton("Ordine Standard");
+		OrdineStandardButton.setForeground(new Color(255, 255, 255));
+		OrdineStandardButton.setBackground(new Color(0, 128, 255));
+		OrdineStandardButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		OrdineStandardButton.setBounds(126, 72, 159, 23);
+		HomeContentPane.add(OrdineStandardButton);
+
+		OrdinePersonalizzatoButton = new JButton("Ordine Personalizzato");
+		OrdinePersonalizzatoButton.setForeground(new Color(255, 255, 255));
+		OrdinePersonalizzatoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		OrdinePersonalizzatoButton.setBackground(new Color(0, 128, 255));
+		OrdinePersonalizzatoButton.setBounds(126, 114, 159, 23);
+		HomeContentPane.add(OrdinePersonalizzatoButton);
 	}
 
 	public void openNuovoOrdineIF(ActionListener listener) {
-		NuovoOrdineButton.addActionListener(listener);
+		OrdineStandardButton.addActionListener(listener);
+	}
+
+	public void openOrdinePersonalizzato(ActionListener listener) {
+		OrdinePersonalizzatoButton.addActionListener(listener);
 	}
 }

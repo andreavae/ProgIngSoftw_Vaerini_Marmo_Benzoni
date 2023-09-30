@@ -24,6 +24,7 @@ public class VisualizzaOrdineIF extends JFrame {
 	private JPanel VisualizzaOrdineContentPane;
 	private JButton BackButton;
 	private JButton ConfermaOrdineButton;
+	private JButton CancellaButton;
 
 	/**
 	 * Create the frame.
@@ -79,6 +80,12 @@ public class VisualizzaOrdineIF extends JFrame {
 		ConfermaOrdineButton.setBackground(new Color(0, 128, 255));
 		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		labelPanel.add(ConfermaOrdineButton);
+
+		CancellaButton = new JButton("Cancella");
+		CancellaButton.setForeground(new Color(255, 255, 255));
+		CancellaButton.setBackground(new Color(0, 128, 255));
+		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		labelPanel.add(CancellaButton);
 		setVisible(true);
 
 	}
@@ -89,5 +96,9 @@ public class VisualizzaOrdineIF extends JFrame {
 
 	public void conferma(ActionListener listener) {
 		ConfermaOrdineButton.addActionListener(listener);
+	}
+
+	public void cancellaOrdine(ActionListener listener) {
+		CancellaButton.addActionListener(listener);
 	}
 }
