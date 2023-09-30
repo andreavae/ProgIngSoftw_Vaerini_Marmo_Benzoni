@@ -19,7 +19,7 @@ public class LoginController {
 		this.user = user;
 
 		this.loginif.addLoginListener(new LoginListener()); // apertura interfaccia in caso di successo
-		this.loginif.openSignIF(new OpenSignIF());
+		// this.loginif.openSignIF(new OpenSignIF());
 	}
 
 	class LoginListener implements ActionListener {

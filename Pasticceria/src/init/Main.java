@@ -2,9 +2,8 @@ package init;
 
 import java.awt.EventQueue;
 
-import control.LoginController;
-import model.User;
-import view.LoginIF;
+import control.IntroController;
+import view.IntroIF;
 
 public class Main {
 	public static void main(String[] args) {
@@ -12,11 +11,9 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					LoginIF loginif = new LoginIF();
-					User loginmodel = new User("", "");
-					LoginController logincontroller = new LoginController(loginif, loginmodel); // gestione della logica
-																								// interfaccia
-					loginif.setVisible(true); // visibilità interfaccia login
+					IntroIF introif = new IntroIF();
+					IntroController introcontroller = new IntroController(introif);
+					introif.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
