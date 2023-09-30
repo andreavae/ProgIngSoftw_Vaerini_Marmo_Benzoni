@@ -1,11 +1,14 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -19,6 +22,7 @@ import model.Prodotto;
 public class VisualizzaOrdineIF extends JFrame {
 
 	private JPanel VisualizzaOrdineContentPane;
+	private JButton BackButton;
 
 	/**
 	 * Create the frame.
@@ -34,7 +38,7 @@ public class VisualizzaOrdineIF extends JFrame {
 		VisualizzaOrdineContentPane.setLayout(new BorderLayout()); // Usa BorderLayout
 
 		JLabel VisualizzaOrdineLabel = new JLabel("ORDINE");
-		VisualizzaOrdineLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		VisualizzaOrdineLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		VisualizzaOrdineLabel.setHorizontalAlignment(JLabel.CENTER); // Centra il testo
 		VisualizzaOrdineContentPane.add(VisualizzaOrdineLabel, BorderLayout.NORTH);
 
@@ -50,6 +54,12 @@ public class VisualizzaOrdineIF extends JFrame {
 
 		// Aggiungi le due JLabel affiancate
 		float totale = carrello.getTotale();
+
+		BackButton = new JButton("Back");
+		BackButton.setForeground(new Color(255, 255, 255));
+		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		BackButton.setBackground(new Color(0, 128, 255));
+		labelPanel.add(BackButton);
 		JLabel label1 = new JLabel("Totale: " + totale + "€");
 		label1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		labelPanel.add(label1);
@@ -63,6 +73,10 @@ public class VisualizzaOrdineIF extends JFrame {
 		VisualizzaOrdineContentPane.add(labelPanel, BorderLayout.SOUTH);
 		setVisible(true);
 
+	}
+
+	public void back(ActionListener listener) {
+		BackButton.addActionListener(listener);
 	}
 
 }
