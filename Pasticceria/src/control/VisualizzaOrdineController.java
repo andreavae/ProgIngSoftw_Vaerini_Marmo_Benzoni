@@ -10,10 +10,10 @@ import view.VisualizzaOrdineIF;
 public class VisualizzaOrdineController {
 	private VisualizzaOrdineIF visualizzaordineif;
 
-	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif) {
+	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif) { // costruttore
 		this.visualizzaordineif = visualizzaordineif;
 
-		this.visualizzaordineif.back(new back());
+		this.visualizzaordineif.back(new back()); // configurazione gestori
 		this.visualizzaordineif.conferma(new conferma());
 		this.visualizzaordineif.cancellaOrdine(new cancella());
 	}
@@ -21,14 +21,14 @@ public class VisualizzaOrdineController {
 	class back implements ActionListener {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) { // gestione per pulsante back
 			visualizzaordineif.setVisible(false);
 
 		}
 
 	}
 
-	class conferma implements ActionListener {
+	class conferma implements ActionListener { // gestione per pulsante conferma
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -39,7 +39,7 @@ public class VisualizzaOrdineController {
 
 	}
 
-	class cancella implements ActionListener {
+	class cancella implements ActionListener { // gestione pulsante cancella
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

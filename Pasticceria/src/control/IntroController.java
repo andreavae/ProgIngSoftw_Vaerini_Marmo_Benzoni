@@ -8,17 +8,17 @@ import view.IntroIF;
 import view.LoginIF;
 import view.SignIF;
 
-public class IntroController {
+public class IntroController { // interfaccia iniziale
 	private IntroIF introif;
 
 	public IntroController(IntroIF introif) {
 		this.introif = introif;
 
-		this.introif.openLogin(new openLogin());
+		this.introif.openLogin(new openLogin()); // associazione gestore eventi
 		this.introif.openSign(new openSign());
 	}
 
-	class openLogin implements ActionListener {
+	class openLogin implements ActionListener { // apertura innterfaccia per il login
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -31,7 +31,7 @@ public class IntroController {
 		}
 	}
 
-	class openSign implements ActionListener {
+	class openSign implements ActionListener { // apertura per interfaccia sign
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

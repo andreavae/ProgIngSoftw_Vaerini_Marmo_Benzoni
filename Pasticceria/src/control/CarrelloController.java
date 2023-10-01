@@ -10,24 +10,24 @@ import view.NuovoOrdineIF;
 import view.VisualizzaOrdineIF;
 
 public class CarrelloController {
-	private User utente;
+	private User utente; // parametri
 	private NuovoOrdineIF nuovoordineif;
 	private Carrello carrello;
 	private Prodotto prodotto;
 
-	public CarrelloController(User utente, NuovoOrdineIF nuovoordineif, Carrello carrello) {
+	public CarrelloController(User utente, NuovoOrdineIF nuovoordineif, Carrello carrello) { // costruttore
 		this.utente = utente;
 		this.nuovoordineif = nuovoordineif;
 		this.carrello = new Carrello();
 
-		this.nuovoordineif.addCheesecake(new addCheesecake());
+		this.nuovoordineif.addCheesecake(new addCheesecake()); // gestione eventi al nuovo ordine
 		this.nuovoordineif.addCubana(new addCubana());
 		this.nuovoordineif.visualizzaOrdine(new visualizzaOrdine());
 		this.nuovoordineif.back(new back());
 
 	}
 
-	class addCheesecake implements ActionListener {
+	class addCheesecake implements ActionListener { // aggiunto prodotto al carrello
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Cheesecake = new Prodotto("Cheesecake", 15);
@@ -35,7 +35,7 @@ public class CarrelloController {
 		}
 	}
 
-	class addCubana implements ActionListener {
+	class addCubana implements ActionListener { // aggiunto prodotto al carrello
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -45,7 +45,7 @@ public class CarrelloController {
 
 	}
 
-	class visualizzaOrdine implements ActionListener {
+	class visualizzaOrdine implements ActionListener { // visualizzazione dell'ordine
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -57,7 +57,7 @@ public class CarrelloController {
 
 	}
 
-	class back implements ActionListener {
+	class back implements ActionListener { // ritorno all'interfaccia precedente
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
