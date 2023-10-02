@@ -45,8 +45,9 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
+
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif);
+					ordinepersonalizzatoif, null);
 			ordinepersonalizzatoif.setVisible(true);
 
 		}
