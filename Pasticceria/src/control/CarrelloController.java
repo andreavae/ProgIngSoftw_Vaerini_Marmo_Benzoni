@@ -6,28 +6,27 @@ import java.awt.event.ActionListener;
 import model.Carrello;
 import model.Prodotto;
 import model.User;
-import view.NuovoOrdineIF;
+import view.OrdineStandardIF;
 import view.VisualizzaOrdineIF;
 
 public class CarrelloController {
-	private User utente; // parametri
-	private NuovoOrdineIF nuovoordineif;
+	private User utente;
+	private OrdineStandardIF nuovoordineif;
 	private Carrello carrello;
 	private Prodotto prodotto;
 
-	public CarrelloController(User utente, NuovoOrdineIF nuovoordineif, Carrello carrello) { // costruttore
+	public CarrelloController(User utente, OrdineStandardIF nuovoordineif, Carrello carrello) {
 		this.utente = utente;
 		this.nuovoordineif = nuovoordineif;
 		this.carrello = new Carrello();
 
-		this.nuovoordineif.addCheesecake(new addCheesecake()); // gestione eventi al nuovo ordine
+		this.nuovoordineif.addCheesecake(new addCheesecake());
 		this.nuovoordineif.addCubana(new addCubana());
 		this.nuovoordineif.visualizzaOrdine(new visualizzaOrdine());
 		this.nuovoordineif.back(new back());
-
 	}
 
-	class addCheesecake implements ActionListener { // aggiunto prodotto al carrello
+	class addCheesecake implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Cheesecake = new Prodotto("Cheesecake", 15);
@@ -35,7 +34,7 @@ public class CarrelloController {
 		}
 	}
 
-	class addCubana implements ActionListener { // aggiunto prodotto al carrello
+	class addCubana implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -45,7 +44,7 @@ public class CarrelloController {
 
 	}
 
-	class visualizzaOrdine implements ActionListener { // visualizzazione dell'ordine
+	class visualizzaOrdine implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -58,11 +57,10 @@ public class CarrelloController {
 
 	}
 
-	class back implements ActionListener { // ritorno all'interfaccia precedente
+	class back implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			nuovoordineif.setVisible(false);
 
 		}
 

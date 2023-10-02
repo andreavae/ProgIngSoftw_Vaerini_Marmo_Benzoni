@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
 import model.Prodotto;
 import model.User;
 
-public class NuovoOrdineIF extends JFrame {
+public class OrdineStandardIF extends JFrame {
 
 	private JPanel contentPane;
 	private JButton addCheesecakeButton; // aggiungi cheesecake nel carrello
@@ -27,7 +27,7 @@ public class NuovoOrdineIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public NuovoOrdineIF(User utente) {
+	public OrdineStandardIF(User utente) {
 		Prodotto Cheesecake = new Prodotto("Cheesecake", "resources/cheesecake.jpg");
 		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
