@@ -9,9 +9,11 @@ import view.VisualizzaOrdineIF;
 
 public class VisualizzaOrdineController {
 	private VisualizzaOrdineIF visualizzaordineif;
+	private Carrello carrello;
 
-	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif) { // costruttore
+	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif, Carrello carrello) { // costruttore
 		this.visualizzaordineif = visualizzaordineif;
+		this.carrello = carrello;
 
 		this.visualizzaordineif.back(new back()); // configurazione gestori
 		this.visualizzaordineif.conferma(new conferma());
@@ -43,6 +45,8 @@ public class VisualizzaOrdineController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			visualizzaordineif.dispose();
+			carrello.svuotaCarrello();
 			Carrello carrello = new Carrello();
 
 		}

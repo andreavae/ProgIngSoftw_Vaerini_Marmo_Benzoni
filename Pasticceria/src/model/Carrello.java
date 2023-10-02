@@ -26,6 +26,11 @@ public class Carrello {
 		return conto;
 	}
 
+	public List<Prodotto> svuotaCarrello() {
+		carrello.clear();
+		return carrello;
+	}
+
 	@Override
 	public String toString() {
 		return "Carrello [carrello=" + carrello + "]";

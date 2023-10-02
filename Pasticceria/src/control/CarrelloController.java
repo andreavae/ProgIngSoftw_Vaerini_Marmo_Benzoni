@@ -51,7 +51,8 @@ public class CarrelloController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello());
 			VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(carrello);
-			VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(visualizzaordineif);
+			VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(visualizzaordineif,
+					carrello);
 			visualizzaordineif.setVisible(true);
 		}
 
