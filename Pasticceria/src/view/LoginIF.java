@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -17,13 +18,14 @@ public class LoginIF extends JFrame {
 	private JTextField usernameField;
 	private JTextField passwordField;
 	private JButton loginButton;
+	private JRadioButton ClientePremiumRadioButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public LoginIF() { // interfaccia Login //costruttore per l'aspetto grafico
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
-		setBounds(100, 100, 265, 233);
+		setBounds(100, 100, 272, 225);
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		LoginContentPane = new JPanel();
@@ -64,9 +66,16 @@ public class LoginIF extends JFrame {
 		loginButton = new JButton("Login"); // bottone login
 		loginButton.setForeground(new Color(255, 255, 255));
 		loginButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		loginButton.setBackground(new Color(0, 0, 255));
-		loginButton.setBounds(80, 128, 68, 40);
+		loginButton.setBackground(new Color(0, 128, 255));
+		loginButton.setBounds(178, 128, 68, 40);
 		LoginContentPane.add(loginButton);
+
+		ClientePremiumRadioButton = new JRadioButton("Cliente Premium");
+		ClientePremiumRadioButton.setBackground(new Color(0, 128, 255));
+		ClientePremiumRadioButton.setForeground(new Color(255, 255, 255));
+		ClientePremiumRadioButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ClientePremiumRadioButton.setBounds(21, 137, 146, 23);
+		LoginContentPane.add(ClientePremiumRadioButton);
 	}
 
 	public String getUsernameField() {
@@ -77,11 +86,11 @@ public class LoginIF extends JFrame {
 		return passwordField.getText();
 	}
 
+	public JRadioButton getClientePremiumRadioButton() {
+		return ClientePremiumRadioButton;
+	}
+
 	public void addLoginListener(ActionListener listener) { // associa ascoltatore
 		loginButton.addActionListener(listener);
 	}
-	/*
-	 * public void openSignIF(ActionListener listener) { // associa ascoltatore
-	 * signButton.addActionListener(listener); }
-	 */
 }
