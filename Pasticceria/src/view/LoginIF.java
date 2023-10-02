@@ -27,7 +27,7 @@ public class LoginIF extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		LoginContentPane = new JPanel();
-		LoginContentPane.setBackground(new Color(0, 0, 0));
+		LoginContentPane.setBackground(new Color(177, 247, 136));
 		LoginContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(LoginContentPane);
@@ -44,19 +44,19 @@ public class LoginIF extends JFrame {
 		passwordField.setColumns(10);
 
 		JLabel usernameLabel = new JLabel("Username"); // etichetta username
-		usernameLabel.setForeground(new Color(255, 255, 255));
+		usernameLabel.setForeground(new Color(0, 0, 0));
 		usernameLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		usernameLabel.setBounds(26, 65, 68, 14);
 		LoginContentPane.add(usernameLabel);
 
 		JLabel passwordLabel = new JLabel("Password"); // etichetta password
-		passwordLabel.setForeground(new Color(255, 255, 255));
+		passwordLabel.setForeground(new Color(0, 0, 0));
 		passwordLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		passwordLabel.setBounds(26, 100, 68, 14);
 		LoginContentPane.add(passwordLabel);
 
 		JLabel loginLabel = new JLabel("Welcome"); // etichetta login
-		loginLabel.setForeground(new Color(255, 255, 255));
+		loginLabel.setForeground(new Color(0, 0, 0));
 		loginLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		loginLabel.setBounds(71, 11, 96, 40);
 		LoginContentPane.add(loginLabel);

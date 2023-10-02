@@ -27,14 +27,15 @@ public class SignIF extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		SignoContentPane = new JPanel();
-		SignoContentPane.setBackground(new Color(0, 0, 0));
+		SignoContentPane.setBackground(new Color(177, 247, 136));
 		SignoContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(SignoContentPane);
 		SignoContentPane.setLayout(null);
 
 		JLabel registrazioneLabel = new JLabel("Crea il tuo account"); // etichetta registrazione
-		registrazioneLabel.setForeground(new Color(255, 255, 255));
+		registrazioneLabel.setBackground(new Color(0, 0, 0));
+		registrazioneLabel.setForeground(new Color(0, 0, 0));
 		registrazioneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		registrazioneLabel.setBounds(53, 23, 208, 40);
 		SignoContentPane.add(registrazioneLabel);
@@ -46,7 +47,7 @@ public class SignIF extends JFrame {
 
 		JLabel signUsernameLabel = new JLabel("Username"); // creazione etichetta Username
 		signUsernameLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		signUsernameLabel.setForeground(new Color(255, 255, 255));
+		signUsernameLabel.setForeground(new Color(0, 0, 0));
 		signUsernameLabel.setBounds(53, 74, 82, 14);
 		SignoContentPane.add(signUsernameLabel);
 
@@ -57,7 +58,7 @@ public class SignIF extends JFrame {
 
 		JLabel signPasswordLabel = new JLabel("Password"); // creazione etichetta password
 		signPasswordLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		signPasswordLabel.setForeground(new Color(255, 255, 255));
+		signPasswordLabel.setForeground(new Color(0, 0, 0));
 		signPasswordLabel.setBounds(53, 99, 82, 14);
 		SignoContentPane.add(signPasswordLabel);
 

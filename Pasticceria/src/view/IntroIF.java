@@ -29,12 +29,12 @@ public class IntroIF extends JFrame {
 
 		setContentPane(IntroContentPane);
 		IntroContentPane.setLayout(null);
-		IntroContentPane.setBackground(Color.BLACK);
+		IntroContentPane.setBackground(new Color(177, 247, 136));
 
 		JLabel GetStartedLabel = new JLabel("Get Started");
-		GetStartedLabel.setForeground(new Color(255, 255, 255));
+		GetStartedLabel.setForeground(new Color(0, 0, 0));
 		GetStartedLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
-		GetStartedLabel.setBounds(48, 0, 204, 83);
+		GetStartedLabel.setBounds(36, 0, 204, 83);
 		IntroContentPane.add(GetStartedLabel);
 
 		LogButton = new JButton("Login");
