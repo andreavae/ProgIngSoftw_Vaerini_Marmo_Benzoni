@@ -6,24 +6,28 @@ import java.awt.event.ActionListener;
 import model.Carrello;
 import model.Prodotto;
 import model.User;
+import view.HomeIF;
 import view.OrdineStandardIF;
 import view.VisualizzaOrdineIF;
 
-public class CarrelloController {
+public class OrdineStandardController {
 	private User utente;
-	private OrdineStandardIF nuovoordineif;
+	private OrdineStandardIF ordinestandardif;
 	private Carrello carrello;
 	private Prodotto prodotto;
+	private HomeIF homeif;
 
-	public CarrelloController(User utente, OrdineStandardIF nuovoordineif, Carrello carrello) {
+	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, Carrello carrello, HomeIF homeif) {
 		this.utente = utente;
-		this.nuovoordineif = nuovoordineif;
+		this.ordinestandardif = ordinestandardif;
+		this.homeif = homeif;
+
 		this.carrello = new Carrello();
 
-		this.nuovoordineif.addCheesecake(new addCheesecake());
-		this.nuovoordineif.addCubana(new addCubana());
-		this.nuovoordineif.visualizzaOrdine(new visualizzaOrdine());
-		this.nuovoordineif.back(new back());
+		this.ordinestandardif.addCheesecake(new addCheesecake());
+		this.ordinestandardif.addCubana(new addCubana());
+		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
+		this.ordinestandardif.back(new back());
 	}
 
 	class addCheesecake implements ActionListener {
@@ -61,7 +65,8 @@ public class CarrelloController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			homeif.setVisible(true);
+			ordinestandardif.setVisible(false);
 		}
 
 	}

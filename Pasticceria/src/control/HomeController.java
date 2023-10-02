@@ -27,13 +27,14 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			OrdineStandardIF nuovoordineif = new OrdineStandardIF(utente);
-			CarrelloController carrellocontroller = new CarrelloController(utente, nuovoordineif, null);
+			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente);
+			OrdineStandardController carrellocontroller = new OrdineStandardController(utente, ordinestandardif,
+					carrello, homeif);
 			// Catalogo catalogo = new Catalogo();
 			// OrdineController ordinecontroller = new OrdineController(null);
 			// Prodotto prodotto = new Prodotto("Nome Prodotto",
 			// "resources/cheesecake.jpg");
-			nuovoordineif.setVisible(true);
+			ordinestandardif.setVisible(true);
 
 		}
 
