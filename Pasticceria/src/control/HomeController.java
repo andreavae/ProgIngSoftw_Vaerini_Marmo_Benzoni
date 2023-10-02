@@ -20,7 +20,7 @@ public class HomeController {
 		carrello = new Carrello();
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
-
+		this.homeif.quit(new Quit());
 	}
 
 	class openNuovoOrdineIF implements ActionListener {
@@ -28,7 +28,7 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente);
-			OrdineStandardController carrellocontroller = new OrdineStandardController(utente, ordinestandardif,
+			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
 					carrello, homeif);
 			// Catalogo catalogo = new Catalogo();
 			// OrdineController ordinecontroller = new OrdineController(null);
@@ -48,6 +48,16 @@ public class HomeController {
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif);
 			ordinepersonalizzatoif.setVisible(true);
+
+		}
+
+	}
+
+	class Quit implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			homeif.dispose();
 
 		}
 
