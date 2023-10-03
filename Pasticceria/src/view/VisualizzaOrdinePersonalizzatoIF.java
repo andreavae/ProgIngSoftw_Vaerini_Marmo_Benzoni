@@ -21,7 +21,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaOrdinePersonalizzatoIF(String utente, String descrizione) {
+	public VisualizzaOrdinePersonalizzatoIF(User utente) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 352);
@@ -33,7 +33,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel OrdineLabel = new JLabel("ORDINE:");
+		JLabel OrdineLabel = new JLabel("ORDINE PERSONALIZZATO");
 		OrdineLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		OrdineLabel.setBounds(10, 36, 159, 34);
 		contentPane.add(OrdineLabel);
@@ -43,7 +43,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		UserLabel.setBounds(10, 11, 46, 14);
 		contentPane.add(UserLabel);
 
-		JLabel UserInLabel = new JLabel(utente);
+		JLabel UserInLabel = new JLabel(utente.getUsername());
 		UserInLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		UserInLabel.setBounds(50, 11, 92, 14);
 		contentPane.add(UserInLabel);

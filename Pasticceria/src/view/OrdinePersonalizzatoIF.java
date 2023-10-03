@@ -2,10 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,8 +25,9 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	private JTextField NumeroPersoneField;
 	private JTextField DataConsegnaField;
 	private JTextField DescrizioneOrdineField;
-	private JButton VisualizzaOrdineButton;
+	private JButton VisualizzaOrdinePersonalizzatoButton;
 	private JLabel OccasioneLabel;
+	private JComboBox<String> PianiComboBox;
 
 	/**
 	 * Create the frame.
@@ -88,37 +86,12 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(PianiLabel);
 
 		String[] piani = { "1 (0,00€)", "2 (+30,00€)", "3 (+50,00)" };
-		JComboBox<String> PianiComboBox = new JComboBox<String>();
+		PianiComboBox = new JComboBox<String>();
 		for (String piano : piani) {
 			PianiComboBox.addItem(piano);
 		}
 		PianiComboBox.setBounds(131, 101, 150, 22); // Imposta le dimensioni in modo appropriato
 		contentPane.add(PianiComboBox);
-		PianiComboBox.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// Ottieni il valore selezionato dalla JComboBox
-				String valoreSelezionato = (String) PianiComboBox.getSelectedItem();
-
-				// Utilizza un'espressione regolare per cercare un numero intero
-				Pattern pattern = Pattern.compile("\\d+");
-				Matcher matcher = pattern.matcher(valoreSelezionato);
-
-				if (matcher.find()) {
-					String valoreNumerico = matcher.group();
-					// Converti il valore in un numero intero
-					try {
-						int valoreIntero = Integer.parseInt(valoreNumerico);
-						System.out.println("Piani scelti: " + valoreIntero);
-					} catch (NumberFormatException ex) {
-						System.out.println("Impossibile convertire il valore in un numero.");
-					}
-				} else {
-					System.out.println("Valore numerico non trovato nella stringa selezionata.");
-				}
-			}
-		});
 
 		OccasioneLabel = new JLabel("Occasione");
 		OccasioneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
@@ -142,10 +115,12 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		nPersoneComboBox.setBounds(131, 71, 285, 23);
 		contentPane.add(nPersoneComboBox);
 
-		VisualizzaOrdineButton = new JButton("Visualizza Ordine");
-		VisualizzaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		VisualizzaOrdineButton.setBounds(349, 306, 133, 23);
-		contentPane.add(VisualizzaOrdineButton);
+		VisualizzaOrdinePersonalizzatoButton = new JButton("Visualizza Ordine");
+		VisualizzaOrdinePersonalizzatoButton.setForeground(new Color(255, 255, 255));
+		VisualizzaOrdinePersonalizzatoButton.setBackground(new Color(0, 128, 255));
+		VisualizzaOrdinePersonalizzatoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		VisualizzaOrdinePersonalizzatoButton.setBounds(349, 306, 133, 23);
+		contentPane.add(VisualizzaOrdinePersonalizzatoButton);
 
 	}
 
@@ -154,7 +129,15 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	}
 
 	public void visualizzaOrdine(ActionListener listener) {
-		VisualizzaOrdineButton.addActionListener(listener);
+		VisualizzaOrdinePersonalizzatoButton.addActionListener(listener);
+	}
+
+	public void getPiani(ActionListener listener) {
+		PianiComboBox.addActionListener(listener);
+	}
+
+	public JComboBox<String> getPianiComboBox() {
+		return PianiComboBox;
 	}
 
 }
