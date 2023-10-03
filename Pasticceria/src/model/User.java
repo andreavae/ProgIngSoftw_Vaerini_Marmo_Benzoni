@@ -78,7 +78,74 @@ public class User {
 
 	}
 
-	public boolean isSignValid() { // verifica tentativo di validità della registrazione
+	/**
+	 * 
+	 * @return true se l'username prelevato dall'interfaccia Ã¨ presente sia nella
+	 *         tabella utenti sia nella tabella utentipremium e inoltre se la
+	 *         password associata a quell'utente corrisponde a quella prelevata
+	 *         dall'interfaccia. Altrimenti false.
+	 */
+
+	public boolean isVipLoginValid() {
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
+
+		try {
+			connectdb.connect();
+			connectdb.setStatement(connectdb.getConnection().createStatement());
+
+			String query = "SELECT utenti.Username FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente";
+			ResultSet rs = connectdb.getStatement().executeQuery(query);
+
+			ArrayList<String> listautentivip = new ArrayList<String>();
+			while (rs.next()) {
+				listautentivip.add(rs.getString("Username"));
+			}
+			// logica per determinare se il login VIP Ã¨ valido
+			boolean corretto = false;
+			boolean flagusername = listautentivip.contains(username);
+			boolean flagpassword;
+			// ok
+			if (flagusername) {
+				String pass = null;
+				String querypassword = "SELECT utenti.Password FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente WHERE utenti.Username = '"
+						+ username + "'";
+				try {
+					rs = connectdb.getStatement().executeQuery(querypassword);
+					if (rs.next()) {
+						pass = rs.getString("Password");
+						flagpassword = pass.equals(password);
+						if (flagpassword) {
+							corretto = true;
+						}
+					}
+				} catch (SQLException e1) {
+
+				}
+			}
+			return corretto;
+		} catch (SQLException e) {
+			// Gestire o registrare l'eccezione in modo appropriato
+			e.printStackTrace();
+			return false; // o gestire l'errore in un altro modo, a seconda delle tue esigenze
+		} finally {
+			// Chiudere la connessione e le risorse qui, nel blocco finally
+			try {
+				if (connectdb.getStatement() != null) {
+					connectdb.getStatement().close();
+				}
+				if (connectdb.getConnection() != null) {
+					connectdb.getConnection().close();
+				}
+			} catch (SQLException e) {
+				// Gestire eventuali eccezioni durante la chiusura delle risorse
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	public boolean isSignValid() { // verifica tentativo di validitï¿½ della registrazione
 		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso database
 		connectdb.connect(); // apro connessione
 
@@ -100,7 +167,7 @@ public class User {
 			// Gestisci gli errori di query SQL
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user è gia presente
+		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user ï¿½ gia presente
 		System.out.println(flagusername);
 		if (!flagusername) { // username non presente
 			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
@@ -114,7 +181,7 @@ public class User {
 			}
 		}
 
-		boolean checkusername = listautenti.contains(username); // verifica se utente è inserito nell'arraylist
+		boolean checkusername = listautenti.contains(username); // verifica se utente ï¿½ inserito nell'arraylist
 		return checkusername;
 
 	}

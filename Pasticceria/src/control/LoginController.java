@@ -31,31 +31,39 @@ public class LoginController {
 			String password = loginif.getPasswordField();
 
 			user = new User(username, password); // creato un oggetto User
-			if (user.isLoginValid()) { // verifica di successo di login
-				JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
-				loginif.dispose();
-				HomeIF homeif = new HomeIF(username);
-				HomeController homecontroller = new HomeController(homeif, user);
-				homeif.setVisible(true);
-
+			if (!loginif.getClientePremiumRadioButton().isSelected()) {
+				if (user.isLoginValid()) {
+					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
+					loginif.dispose();
+					HomeIF homeif = new HomeIF(username);
+					homeif.setVisible(true);
+					HomeController homecontroller = new HomeController(homeif, user, loginif);
+				} else {
+					JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
+				}
 			} else {
-				JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
+				if (user.isVipLoginValid()) {
+					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
+					loginif.dispose();
+				} else {
+					JOptionPane.showMessageDialog(loginif,
+							"Utente non riconociuto come cliente Premium. Entra come cliente oppure paga l'abboanmento.");
+				}
 			}
 
 		}
 
-	}
+		class OpenSignIF implements ActionListener { // transizione tra interfacce
 
-	class OpenSignIF implements ActionListener { // transizione tra interfacce
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-
-			SignIF signif = new SignIF(); // creazione oggetto
-			SignController signifcontoller = new SignController(signif, null);
-			signif.setVisible(true); // interfaccia signif visibile all'utente
-			loginif.setVisible(false); // interfaccia login viene nascosta
+				SignIF signif = new SignIF(); // creazione oggetto
+				SignController signifcontoller = new SignController(signif, null);
+				signif.setVisible(true); // interfaccia signif visibile all'utente
+				loginif.setVisible(false); // interfaccia login viene nascosta
+			}
 		}
 	}
 }

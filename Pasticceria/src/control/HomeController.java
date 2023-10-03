@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import model.Carrello;
 import model.User;
 import view.HomeIF;
+import view.LoginIF;
 import view.OrdinePersonalizzatoIF;
 import view.OrdineStandardIF;
 
@@ -14,7 +15,7 @@ public class HomeController {
 	private User utente;
 	private Carrello carrello;
 
-	public HomeController(HomeIF homeif, User utente) {
+	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
 		this.homeif = homeif;
 		this.utente = utente;
 		carrello = new Carrello();
