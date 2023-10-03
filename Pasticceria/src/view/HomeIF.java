@@ -16,11 +16,12 @@ public class HomeIF extends JFrame {
 	private JButton OrdineStandardButton;
 	private JButton OrdinePersonalizzatoButton;
 	private JButton QuitButton;
+	private JButton ScontoButton;
 
 	/**
 	 * Create the frame.
 	 */
-	public HomeIF(String utente) {
+	public HomeIF(String utente, LoginIF loginif) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
@@ -33,7 +34,7 @@ public class HomeIF extends JFrame {
 
 		JLabel HomeLabel = new JLabel("HOME");
 		HomeLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
-		HomeLabel.setBounds(176, 11, 79, 39);
+		HomeLabel.setBounds(151, 21, 79, 39);
 		HomeContentPane.add(HomeLabel);
 
 		JLabel UserLabel = new JLabel("User: ");
@@ -50,14 +51,14 @@ public class HomeIF extends JFrame {
 		OrdineStandardButton.setForeground(new Color(255, 255, 255));
 		OrdineStandardButton.setBackground(new Color(0, 128, 255));
 		OrdineStandardButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		OrdineStandardButton.setBounds(126, 72, 159, 23);
+		OrdineStandardButton.setBounds(102, 71, 183, 23);
 		HomeContentPane.add(OrdineStandardButton);
 
 		OrdinePersonalizzatoButton = new JButton("Ordine Personalizzato");
 		OrdinePersonalizzatoButton.setForeground(new Color(255, 255, 255));
 		OrdinePersonalizzatoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		OrdinePersonalizzatoButton.setBackground(new Color(0, 128, 255));
-		OrdinePersonalizzatoButton.setBounds(126, 114, 159, 23);
+		OrdinePersonalizzatoButton.setBounds(102, 105, 183, 23);
 		HomeContentPane.add(OrdinePersonalizzatoButton);
 
 		QuitButton = new JButton("Quit");
@@ -66,6 +67,18 @@ public class HomeIF extends JFrame {
 		QuitButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		QuitButton.setBounds(360, 227, 64, 23);
 		HomeContentPane.add(QuitButton);
+
+		ScontoButton = new JButton("Ottieni Sconto Giornaliero");
+		ScontoButton.setForeground(new Color(255, 255, 255));
+		ScontoButton.setBackground(new Color(0, 128, 255));
+		ScontoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		if (loginif.getClientePremiumRadioButton().isSelected()) {
+			ScontoButton.setEnabled(true);
+		} else {
+			ScontoButton.setEnabled(false);
+		}
+		ScontoButton.setBounds(102, 139, 183, 23);
+		HomeContentPane.add(ScontoButton);
 	}
 
 	public void openNuovoOrdineIF(ActionListener listener) {

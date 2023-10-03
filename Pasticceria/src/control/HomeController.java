@@ -31,10 +31,7 @@ public class HomeController {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
 					carrello, homeif);
-			// Catalogo catalogo = new Catalogo();
-			// OrdineController ordinecontroller = new OrdineController(null);
-			// Prodotto prodotto = new Prodotto("Nome Prodotto",
-			// "resources/cheesecake.jpg");
+
 			ordinestandardif.setVisible(true);
 
 		}
