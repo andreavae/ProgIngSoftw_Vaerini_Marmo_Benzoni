@@ -48,7 +48,7 @@ public class HomeController {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
 
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif, null);
+					ordinepersonalizzatoif);
 			ordinepersonalizzatoif.setVisible(true);
 
 		}
