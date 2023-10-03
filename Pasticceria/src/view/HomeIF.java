@@ -92,4 +92,8 @@ public class HomeIF extends JFrame {
 	public void quit(ActionListener listener) {
 		QuitButton.addActionListener(listener);
 	}
+
+	public void openSconto(ActionListener listener) {
+		ScontoButton.addActionListener(listener);
+	}
 }
