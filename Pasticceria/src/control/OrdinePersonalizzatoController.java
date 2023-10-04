@@ -139,11 +139,6 @@ public class OrdinePersonalizzatoController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
-					utente);
-			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-					visualizzaordinepersonalizzatoif);
-			visualizzaordinepersonalizzatoif.setVisible(true);
 
 			GetData getdeadline = new GetData(ordinepersonalizzatoif.getDataConsegnaField());
 			dataConsegna = getdeadline.getConsegna(deadline);
@@ -177,6 +172,13 @@ public class OrdinePersonalizzatoController {
 				System.out.println("Valore numerico non trovato nella stringa selezionata.");
 			}
 
+			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
+					utente, dataConsegna, occasione, piani, nPersone);
+			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
+					visualizzaordinepersonalizzatoif);
+			visualizzaordinepersonalizzatoif.setVisible(true);
+
 		}
+
 	}
 }
