@@ -28,6 +28,8 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	private JButton VisualizzaOrdinePersonalizzatoButton;
 	private JLabel OccasioneLabel;
 	private JComboBox<String> PianiComboBox;
+	private JComboBox<String> nPersoneComboBox;
+	private JComboBox<String> OccasioneComboBox;
 
 	/**
 	 * Create the frame.
@@ -100,17 +102,17 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(OccasioneLabel);
 
 		String[] occasioni = { "Nessuna occasione", "Compleanno", "Anniversario", "Laurea" }; // tipologia occcasione
-		JComboBox<String> OccasioneComboBox = new JComboBox<String>(); // menu a tendina
+		OccasioneComboBox = new JComboBox<String>(); // menu a tendina
 		for (String occasione : occasioni) { // inserimento valori
 			OccasioneComboBox.addItem(occasione);
 		}
 		OccasioneComboBox.setBounds(131, 134, 185, 23); // Imposta le dimensioni in modo appropriato
 		contentPane.add(OccasioneComboBox);
 
-		String[] nPersone = { "Da 5 a 10 persone (0,00€)", "Da 10 a 15 persone (+10,00€)", // num persone per la
+		String[] nPersone = { "Da  5 a 10 persone (+00,00€)", "Da 10 a 15 persone (+10,00€)", // num persone per la
 																								// torta
 				"Da 15 a 25 persone (+30,00€)" };
-		JComboBox<String> nPersoneComboBox = new JComboBox<String>(); // menu a tendina
+		nPersoneComboBox = new JComboBox<String>(); // menu a tendina
 		for (String persona : nPersone) { // inserimento valori
 			nPersoneComboBox.addItem(persona);
 		}
@@ -136,12 +138,16 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		VisualizzaOrdinePersonalizzatoButton.addActionListener(listener);
 	}
 
-	public void getPiani(ActionListener listener) {
-		PianiComboBox.addActionListener(listener);
-	}
-
 	public JComboBox<String> getPianiComboBox() {
 		return PianiComboBox;
+	}
+
+	public JComboBox<String> getnPersoneComboBox() {
+		return nPersoneComboBox;
+	}
+
+	public JComboBox<String> getOccasioneComboBox() {
+		return OccasioneComboBox;
 	}
 
 }
