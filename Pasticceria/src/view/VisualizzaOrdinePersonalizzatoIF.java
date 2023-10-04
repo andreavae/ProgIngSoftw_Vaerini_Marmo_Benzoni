@@ -2,7 +2,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +20,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	private User utente;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
 	private OrdinePersonalizzatoController ordinepersonalizzatocontroller;
+	private JButton BackButton;
 
 	/**
 	 * Create the frame.
@@ -37,7 +40,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 
 		JLabel OrdineLabel = new JLabel("ORDINE PERSONALIZZATO"); // etichetta ordine personalizzato
 		OrdineLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		OrdineLabel.setBounds(10, 36, 159, 34);
+		OrdineLabel.setBounds(10, 36, 223, 34);
 		contentPane.add(OrdineLabel);
 
 		JLabel UserLabel = new JLabel("User:"); // etichetta user
@@ -53,10 +56,18 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		JLabel DescrizioneLabel = new JLabel(descrizioneOrdine); // etichetta descrizione ordine
 		DescrizioneLabel.setBounds(10, 81, 343, 53);
 		contentPane.add(DescrizioneLabel);
+
+		BackButton = new JButton("Back");
+		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		BackButton.setBounds(10, 279, 75, 23);
+		contentPane.add(BackButton);
 	}
 
 	public void setDescrizioneOrdine(String descrizioneOrdine) {
 		this.descrizioneOrdine = descrizioneOrdine;
 	}
 
+	public void back(ActionListener listener) {
+		this.BackButton.addActionListener(listener);
+	}
 }

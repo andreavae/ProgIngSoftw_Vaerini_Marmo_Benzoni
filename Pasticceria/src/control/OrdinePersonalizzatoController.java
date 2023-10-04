@@ -6,17 +6,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import model.User;
+import view.HomeIF;
 import view.OrdinePersonalizzatoIF;
 import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class OrdinePersonalizzatoController {
 	private User utente;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
+	private HomeIF homeif;
 
-	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif) {
+	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif) {
 		this.utente = utente;
 		this.ordinepersonalizzatoif = ordinepersonalizzatoif;
-
+		this.homeif = homeif;
 		this.ordinepersonalizzatoif.back(new back());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new visualizzaOrdinePersonalizzato());
 		this.ordinepersonalizzatoif.getPiani(new GetPiani());
@@ -26,6 +28,7 @@ public class OrdinePersonalizzatoController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			ordinepersonalizzatoif.setVisible(false);
+			homeif.setVisible(true);
 		}
 	}
 
@@ -35,6 +38,8 @@ public class OrdinePersonalizzatoController {
 		public void actionPerformed(ActionEvent e) {
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersinalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 					utente);
+			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
+					visualizzaordinepersinalizzatoif);
 			visualizzaordinepersinalizzatoif.setVisible(true);
 
 		}
@@ -42,6 +47,7 @@ public class OrdinePersonalizzatoController {
 	}
 
 	class GetPiani implements ActionListener {
+		private int valoreIntero;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -56,7 +62,7 @@ public class OrdinePersonalizzatoController {
 				String valoreNumerico = matcher.group();
 				// Converti il valore in un numero intero
 				try {
-					int valoreIntero = Integer.parseInt(valoreNumerico);
+					valoreIntero = Integer.parseInt(valoreNumerico);
 					System.out.println("Piani scelti: " + valoreIntero);
 
 				} catch (NumberFormatException ex) {
@@ -65,6 +71,10 @@ public class OrdinePersonalizzatoController {
 			} else {
 				System.out.println("Valore numerico non trovato nella stringa selezionata.");
 			}
+		}
+
+		public int getValoreIntero() {
+			return valoreIntero;
 		}
 
 	}

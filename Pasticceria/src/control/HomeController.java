@@ -36,7 +36,7 @@ public class HomeController {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
 					carrello, homeif);
-
+			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
 		}
@@ -50,7 +50,8 @@ public class HomeController {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
 
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif);
+					ordinepersonalizzatoif, homeif);
+			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
 
 		}
