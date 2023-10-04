@@ -31,6 +31,8 @@ public class VisualizzaOrdinePersonalizzatoController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			PagamentoIF pagamentoif = new PagamentoIF();
+			PagamentoController pagamentocontroller = new PagamentoController(pagamentoif,
+					visualizzaordinepersonalizzatoif);
 			pagamentoif.setVisible(true);
 		}
 

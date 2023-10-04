@@ -9,11 +9,13 @@ import model.Carrello;
 import model.Pagamento;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
+import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class PagamentoController {
 	private PagamentoIF pagamentoif;
 	private Pagamento pagamento;
 	private VisualizzaOrdineIF visualizzaordineif;
+	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
 	private Carrello carrello;
 
 	public PagamentoController(PagamentoIF pagamentoif, VisualizzaOrdineIF visualizzaordineif, Carrello carrello) { // costruttore
@@ -21,6 +23,12 @@ public class PagamentoController {
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;
 		this.pagamentoif.pagamento(new pagamento()); // associazione evento per pagamento
+	}
+
+	public PagamentoController(PagamentoIF pagamentoif,
+			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif) {
+		this.pagamentoif = pagamentoif;
+		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
 	}
 
 	class pagamento implements ActionListener {
