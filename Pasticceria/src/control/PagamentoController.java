@@ -29,6 +29,7 @@ public class PagamentoController {
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif) {
 		this.pagamentoif = pagamentoif;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
+		this.pagamentoif.pagamento(new pagamento());
 	}
 
 	class pagamento implements ActionListener {
