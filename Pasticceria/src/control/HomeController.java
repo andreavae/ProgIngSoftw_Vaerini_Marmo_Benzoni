@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import model.Carrello;
 import model.User;
@@ -19,7 +18,6 @@ public class HomeController {
 	private User utente;
 	private Carrello carrello;
 	private double valoreSconto;
-	private JTextField deadline;
 
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
 		this.homeif = homeif;
@@ -52,7 +50,9 @@ public class HomeController {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
 
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField());
+					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
+					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
+					ordinepersonalizzatoif.getPianiComboBox());
 			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
 
