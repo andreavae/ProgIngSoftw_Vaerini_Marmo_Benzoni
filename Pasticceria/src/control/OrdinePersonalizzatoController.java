@@ -6,7 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
+//import control.OrdinePersonalizzatoController.visualizzaOrdinePersonalizzato;
 import model.User;
 import view.HomeIF;
 import view.OrdinePersonalizzatoIF;
@@ -17,25 +19,20 @@ public class OrdinePersonalizzatoController {
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
 	private HomeIF homeif;
 	private JComboBox<String> combobox;
+	private JTextField deadline;
 
-	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif) {
+	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif,
+			JTextField deadline) {
 		this.utente = utente;
 		this.ordinepersonalizzatoif = ordinepersonalizzatoif;
 		this.homeif = homeif;
+		this.deadline = deadline;
 		this.ordinepersonalizzatoif.back(new back());
-		this.ordinepersonalizzatoif.visualizzaOrdine(new visualizzaOrdinePersonalizzato(combobox));
+		this.ordinepersonalizzatoif.visualizzaOrdine(new VisualizzaOrdinePersonalizzato());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPiani(combobox));
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPersone());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetOccasioni());
-		this.ordinepersonalizzatoif.visualizzaOrdine(new GetData());
-	}
-
-	class back implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			ordinepersonalizzatoif.setVisible(false);
-			homeif.setVisible(true);
-		}
+		this.ordinepersonalizzatoif.visualizzaOrdine(new GetData(deadline));
 	}
 
 	class GetPiani implements ActionListener {
@@ -78,26 +75,6 @@ public class OrdinePersonalizzatoController {
 
 	}
 
-	class visualizzaOrdinePersonalizzato implements ActionListener {
-		private JComboBox<String> combobox;
-
-		public visualizzaOrdinePersonalizzato(JComboBox<String> combobox) {
-			this.combobox = combobox;
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersinalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
-					utente);
-			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-					visualizzaordinepersinalizzatoif);
-			visualizzaordinepersinalizzatoif.setVisible(true);
-			GetPiani getpiani = new GetPiani(combobox);
-
-		}
-
-	}
-
 	class GetPersone implements ActionListener {
 		private int importoPersone;
 
@@ -135,13 +112,45 @@ public class OrdinePersonalizzatoController {
 	}
 
 	class GetData implements ActionListener {
+		private JTextField data;
+
+		public GetData(JTextField data) {
+			this.data = data;
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String data = ordinepersonalizzatoif.getDataConsegnaField().getText();
-			System.out.println("DATA CONSEGNA: " + data);
 
+			data = ordinepersonalizzatoif.getDataConsegnaField();
+			System.out.println("DATA CONSEGNA: " + data);
 		}
 
+		public String getConsegna(JTextField data) {
+			return data.getText();
+		}
+	}
+
+	class back implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			ordinepersonalizzatoif.setVisible(false);
+			homeif.setVisible(true);
+		}
+	}
+
+	class VisualizzaOrdinePersonalizzato implements ActionListener {
+		private String dataConsegna;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
+					utente);
+			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
+					visualizzaordinepersonalizzatoif);
+			visualizzaordinepersonalizzatoif.setVisible(true);
+			GetData getdeadline = new GetData(ordinepersonalizzatoif.getDataConsegnaField());
+			dataConsegna = getdeadline.getConsegna(deadline);
+
+		}
 	}
 }
