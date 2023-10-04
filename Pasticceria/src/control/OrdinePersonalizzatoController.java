@@ -27,6 +27,7 @@ public class OrdinePersonalizzatoController {
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPiani(combobox));
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPersone());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetOccasioni());
+		this.ordinepersonalizzatoif.visualizzaOrdine(new GetData());
 	}
 
 	class back implements ActionListener {
@@ -129,6 +130,17 @@ public class OrdinePersonalizzatoController {
 
 		public String getOccasione() {
 			return valoreSelezionato;
+		}
+
+	}
+
+	class GetData implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String data = ordinepersonalizzatoif.getDataConsegnaField().getText();
+			System.out.println("DATA CONSEGNA: " + data);
+
 		}
 
 	}

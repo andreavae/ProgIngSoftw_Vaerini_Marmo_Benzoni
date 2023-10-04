@@ -150,4 +150,8 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		return OccasioneComboBox;
 	}
 
+	public JTextField getDataConsegnaField() {
+		return DataConsegnaField;
+	}
+
 }
