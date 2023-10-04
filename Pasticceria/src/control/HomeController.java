@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.swing.JOptionPane;
 
 import model.Carrello;
+import model.OrdinePersonalizzato;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
@@ -18,6 +19,7 @@ public class HomeController {
 	private User utente;
 	private Carrello carrello;
 	private double valoreSconto;
+	private OrdinePersonalizzato ordinepersonalizzato;
 
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
 		this.homeif = homeif;
@@ -52,7 +54,7 @@ public class HomeController {
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
 					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
-					ordinepersonalizzatoif.getPianiComboBox());
+					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
 			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
 

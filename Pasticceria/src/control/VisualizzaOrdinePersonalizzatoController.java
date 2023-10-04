@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import view.PagamentoIF;
 import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class VisualizzaOrdinePersonalizzatoController {
@@ -12,6 +13,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
 
 		this.visualizzaordinepersonalizzatoif.back(new back());
+		this.visualizzaordinepersonalizzatoif.conferma(new conferma());
 	}
 
 	class back implements ActionListener {
@@ -23,4 +25,15 @@ public class VisualizzaOrdinePersonalizzatoController {
 		}
 
 	}
+
+	class conferma implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			PagamentoIF pagamentoif = new PagamentoIF();
+			pagamentoif.setVisible(true);
+		}
+
+	}
+
 }

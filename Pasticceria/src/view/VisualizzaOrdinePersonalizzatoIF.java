@@ -21,12 +21,13 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
 	private OrdinePersonalizzatoController ordinepersonalizzatocontroller;
 	private JButton BackButton;
+	private JButton ConfermaOrdineButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public VisualizzaOrdinePersonalizzatoIF(User utente, String dataConsegna, String occasione, String piani,
-			String persone) { // costruttore
+			String persone, double totale) { // costruttore
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 512, 352);
@@ -99,6 +100,16 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		SetNumPersoneLabel.setBounds(145, 198, 263, 14);
 		contentPane.add(SetNumPersoneLabel);
 
+		JLabel TotaleLabel = new JLabel("Totale: " + totale + "€");
+		TotaleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		TotaleLabel.setBounds(10, 238, 75, 14);
+		contentPane.add(TotaleLabel);
+
+		ConfermaOrdineButton = new JButton("Conferma Ordine");
+		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ConfermaOrdineButton.setBounds(162, 279, 150, 23);
+		contentPane.add(ConfermaOrdineButton);
+
 	}
 
 	public void setDescrizioneOrdine(String descrizioneOrdine) {
@@ -107,5 +118,9 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 
 	public void back(ActionListener listener) {
 		this.BackButton.addActionListener(listener);
+	}
+
+	public void conferma(ActionListener listener) {
+		ConfermaOrdineButton.addActionListener(listener);
 	}
 }

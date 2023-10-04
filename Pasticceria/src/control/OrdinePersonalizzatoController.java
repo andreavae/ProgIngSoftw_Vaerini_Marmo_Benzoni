@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
+import model.OrdinePersonalizzato;
 //import control.OrdinePersonalizzatoController.visualizzaOrdinePersonalizzato;
 import model.User;
 import view.HomeIF;
@@ -17,6 +18,7 @@ import view.VisualizzaOrdinePersonalizzatoIF;
 public class OrdinePersonalizzatoController {
 	private User utente;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
+	private OrdinePersonalizzato ordinepersonalizzato;
 	private HomeIF homeif;
 	private JComboBox<String> nPiani;
 	private JTextField deadline;
@@ -25,7 +27,7 @@ public class OrdinePersonalizzatoController {
 
 	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif,
 			JTextField deadline, JComboBox<String> menuoccasioni, JComboBox<String> listapersone,
-			JComboBox<String> nPiani) {
+			JComboBox<String> nPiani, OrdinePersonalizzato ordinepersonalizzato) {
 		this.utente = utente;
 		this.ordinepersonalizzatoif = ordinepersonalizzatoif;
 		this.homeif = homeif;
@@ -33,12 +35,14 @@ public class OrdinePersonalizzatoController {
 		this.menuoccasioni = menuoccasioni;
 		this.listapersone = listapersone;
 		this.nPiani = nPiani;
+		this.ordinepersonalizzato = ordinepersonalizzato;
 		this.ordinepersonalizzatoif.back(new back());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new VisualizzaOrdinePersonalizzato());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPiani(nPiani));
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetPersone(listapersone));
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetOccasioni(menuoccasioni));
 		this.ordinepersonalizzatoif.visualizzaOrdine(new GetData(deadline));
+
 	}
 
 	class GetPiani implements ActionListener {
@@ -136,6 +140,7 @@ public class OrdinePersonalizzatoController {
 		private String piani;
 		private int importoPersone;
 		private int piano;
+		private double totale;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -172,8 +177,11 @@ public class OrdinePersonalizzatoController {
 				System.out.println("Valore numerico non trovato nella stringa selezionata.");
 			}
 
+			ordinepersonalizzato = new OrdinePersonalizzato(piano, importoPersone);
+			totale = ordinepersonalizzato.getTotale(piano, importoPersone);
+
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
-					utente, dataConsegna, occasione, piani, nPersone);
+					utente, dataConsegna, occasione, piani, nPersone, totale);
 			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
 					visualizzaordinepersonalizzatoif);
 			visualizzaordinepersonalizzatoif.setVisible(true);
