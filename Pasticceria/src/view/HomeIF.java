@@ -22,55 +22,56 @@ public class HomeIF extends JFrame {
 	 * Create the frame.
 	 */
 	public HomeIF(String utente, LoginIF loginif) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
-		setResizable(false);
-		HomeContentPane = new JPanel();
+		setResizable(false); // impedisce all'utente di ridimensionare la finestra
+		HomeContentPane = new JPanel(); // per aggiungere componenti grafici
+		HomeContentPane.setBackground(new Color(255, 180, 180));
 		HomeContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(HomeContentPane);
 		HomeContentPane.setLayout(null);
 
-		JLabel HomeLabel = new JLabel("HOME");
+		JLabel HomeLabel = new JLabel("HOME"); // etichetta Home
 		HomeLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		HomeLabel.setBounds(151, 21, 79, 39);
 		HomeContentPane.add(HomeLabel);
 
-		JLabel UserLabel = new JLabel("User: ");
+		JLabel UserLabel = new JLabel("User: "); // etichetta user
 		UserLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		UserLabel.setBounds(10, 11, 41, 14);
 		HomeContentPane.add(UserLabel);
 
-		JLabel UserInLabel = new JLabel(utente);
+		JLabel UserInLabel = new JLabel(utente); // etichetta utente
 		UserInLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		UserInLabel.setBounds(46, 11, 72, 14);
 		HomeContentPane.add(UserInLabel);
 
-		OrdineStandardButton = new JButton("Ordine Standard");
+		OrdineStandardButton = new JButton("Ordine Standard"); // bottone oridine standard
 		OrdineStandardButton.setForeground(new Color(255, 255, 255));
-		OrdineStandardButton.setBackground(new Color(0, 128, 255));
+		OrdineStandardButton.setBackground(new Color(255, 80, 120));
 		OrdineStandardButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		OrdineStandardButton.setBounds(102, 71, 183, 23);
 		HomeContentPane.add(OrdineStandardButton);
 
-		OrdinePersonalizzatoButton = new JButton("Ordine Personalizzato");
+		OrdinePersonalizzatoButton = new JButton("Ordine Personalizzato"); // bottone ordine personalizzato
 		OrdinePersonalizzatoButton.setForeground(new Color(255, 255, 255));
 		OrdinePersonalizzatoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		OrdinePersonalizzatoButton.setBackground(new Color(0, 128, 255));
+		OrdinePersonalizzatoButton.setBackground(new Color(255, 80, 120));
 		OrdinePersonalizzatoButton.setBounds(102, 105, 183, 23);
 		HomeContentPane.add(OrdinePersonalizzatoButton);
 
-		QuitButton = new JButton("Quit");
+		QuitButton = new JButton("Quit"); // bottone quit
 		QuitButton.setForeground(new Color(255, 255, 255));
-		QuitButton.setBackground(new Color(0, 128, 255));
+		QuitButton.setBackground(new Color(255, 80, 120));
 		QuitButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		QuitButton.setBounds(360, 227, 64, 23);
 		HomeContentPane.add(QuitButton);
 
-		ScontoButton = new JButton("Ottieni Sconto Giornaliero");
+		ScontoButton = new JButton("Ottieni Sconto Giornaliero"); // bottone sconto
 		ScontoButton.setForeground(new Color(255, 255, 255));
-		ScontoButton.setBackground(new Color(0, 128, 255));
+		ScontoButton.setBackground(new Color(255, 80, 120));
 		ScontoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		if (loginif.getClientePremiumRadioButton().isSelected()) {
 			ScontoButton.setEnabled(true);
@@ -80,6 +81,8 @@ public class HomeIF extends JFrame {
 		ScontoButton.setBounds(102, 139, 183, 23);
 		HomeContentPane.add(ScontoButton);
 	}
+
+	// attivazione ascoltatori
 
 	public void openNuovoOrdineIF(ActionListener listener) {
 		OrdineStandardButton.addActionListener(listener);

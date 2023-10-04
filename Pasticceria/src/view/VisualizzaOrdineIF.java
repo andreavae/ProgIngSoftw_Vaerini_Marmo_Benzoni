@@ -34,22 +34,24 @@ public class VisualizzaOrdineIF extends JFrame {
 		setMinimumSize(new Dimension(450, 300)); // Imposta le dimensioni minime
 		setLocationRelativeTo(null);
 		VisualizzaOrdineContentPane = new JPanel();
+		VisualizzaOrdineContentPane.setBackground(new Color(255, 180, 180));
 		VisualizzaOrdineContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(VisualizzaOrdineContentPane);
 		VisualizzaOrdineContentPane.setLayout(new BorderLayout()); // Usa BorderLayout
 
-		JLabel VisualizzaOrdineLabel = new JLabel("ORDINE");
+		JLabel VisualizzaOrdineLabel = new JLabel("ORDINE"); // etichetta ordine
 		VisualizzaOrdineLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		VisualizzaOrdineLabel.setHorizontalAlignment(JLabel.CENTER); // Centra il testo
 		VisualizzaOrdineContentPane.add(VisualizzaOrdineLabel, BorderLayout.NORTH);
 
+		// lista di prodotti nel carrello
 		DefaultListModel<Prodotto> listModel = new DefaultListModel<>();
 		for (Prodotto prodotto : carrello.getCarrello()) {
 			listModel.addElement(prodotto);
 		}
 		JList<Prodotto> lista = new JList<>(listModel);
-		JScrollPane scrollPane = new JScrollPane(lista);
+		JScrollPane scrollPane = new JScrollPane(lista); // per scorrere la lista
 		VisualizzaOrdineContentPane.add(scrollPane, BorderLayout.CENTER);
 
 		JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -57,10 +59,10 @@ public class VisualizzaOrdineIF extends JFrame {
 		// Aggiungi le due JLabel affiancate
 		float totale = carrello.getTotale();
 
-		BackButton = new JButton("Back");
+		BackButton = new JButton("Back"); // bottone back
 		BackButton.setForeground(new Color(255, 255, 255));
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		BackButton.setBackground(new Color(0, 128, 255));
+		BackButton.setBackground(new Color(255, 80, 120));
 		labelPanel.add(BackButton);
 		JLabel label1 = new JLabel("Totale: " + totale + "€");
 		label1.setBackground(new Color(255, 255, 255));
@@ -75,20 +77,22 @@ public class VisualizzaOrdineIF extends JFrame {
 		// Aggiungi il pannello delle JLabel alla parte inferiore
 		VisualizzaOrdineContentPane.add(labelPanel, BorderLayout.SOUTH);
 
-		ConfermaOrdineButton = new JButton("Conferma Ordine");
+		ConfermaOrdineButton = new JButton("Conferma Ordine"); // bottone conferma ordine
 		ConfermaOrdineButton.setForeground(new Color(255, 255, 255));
-		ConfermaOrdineButton.setBackground(new Color(0, 128, 255));
+		ConfermaOrdineButton.setBackground(new Color(255, 80, 120));
 		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		labelPanel.add(ConfermaOrdineButton);
 
-		CancellaButton = new JButton("Cancella");
+		CancellaButton = new JButton("Cancella"); // bottone cancella
 		CancellaButton.setForeground(new Color(255, 255, 255));
-		CancellaButton.setBackground(new Color(0, 128, 255));
+		CancellaButton.setBackground(new Color(255, 80, 120));
 		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		labelPanel.add(CancellaButton);
 		setVisible(true);
 
 	}
+
+	// attivazione ascolatori
 
 	public void back(ActionListener listener) {
 		BackButton.addActionListener(listener);

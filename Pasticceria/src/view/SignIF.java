@@ -27,7 +27,7 @@ public class SignIF extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		SignoContentPane = new JPanel();
-		SignoContentPane.setBackground(new Color(177, 247, 136));
+		SignoContentPane.setBackground(new Color(255, 180, 180));
 		SignoContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(SignoContentPane);
@@ -63,7 +63,7 @@ public class SignIF extends JFrame {
 		SignoContentPane.add(signPasswordLabel);
 
 		registratiButton = new JButton("Registrati"); // creazione bottone
-		registratiButton.setBackground(new Color(0, 0, 255));
+		registratiButton.setBackground(new Color(255, 80, 120));
 		registratiButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		registratiButton.setForeground(new Color(255, 255, 255));
 		registratiButton.setBounds(81, 124, 101, 53);
@@ -71,6 +71,7 @@ public class SignIF extends JFrame {
 
 	}
 
+	// cattura inserimento testo utente
 	public JTextField getSignUsernameField() {
 		return SignUsernameField;
 	}
@@ -79,7 +80,8 @@ public class SignIF extends JFrame {
 		return SignPasswordField;
 	}
 
-	public void addResgistratiListener(ActionListener listener) { // associa ascoltatore
+	// associa ascoltatore
+	public void addResgistratiListener(ActionListener listener) {
 		registratiButton.addActionListener(listener);
 	}
 }

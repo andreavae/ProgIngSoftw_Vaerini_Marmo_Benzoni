@@ -28,8 +28,8 @@ public class LoginIF extends JFrame {
 		setBounds(100, 100, 272, 225);
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
-		LoginContentPane = new JPanel();
-		LoginContentPane.setBackground(new Color(177, 247, 136));
+		LoginContentPane = new JPanel(); // per aggiungere componenti grafici
+		LoginContentPane.setBackground(new Color(255, 180, 180));
 		LoginContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(LoginContentPane);
@@ -66,17 +66,19 @@ public class LoginIF extends JFrame {
 		loginButton = new JButton("Login"); // bottone login
 		loginButton.setForeground(new Color(255, 255, 255));
 		loginButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		loginButton.setBackground(new Color(0, 128, 255));
+		loginButton.setBackground(new Color(255, 80, 120));
 		loginButton.setBounds(178, 128, 68, 40);
 		LoginContentPane.add(loginButton);
 
-		ClientePremiumRadioButton = new JRadioButton("Cliente Premium");
-		ClientePremiumRadioButton.setBackground(new Color(0, 128, 255));
+		ClientePremiumRadioButton = new JRadioButton("Cliente Premium"); // selezione cliente premium
+		ClientePremiumRadioButton.setBackground(new Color(255, 80, 120));
 		ClientePremiumRadioButton.setForeground(new Color(255, 255, 255));
 		ClientePremiumRadioButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ClientePremiumRadioButton.setBounds(21, 137, 146, 23);
 		LoginContentPane.add(ClientePremiumRadioButton);
 	}
+
+	// cattura testo inserito nei campi di testo
 
 	public String getUsernameField() {
 		return usernameField.getText();
