@@ -11,7 +11,7 @@ public class Main {
 			@Override
 			public void run() {
 				try {
-					IntroIF introif = new IntroIF();
+					IntroIF introif = new IntroIF(); // avvio view IntroIF
 					IntroController introcontroller = new IntroController(introif);
 					introif.setVisible(true);
 				} catch (Exception e) {
