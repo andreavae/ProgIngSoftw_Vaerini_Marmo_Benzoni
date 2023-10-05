@@ -19,15 +19,18 @@ public class HomeController {
 	private User utente;
 	private Carrello carrello;
 	private Sconto sconto;
+	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
 		this.homeif = homeif;
 		this.utente = utente;
+		this.loginif = loginif;
 		carrello = new Carrello();
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
+
 		// this.homeif.openSconto(new sconto());
 	}
 
@@ -36,7 +39,7 @@ public class HomeController {
 		this.utente = utente;
 		this.sconto = sconto;
 		carrello = new Carrello();
-		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
+		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.openSconto(new sconto(sconto.getSconto()));
 		this.homeif.quit(new Quit());
@@ -46,7 +49,21 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente);
+			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
+			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
+					carrello, homeif);
+			homeif.setVisible(false);
+			ordinestandardif.setVisible(true);
+
+		}
+
+	}
+
+	class openNuovoOrdineIFVip implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, sconto.getSconto());
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
 					carrello, homeif);
 			homeif.setVisible(false);
@@ -95,7 +112,9 @@ public class HomeController {
 			sconto = new Sconto();
 			valoreSconto = sconto.getSconto();
 			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + valoreSconto * 100 + "%");
-
+			HomeIF homeifvip = new HomeIF(utente.getUsername(), new LoginIF(), valoreSconto);
+			homeifvip.setVisible(true);
+			HomeController homecontrollervip = new HomeController(homeifvip, utente, loginif, sconto);
 			// System.out.println(sconto.getSconto());
 		}
 

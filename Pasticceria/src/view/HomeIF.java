@@ -17,11 +17,12 @@ public class HomeIF extends JFrame {
 	private JButton OrdinePersonalizzatoButton;
 	private JButton QuitButton;
 	private JButton ScontoButton;
+	private JLabel ScontoLabel;
 
 	/**
 	 * Create the frame.
 	 */
-	public HomeIF(String utente, LoginIF loginif) {
+	public HomeIF(String utente, LoginIF loginif, double sconto) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
@@ -80,6 +81,11 @@ public class HomeIF extends JFrame {
 		}
 		ScontoButton.setBounds(102, 139, 183, 23);
 		HomeContentPane.add(ScontoButton);
+
+		ScontoLabel = new JLabel("Sconto:" + sconto);
+		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoLabel.setBounds(311, 11, 113, 14);
+		HomeContentPane.add(ScontoLabel);
 	}
 
 	// attivazione ascoltatori

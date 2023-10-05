@@ -37,7 +37,7 @@ public class LoginController {
 				if (user.isLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
 					loginif.dispose();
-					HomeIF homeif = new HomeIF(username, loginif);
+					HomeIF homeif = new HomeIF(username, loginif, 0);
 					homeif.setVisible(true);
 					HomeController homecontroller = new HomeController(homeif, user, loginif);
 				} else {
@@ -47,7 +47,8 @@ public class LoginController {
 				if (user.isVipLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.dispose();
-					HomeIF homeif = new HomeIF(username, loginif);
+					sconto = new Sconto();
+					HomeIF homeif = new HomeIF(username, loginif, 0);
 					homeif.setVisible(true);
 					HomeController homecontroller = new HomeController(homeif, user, loginif, new Sconto());
 				} else {

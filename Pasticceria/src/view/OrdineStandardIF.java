@@ -26,7 +26,7 @@ public class OrdineStandardIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public OrdineStandardIF(User utente) {
+	public OrdineStandardIF(User utente, double sconto) {
 		// foto prodotti
 		Prodotto Cheesecake = new Prodotto("Cheesecake", "resources/cheesecake.jpg");
 		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg");
@@ -120,6 +120,11 @@ public class OrdineStandardIF extends JFrame {
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBounds(20, 508, 89, 23);
 		contentPane.add(BackButton);
+
+		JLabel ScontoLabel = new JLabel("Sconto: " + sconto);
+		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoLabel.setBounds(435, 11, 117, 14);
+		contentPane.add(ScontoLabel);
 
 		setVisible(true);
 	}
