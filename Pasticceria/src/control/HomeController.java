@@ -77,14 +77,14 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			homeif.dispose();
-
+			System.exit(0);
 		}
 
 	}
 
 	class sconto implements ActionListener {
 		private double valoreSconto;
+		private Sconto sconto;
 
 		public sconto(double valoreSconto) {
 			this.valoreSconto = valoreSconto;
@@ -92,13 +92,15 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Sconto sconto = new Sconto();
-			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + sconto.getSconto() * 100 + "%");
+			sconto = new Sconto();
+			valoreSconto = sconto.getSconto();
+			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + valoreSconto * 100 + "%");
+
 			// System.out.println(sconto.getSconto());
 		}
 
 		public double getValoreSconto(double valoreSconto) {
-			System.out.println(valoreSconto);
+			System.out.println(sconto.getSconto());
 			return valoreSconto;
 		}
 

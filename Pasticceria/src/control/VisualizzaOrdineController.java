@@ -5,14 +5,13 @@ import java.awt.event.ActionListener;
 
 import model.Carrello;
 import model.User;
-import view.OrdineStandardIF;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
 
 public class VisualizzaOrdineController {
 	private User utente;
 	private VisualizzaOrdineIF visualizzaordineif;
-	private OrdineStandardIF ordinestandardif;
+
 	private Carrello carrello;
 
 	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif, Carrello carrello) {

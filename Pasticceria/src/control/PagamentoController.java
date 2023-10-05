@@ -29,7 +29,7 @@ public class PagamentoController {
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif) {
 		this.pagamentoif = pagamentoif;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
-		this.pagamentoif.pagamento(new pagamento());
+		this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
 	}
 
 	class pagamento implements ActionListener {
@@ -45,6 +45,25 @@ public class PagamentoController {
 				carrello.svuotaCarrello();
 				JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 				pagamentoif.dispose();
+			} else {
+				JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+			}
+
+		}
+
+	}
+
+	class pagamentoOrdinePersonalizzato implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String numerocarta = pagamentoif.getNumeroCartaField().getText(); // recupera dati inseriti dall'utente
+			String datascadenza = pagamentoif.getDataScadenzaField().getText();
+			Pagamento pagamento = new Pagamento(numerocarta, datascadenza);
+			if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) { // notifica di successo o insuccesso
+				pagamentoif.dispose();
+				JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+
 			} else {
 				JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
 			}
