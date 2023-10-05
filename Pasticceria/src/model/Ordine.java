@@ -15,14 +15,17 @@ public class Ordine {
 	public StatoOrdine Stato;
 	public double prezzoOrdine;
 	private final String codiceOrdine;
+	private TipoOrdine tipoOrdine;
 
-	public Ordine(User utente) { // devo inserire
+	public Ordine(User utente, double prezzoOrdine) { // devo inserire
 		this.utente = utente; // la data??
 		do {
 			CODICE_ORDINE_GENERATO = generaCodiceOrdine();
 		} while (CODICE_ORDINE_ASSEGNATI.contains(CODICE_ORDINE_GENERATO));
 		this.codiceOrdine = CODICE_ORDINE_GENERATO;
 		CODICE_ORDINE_ASSEGNATI.add(codiceOrdine);
+		this.tipoOrdine = tipoOrdine;
+		this.prezzoOrdine = prezzoOrdine;
 	}
 
 	private static String generaCodiceOrdine() {
@@ -64,6 +67,14 @@ public class Ordine {
 
 	public String getUsernameUtente() {
 		return utente.getUsername();
+	}
+
+	public TipoOrdine getTipoOrdine() {
+		return tipoOrdine;
+	}
+
+	public void setTipoOrdine(TipoOrdine tipoOrdine) {
+		this.tipoOrdine = tipoOrdine;
 	}
 
 }

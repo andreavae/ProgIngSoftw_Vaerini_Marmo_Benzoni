@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Ordine;
 import model.OrdineStandard;
+import model.TipoOrdine;
 import model.User;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
@@ -37,12 +38,20 @@ public class VisualizzaOrdineController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Ordine ordine;
 			PagamentoIF pagamentoif = new PagamentoIF();
 			PagamentoController pagamentocontroller = new PagamentoController(pagamentoif, visualizzaordineif,
 					carrello);
-			Ordine ordine = new Ordine(utente);
+			if (utente.isVipUser(utente.getUsername())) {
+				ordine = new Ordine(utente, carrello.getTotale(0.3));
+			} else {
+				ordine = new Ordine(utente, carrello.getTotale(0));
+			}
 			System.out.println(ordine.getCodiceOrdine());
 			System.out.println(ordine.getUsernameUtente());
+			TipoOrdine tipoordine = TipoOrdine.STANDARD;
+			System.out.println(tipoordine);
+			System.out.println(ordine.getPrezzoOrdine());
 			pagamentoif.setVisible(true);
 		}
 
