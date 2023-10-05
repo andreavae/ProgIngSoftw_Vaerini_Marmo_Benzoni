@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import model.Abbonamento;
 import model.Carrello;
 import model.OrdinePersonalizzato;
 import model.Sconto;
 import model.User;
+import view.AbbonamentoIF;
 import view.HomeIF;
 import view.LoginIF;
 import view.OrdinePersonalizzatoIF;
@@ -30,7 +32,7 @@ public class HomeController {
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
-
+		this.homeif.openAbbonamento(new abbonamento());
 		// this.homeif.openSconto(new sconto());
 	}
 
@@ -43,6 +45,7 @@ public class HomeController {
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.openSconto(new sconto(sconto.getSconto()));
 		this.homeif.quit(new Quit());
+
 	}
 
 	class openNuovoOrdineIF implements ActionListener {
@@ -125,4 +128,15 @@ public class HomeController {
 
 	}
 
+	class abbonamento implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Abbonamento abbonamento = new Abbonamento(utente);
+			AbbonamentoIF abbonamentoif = new AbbonamentoIF();
+			AbbonamentoController abbonamentocontroller = new AbbonamentoController(utente, abbonamento, abbonamentoif);
+			abbonamentoif.setVisible(true);
+		}
+
+	}
 }
