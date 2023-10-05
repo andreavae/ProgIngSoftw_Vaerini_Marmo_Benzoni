@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Carrello;
 import model.Prodotto;
+import model.Sconto;
 import model.User;
 import view.HomeIF;
 import view.OrdineStandardIF;
@@ -16,14 +17,15 @@ public class OrdineStandardController {
 	private Carrello carrello;
 	private Prodotto prodotto;
 	private HomeIF homeif;
+	private Sconto sconto;
 
 	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, Carrello carrello, HomeIF homeif) {
 		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
 
-		this.carrello = new Carrello();
-
+		this.carrello = new Carrello(utente, 0);
+		this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
 		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
@@ -53,10 +55,19 @@ public class OrdineStandardController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello());
-			VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(carrello);
-			VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(visualizzaordineif,
-					carrello);
-			visualizzaordineif.setVisible(true);
+			System.out.println(utente.isVipUser(utente.getUsername()));
+			if (!utente.isVipUser(utente.getUsername())) {
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
+				visualizzaordineif.setVisible(true);
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(
+						visualizzaordineif, carrello);
+			} else {
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, sconto.getSconto());
+				visualizzaordineif.setVisible(true);
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(
+						visualizzaordineif, carrello);
+			}
+
 		}
 
 	}

@@ -121,7 +121,7 @@ public class OrdineStandardIF extends JFrame {
 		BackButton.setBounds(20, 508, 89, 23);
 		contentPane.add(BackButton);
 
-		JLabel ScontoLabel = new JLabel("Sconto: " + sconto);
+		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%");
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(435, 11, 117, 14);
 		contentPane.add(ScontoLabel);

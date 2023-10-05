@@ -49,7 +49,7 @@ public class VisualizzaOrdineController {
 		public void actionPerformed(ActionEvent e) {
 			visualizzaordineif.dispose();
 			carrello.svuotaCarrello();
-			carrello = new Carrello();
+			carrello = new Carrello(utente, 0);
 
 		}
 

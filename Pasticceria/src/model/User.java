@@ -185,4 +185,31 @@ public class User {
 		return checkusername;
 
 	}
+
+	public boolean isVipUser(String username) {
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
+
+		try {
+			connectdb.connect();
+			connectdb.setStatement(connectdb.getConnection().createStatement());
+
+			String query = "SELECT utenti.Username FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente";
+			ResultSet rs = connectdb.getStatement().executeQuery(query);
+
+			ArrayList<String> listautentivip = new ArrayList<String>();
+			System.out.println(listautentivip);
+			while (rs.next()) {
+				listautentivip.add(rs.getString("Username"));
+			}
+			// logica per determinare se il login VIP è valido
+			boolean corretto = false;
+			boolean flagusername = listautentivip.contains(username);
+			if (flagusername)
+				return true;
+
+		} catch (SQLException e) {
+
+		}
+		return false;
+	}
 }

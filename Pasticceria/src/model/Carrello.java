@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Carrello {
+	private User utente;
 	private List<Prodotto> carrello;
+	private double sconto;
 
-	public Carrello() {
+	public Carrello(User utente, double sconto) {
+		this.sconto = sconto;
+		this.utente = utente;
 		carrello = new ArrayList<Prodotto>();
 	}
 
@@ -18,11 +22,12 @@ public class Carrello {
 		return carrello;
 	}
 
-	public float getTotale() {
-		float conto = 0;
+	public double getTotale(double sconto) {
+		double conto = 0;
 		for (Prodotto p : carrello) {
 			conto = conto + p.getPrezzo();
 		}
+		conto = conto - conto * sconto;
 		return conto;
 	}
 

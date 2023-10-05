@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.Carrello;
 import model.Prodotto;
+import model.User;
 
 public class VisualizzaOrdineIF extends JFrame {
 
@@ -25,12 +26,15 @@ public class VisualizzaOrdineIF extends JFrame {
 	private JButton BackButton;
 	private JButton ConfermaOrdineButton;
 	private JButton CancellaButton;
+	private User utente;
+	private double totale;
 
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaOrdineIF(Carrello carrello) {
+	public VisualizzaOrdineIF(User utente, Carrello carrello, double sconto) {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.utente = utente;
 		setMinimumSize(new Dimension(450, 300)); // Imposta le dimensioni minime
 		setLocationRelativeTo(null);
 		VisualizzaOrdineContentPane = new JPanel();
@@ -54,10 +58,18 @@ public class VisualizzaOrdineIF extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(lista); // per scorrere la lista
 		VisualizzaOrdineContentPane.add(scrollPane, BorderLayout.CENTER);
 
+		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%");
+		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		scrollPane.setColumnHeaderView(ScontoLabel);
+
 		JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 		// Aggiungi le due JLabel affiancate
-		float totale = carrello.getTotale();
+		if (!utente.isVipLoginValid()) {
+			totale = carrello.getTotale(0);
+		} else {
+			totale = carrello.getTotale(0.3);
+		}
 
 		BackButton = new JButton("Back"); // bottone back
 		BackButton.setForeground(new Color(255, 255, 255));
