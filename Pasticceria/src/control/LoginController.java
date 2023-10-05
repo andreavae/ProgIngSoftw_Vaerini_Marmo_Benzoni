@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import model.Sconto;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
@@ -13,6 +14,7 @@ import view.SignIF;
 public class LoginController {
 	private LoginIF loginif; // dichiarazione variabili
 	private User user;
+	private Sconto sconto;
 
 	public LoginController(LoginIF loginif, User user) { // costruttore
 		this.loginif = loginif;
@@ -47,7 +49,7 @@ public class LoginController {
 					loginif.dispose();
 					HomeIF homeif = new HomeIF(username, loginif);
 					homeif.setVisible(true);
-					HomeController homecontroller = new HomeController(homeif, user, loginif);
+					HomeController homecontroller = new HomeController(homeif, user, loginif, new Sconto());
 				} else {
 					JOptionPane.showMessageDialog(loginif,
 							"Utente non riconociuto come cliente Premium. Entra come cliente oppure paga l'abboanmento.");

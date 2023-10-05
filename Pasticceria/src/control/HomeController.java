@@ -2,12 +2,12 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.JOptionPane;
 
 import model.Carrello;
 import model.OrdinePersonalizzato;
+import model.Sconto;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
@@ -18,7 +18,7 @@ public class HomeController {
 	private HomeIF homeif;
 	private User utente;
 	private Carrello carrello;
-	private double valoreSconto;
+	private Sconto sconto;
 	private OrdinePersonalizzato ordinepersonalizzato;
 
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
@@ -28,7 +28,18 @@ public class HomeController {
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
-		this.homeif.openSconto(new sconto());
+		// this.homeif.openSconto(new sconto());
+	}
+
+	public HomeController(HomeIF homeif, User utente, LoginIF loginif, Sconto sconto) {
+		this.homeif = homeif;
+		this.utente = utente;
+		this.sconto = sconto;
+		carrello = new Carrello();
+		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
+		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
+		this.homeif.openSconto(new sconto(sconto.getSconto()));
+		this.homeif.quit(new Quit());
 	}
 
 	class openNuovoOrdineIF implements ActionListener {
@@ -73,29 +84,21 @@ public class HomeController {
 	}
 
 	class sconto implements ActionListener {
+		private double valoreSconto;
+
+		public sconto(double valoreSconto) {
+			this.valoreSconto = valoreSconto;
+		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Random random = new Random();
-			int scelta = random.nextInt(3);
-			valoreSconto = 0;
-
-			switch (scelta) {
-			case 0:
-				valoreSconto = 0.15;
-				break;
-			case 1:
-				valoreSconto = 0.30;
-				break;
-			case 2:
-				valoreSconto = 0.50;
-				break;
-			}
-			JOptionPane.showConfirmDialog(homeif, "Sconto Giornaliero del " + valoreSconto * 100 + "%");
-
+			Sconto sconto = new Sconto();
+			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + sconto.getSconto() * 100 + "%");
+			// System.out.println(sconto.getSconto());
 		}
 
-		public double getValoreSconto() {
+		public double getValoreSconto(double valoreSconto) {
+			System.out.println(valoreSconto);
 			return valoreSconto;
 		}
 
