@@ -212,4 +212,43 @@ public class User {
 		}
 		return false;
 	}
+
+	public boolean isSignVip(String username, int codice) {
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso database
+		connectdb.connect(); // apro connessione
+
+		ResultSet rs = null; // archivio risultati query
+		ArrayList<String> listautenti = new ArrayList<String>(); // archivio utenti
+		try {
+			connectdb.setStatement(connectdb.getConnection().createStatement());
+			String query = "SELECT" + username + " FROM utentipremium"; // query di selezione degli username
+			rs = connectdb.getStatement().executeQuery(query);
+
+			while (rs.next()) { // inserimeto utenti database nell'arraylist
+				String usernameFromDB = rs.getString("Username");
+				listautenti.add(usernameFromDB);
+
+			}
+
+		} catch (SQLException e) {
+			// Gestisci gli errori di query SQL
+		}
+		boolean corretto = false;
+		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user � gia presente
+		System.out.println(flagusername);
+		if (!flagusername) {
+			String queryregistrazione = "INSERT INTO utentipremium (CodAbbonamento, UsernameUtente) VALUES ('" + codice
+					+ "','" + username + "')";
+			listautenti.add(username);
+			try {
+				connectdb.setStatement(connectdb.getConnection().createStatement());
+				connectdb.getStatement().executeUpdate(queryregistrazione);
+			} catch (SQLException e) {
+
+			}
+		}
+		boolean checkusername = listautenti.contains(username); // verifica se utente � inserito nell'arraylist
+		return checkusername;
+
+	}
 }
