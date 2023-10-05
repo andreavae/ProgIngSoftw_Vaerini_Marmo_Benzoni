@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import model.Carrello;
+import model.OrdineStandard;
 import model.Pagamento;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
@@ -16,9 +16,9 @@ public class PagamentoController {
 	private Pagamento pagamento;
 	private VisualizzaOrdineIF visualizzaordineif;
 	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
-	private Carrello carrello;
+	private OrdineStandard carrello;
 
-	public PagamentoController(PagamentoIF pagamentoif, VisualizzaOrdineIF visualizzaordineif, Carrello carrello) { // costruttore
+	public PagamentoController(PagamentoIF pagamentoif, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello) { // costruttore
 		this.pagamentoif = pagamentoif;
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;

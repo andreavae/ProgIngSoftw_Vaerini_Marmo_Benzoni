@@ -3,7 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Carrello;
+import model.OrdineStandard;
 import model.Prodotto;
 import model.Sconto;
 import model.User;
@@ -14,17 +14,18 @@ import view.VisualizzaOrdineIF;
 public class OrdineStandardController {
 	private User utente;
 	private OrdineStandardIF ordinestandardif;
-	private Carrello carrello;
+	private OrdineStandard carrello;
 	private Prodotto prodotto;
 	private HomeIF homeif;
 	private Sconto sconto;
 
-	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, Carrello carrello, HomeIF homeif) {
+	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
+			HomeIF homeif) {
 		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
 
-		this.carrello = new Carrello(utente, 0);
+		this.carrello = new OrdineStandard(utente, 0);
 		this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
@@ -59,12 +60,12 @@ public class OrdineStandardController {
 			if (!utente.isVipUser(utente.getUsername())) {
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
-				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello);
 			} else {
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, sconto.getSconto());
 				visualizzaordineif.setVisible(true);
-				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello);
 			}
 

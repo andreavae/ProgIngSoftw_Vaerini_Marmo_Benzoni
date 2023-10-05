@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carrello {
+public class OrdineStandard {
 	private User utente;
 	private List<Prodotto> carrello;
 	private double sconto;
 
-	public Carrello(User utente, double sconto) {
+	public OrdineStandard(User utente, double sconto) {
 		this.sconto = sconto;
 		this.utente = utente;
 		carrello = new ArrayList<Prodotto>();

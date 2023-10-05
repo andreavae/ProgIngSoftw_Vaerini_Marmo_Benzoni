@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import model.Carrello;
+import model.OrdineStandard;
 import model.Prodotto;
 import model.User;
 
@@ -32,7 +32,7 @@ public class VisualizzaOrdineIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaOrdineIF(User utente, Carrello carrello, double sconto) {
+	public VisualizzaOrdineIF(User utente, OrdineStandard carrello, double sconto) {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.utente = utente;
 		setMinimumSize(new Dimension(450, 300)); // Imposta le dimensioni minime

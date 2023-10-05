@@ -3,7 +3,8 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Carrello;
+import model.Ordine;
+import model.OrdineStandard;
 import model.User;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
@@ -12,9 +13,10 @@ public class VisualizzaOrdineController {
 	private User utente;
 	private VisualizzaOrdineIF visualizzaordineif;
 
-	private Carrello carrello;
+	private OrdineStandard carrello;
 
-	public VisualizzaOrdineController(VisualizzaOrdineIF visualizzaordineif, Carrello carrello) {
+	public VisualizzaOrdineController(User utente, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello) {
+		this.utente = utente;
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;
 		this.visualizzaordineif.back(new back());
@@ -38,6 +40,9 @@ public class VisualizzaOrdineController {
 			PagamentoIF pagamentoif = new PagamentoIF();
 			PagamentoController pagamentocontroller = new PagamentoController(pagamentoif, visualizzaordineif,
 					carrello);
+			Ordine ordine = new Ordine(utente);
+			System.out.println(ordine.getCodiceOrdine());
+			System.out.println(ordine.getUsernameUtente());
 			pagamentoif.setVisible(true);
 		}
 
@@ -49,7 +54,7 @@ public class VisualizzaOrdineController {
 		public void actionPerformed(ActionEvent e) {
 			visualizzaordineif.dispose();
 			carrello.svuotaCarrello();
-			carrello = new Carrello(utente, 0);
+			carrello = new OrdineStandard(utente, 0);
 
 		}
 

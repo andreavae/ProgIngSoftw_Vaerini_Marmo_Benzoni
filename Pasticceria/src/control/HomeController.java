@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.Abbonamento;
-import model.Carrello;
+import model.OrdineStandard;
 import model.OrdinePersonalizzato;
 import model.Sconto;
 import model.User;
@@ -19,7 +19,7 @@ import view.OrdineStandardIF;
 public class HomeController {
 	private HomeIF homeif;
 	private User utente;
-	private Carrello carrello;
+	private OrdineStandard carrello;
 	private Sconto sconto;
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
@@ -28,7 +28,7 @@ public class HomeController {
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
-		carrello = new Carrello(utente, 0);
+		carrello = new OrdineStandard(utente, 0);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
@@ -40,7 +40,7 @@ public class HomeController {
 		this.homeif = homeif;
 		this.utente = utente;
 		this.sconto = sconto;
-		carrello = new Carrello(utente, sconto.getSconto());
+		carrello = new OrdineStandard(utente, sconto.getSconto());
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.openSconto(new sconto(sconto.getSconto()));

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import model.Abbonamento;
 import model.User;
 import view.AbbonamentoIF;
+import view.LoginIF;
 
 public class AbbonamentoController {
 	private User utente;
@@ -32,6 +33,9 @@ public class AbbonamentoController {
 			username = utente.getUsername();
 			if (utente.isSignVip(username, codiceAbbonamento)) {
 				JOptionPane.showMessageDialog(abbonamentoif, "Sei diventato un Cliente Premium");
+				abbonamentoif.dispose();
+				LoginIF loginif = new LoginIF();
+				LoginController logincontroller = new LoginController(loginif, utente);
 			} else {
 				JOptionPane.showMessageDialog(abbonamentoif, "Pagamento non avvenuto con successo!");
 			}
