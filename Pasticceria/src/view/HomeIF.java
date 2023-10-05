@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import model.User;
+
 public class HomeIF extends JFrame {
 
 	private JPanel HomeContentPane;
@@ -18,11 +20,12 @@ public class HomeIF extends JFrame {
 	private JButton QuitButton;
 	private JButton ScontoButton;
 	private JLabel ScontoLabel;
+	private JButton AbbonatiButton;
 
 	/**
 	 * Create the frame.
 	 */
-	public HomeIF(String utente, LoginIF loginif, double sconto) {
+	public HomeIF(User utente, LoginIF loginif, double sconto) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 450, 300);
 		setLocationRelativeTo(null);
@@ -44,7 +47,7 @@ public class HomeIF extends JFrame {
 		UserLabel.setBounds(10, 11, 41, 14);
 		HomeContentPane.add(UserLabel);
 
-		JLabel UserInLabel = new JLabel(utente); // etichetta utente
+		JLabel UserInLabel = new JLabel(utente.getUsername()); // etichetta utente
 		UserInLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		UserInLabel.setBounds(46, 11, 72, 14);
 		HomeContentPane.add(UserInLabel);
@@ -86,6 +89,16 @@ public class HomeIF extends JFrame {
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(311, 11, 113, 14);
 		HomeContentPane.add(ScontoLabel);
+
+		AbbonatiButton = new JButton("Diventa Cliente Premium");
+		AbbonatiButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		AbbonatiButton.setBounds(102, 173, 183, 23);
+		HomeContentPane.add(AbbonatiButton);
+		if (loginif.getClientePremiumRadioButton().isSelected() || utente.isVipLoginValid()) {
+			AbbonatiButton.setEnabled(false);
+		} else {
+			AbbonatiButton.setEnabled(true);
+		}
 	}
 
 	// attivazione ascoltatori
@@ -104,5 +117,9 @@ public class HomeIF extends JFrame {
 
 	public void openSconto(ActionListener listener) {
 		ScontoButton.addActionListener(listener);
+	}
+
+	public void openAbbonamento(ActionListener listener) {
+		AbbonatiButton.addActionListener(listener);
 	}
 }

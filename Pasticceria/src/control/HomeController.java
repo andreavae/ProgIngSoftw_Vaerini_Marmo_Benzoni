@@ -112,7 +112,7 @@ public class HomeController {
 			sconto = new Sconto();
 			valoreSconto = sconto.getSconto();
 			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + valoreSconto * 100 + "%");
-			HomeIF homeifvip = new HomeIF(utente.getUsername(), new LoginIF(), valoreSconto);
+			HomeIF homeifvip = new HomeIF(utente, new LoginIF(), valoreSconto);
 			homeifvip.setVisible(true);
 			HomeController homecontrollervip = new HomeController(homeifvip, utente, loginif, sconto);
 			// System.out.println(sconto.getSconto());
