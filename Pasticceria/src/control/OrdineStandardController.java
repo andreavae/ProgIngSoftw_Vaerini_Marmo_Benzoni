@@ -35,36 +35,41 @@ public class OrdineStandardController {
 		this.ordinestandardif.back(new back());
 	}
 
+	// gestione prodotto
 	class addCheesecake implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Prodotto Cheesecake = new Prodotto("Cheesecake", 15);
-			carrello.addProdotto(Cheesecake);
+			Prodotto Cheesecake = new Prodotto("Cheesecake", 15); // oggetto prodotto con nome e prezzo
+			carrello.addProdotto(Cheesecake); // aggiunta al carrello
 		}
 	}
 
+	// gestione prodotto
 	class addCubana implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Cubana = new Prodotto("Cubana", 12);
-			carrello.addProdotto(Cubana);
+			carrello.addProdotto(Cubana); // aggiunta al carrello
 		}
 
 	}
 
+	// gestione visualizzazione ordine
 	class visualizzaOrdine implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(carrello.getCarrello());
+			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
 			System.out.println(utente.isVipUser(utente.getUsername()));
-			if (!utente.isVipUser(utente.getUsername())) {
+			if (!utente.isVipUser(utente.getUsername())) { // se utente non è vip
+				// visualizzazione carrello senza sconto sul totale
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine);
 			} else {
+				// visualizzazione carrello con sconto giornaliero sul totale
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, sconto.getSconto());
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
@@ -75,10 +80,12 @@ public class OrdineStandardController {
 
 	}
 
+	// gestione pulsante back
 	class back implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			// visibilità interfacce
 			homeif.setVisible(true);
 			ordinestandardif.setVisible(false);
 		}
