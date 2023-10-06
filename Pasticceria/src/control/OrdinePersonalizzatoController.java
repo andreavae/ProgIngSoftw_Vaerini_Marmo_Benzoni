@@ -147,11 +147,9 @@ public class OrdinePersonalizzatoController {
 
 			GetData getdeadline = new GetData(ordinepersonalizzatoif.getDataConsegnaField());
 			dataConsegna = getdeadline.getConsegna(deadline);
-			System.out.println(dataConsegna);
 
 			GetOccasioni getoccasioni = new GetOccasioni(ordinepersonalizzatoif.getOccasioneComboBox());
 			occasione = getoccasioni.getOccasione(menuoccasioni);
-			System.out.println(occasione);
 
 			GetPersone getpersone = new GetPersone(ordinepersonalizzatoif.getnPersoneComboBox());
 			nPersone = getpersone.getImportoPersone(listapersone);
@@ -159,7 +157,6 @@ public class OrdinePersonalizzatoController {
 			int indicesx = nPersone.lastIndexOf('(', indicedx);
 			String valoreEffettivo = nPersone.substring(indicesx + 2, indicedx - 4).trim();
 			importoPersone = Integer.parseInt(valoreEffettivo);
-			System.out.println("COSTO IN BASE AL NUMERO DI PERSONE: " + importoPersone);
 
 			GetPiani getpiani = new GetPiani(ordinepersonalizzatoif.getPianiComboBox());
 			piani = getpiani.getPiani(nPiani);
@@ -179,12 +176,19 @@ public class OrdinePersonalizzatoController {
 
 			ordinepersonalizzato = new OrdinePersonalizzato(piano, importoPersone);
 			totale = ordinepersonalizzato.getTotale(piano, importoPersone);
-
-			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
-					utente, dataConsegna, occasione, piani, nPersone, totale);
-			VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-					visualizzaordinepersonalizzatoif);
-			visualizzaordinepersonalizzatoif.setVisible(true);
+			if (utente.isVipUser(utente.getUsername())) {
+				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
+						utente, dataConsegna, occasione, piani, nPersone, totale, 0.3);
+				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
+						visualizzaordinepersonalizzatoif);
+				visualizzaordinepersonalizzatoif.setVisible(true);
+			} else {
+				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
+						utente, dataConsegna, occasione, piani, nPersone, totale, 0.0);
+				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
+						visualizzaordinepersonalizzatoif);
+				visualizzaordinepersonalizzatoif.setVisible(true);
+			}
 
 		}
 

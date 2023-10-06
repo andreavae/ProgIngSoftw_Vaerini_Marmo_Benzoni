@@ -30,11 +30,14 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	private JComboBox<String> PianiComboBox;
 	private JComboBox<String> nPersoneComboBox;
 	private JComboBox<String> OccasioneComboBox;
+	private JLabel ScontoLabel;
+	private JLabel ScontoSetLabel;
 
 	/**
 	 * Create the frame.
 	 */
-	public OrdinePersonalizzatoIF(User utente) {
+	public OrdinePersonalizzatoIF(User utente, double sconto) {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 508, 379);
 		setLocationRelativeTo(null);
@@ -125,6 +128,16 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		VisualizzaOrdinePersonalizzatoButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		VisualizzaOrdinePersonalizzatoButton.setBounds(349, 306, 133, 23);
 		contentPane.add(VisualizzaOrdinePersonalizzatoButton);
+
+		ScontoLabel = new JLabel("Sconto:");
+		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoLabel.setBounds(370, 11, 46, 14);
+		contentPane.add(ScontoLabel);
+
+		ScontoSetLabel = new JLabel(sconto * 100 + "%");
+		ScontoSetLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoSetLabel.setBounds(417, 11, 46, 14);
+		contentPane.add(ScontoSetLabel);
 
 	}
 

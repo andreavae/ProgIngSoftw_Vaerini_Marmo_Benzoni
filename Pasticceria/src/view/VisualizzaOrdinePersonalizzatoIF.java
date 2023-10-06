@@ -22,12 +22,13 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	private OrdinePersonalizzatoController ordinepersonalizzatocontroller;
 	private JButton BackButton;
 	private JButton ConfermaOrdineButton;
+	private JButton CancellaButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public VisualizzaOrdinePersonalizzatoIF(User utente, String dataConsegna, String occasione, String piani,
-			String persone, double totale) { // costruttore
+			String persone, double totale, double sconto) { // costruttore
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 512, 352);
@@ -107,8 +108,23 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 
 		ConfermaOrdineButton = new JButton("Conferma Ordine");
 		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		ConfermaOrdineButton.setBounds(162, 279, 150, 23);
+		ConfermaOrdineButton.setBounds(336, 279, 150, 23);
 		contentPane.add(ConfermaOrdineButton);
+
+		JLabel ScontoLabel = new JLabel("Sconto: ");
+		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoLabel.setBounds(373, 11, 46, 14);
+		contentPane.add(ScontoLabel);
+
+		JLabel ScontoSetLabel = new JLabel(sconto * 100 + "%");
+		ScontoSetLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		ScontoSetLabel.setBounds(421, 11, 46, 14);
+		contentPane.add(ScontoSetLabel);
+
+		CancellaButton = new JButton("Cancella");
+		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		CancellaButton.setBounds(170, 279, 89, 23);
+		contentPane.add(CancellaButton);
 
 	}
 
@@ -122,5 +138,9 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 
 	public void conferma(ActionListener listener) {
 		ConfermaOrdineButton.addActionListener(listener);
+	}
+
+	public void cancella(ActionListener listener) {
+		CancellaButton.addActionListener(listener);
 	}
 }

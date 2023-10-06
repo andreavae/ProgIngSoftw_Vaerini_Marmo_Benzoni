@@ -43,7 +43,7 @@ public class HomeController {
 		this.sconto = sconto;
 		carrello = new OrdineStandard(utente, sconto.getSconto());
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
-		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
+		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIFVip());
 		this.homeif.openSconto(new sconto(sconto.getSconto()));
 		this.homeif.quit(new Quit());
 
@@ -81,7 +81,24 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
+			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente, 0);
+
+			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
+					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
+					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
+					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
+			homeif.setVisible(false);
+			ordinepersonalizzatoif.setVisible(true);
+
+		}
+
+	}
+
+	class openOrdinePersonalizzatoIFVip implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente, 0.3);
 
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
