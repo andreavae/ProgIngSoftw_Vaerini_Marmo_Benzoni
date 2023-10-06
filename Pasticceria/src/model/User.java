@@ -86,34 +86,34 @@ public class User {
 	 *         dall'interfaccia. Altrimenti false.
 	 */
 
-	public boolean isVipLoginValid() {
-		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
+	public boolean isVipLoginValid() { // validazione login come vip
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso del db
 
 		try {
-			connectdb.connect();
+			connectdb.connect(); // apertura connessione
 			connectdb.setStatement(connectdb.getConnection().createStatement());
 
-			String query = "SELECT utenti.Username FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente";
-			ResultSet rs = connectdb.getStatement().executeQuery(query);
+			String query = "SELECT utenti.Username FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente"; // query
+			ResultSet rs = connectdb.getStatement().executeQuery(query); // risultato query in rs
 
 			ArrayList<String> listautentivip = new ArrayList<String>();
-			while (rs.next()) {
+			while (rs.next()) { // aggiunta utenti
 				listautentivip.add(rs.getString("Username"));
 			}
-			// logica per determinare se il login VIP Ã¨ valido
+			// logica per determinare se il login VIP è valido
 			boolean corretto = false;
 			boolean flagusername = listautentivip.contains(username);
 			boolean flagpassword;
-			// ok
+
 			if (flagusername) {
 				String pass = null;
 				String querypassword = "SELECT utenti.Password FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente WHERE utenti.Username = '"
-						+ username + "'";
+						+ username + "'"; // selezione password utente
 				try {
-					rs = connectdb.getStatement().executeQuery(querypassword);
-					if (rs.next()) {
+					rs = connectdb.getStatement().executeQuery(querypassword); // risultato query
+					if (rs.next()) { // ottenimnto password
 						pass = rs.getString("Password");
-						flagpassword = pass.equals(password);
+						flagpassword = pass.equals(password); // true se pass è uguale alla password utente
 						if (flagpassword) {
 							corretto = true;
 						}
@@ -124,11 +124,11 @@ public class User {
 			}
 			return corretto;
 		} catch (SQLException e) {
-			// Gestire o registrare l'eccezione in modo appropriato
+			// gestionel'eccezione
 			e.printStackTrace();
-			return false; // o gestire l'errore in un altro modo, a seconda delle tue esigenze
+			return false;
 		} finally {
-			// Chiudere la connessione e le risorse qui, nel blocco finally
+			// Chiudere la connessione e le risorse
 			try {
 				if (connectdb.getStatement() != null) {
 					connectdb.getStatement().close();
@@ -137,7 +137,7 @@ public class User {
 					connectdb.getConnection().close();
 				}
 			} catch (SQLException e) {
-				// Gestire eventuali eccezioni durante la chiusura delle risorse
+				// gestione eccezioni durante la chiusura
 				e.printStackTrace();
 			}
 
@@ -145,7 +145,7 @@ public class User {
 
 	}
 
-	public boolean isSignValid() { // verifica tentativo di validitï¿½ della registrazione
+	public boolean isSignValid() { // verifica tentativo di validità della registrazione
 		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso database
 		connectdb.connect(); // apro connessione
 
@@ -164,10 +164,10 @@ public class User {
 			}
 
 		} catch (SQLException e) {
-			// Gestisci gli errori di query SQL
+			// gestione eccezione
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user ï¿½ gia presente
+		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user è gia presente
 		System.out.println(flagusername);
 		if (!flagusername) { // username non presente
 			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
@@ -181,27 +181,29 @@ public class User {
 			}
 		}
 
-		boolean checkusername = listautenti.contains(username); // verifica se utente ï¿½ inserito nell'arraylist
+		boolean checkusername = listautenti.contains(username); // verifica se utente è inserito nell'arraylist
 		return checkusername;
 
 	}
 
-	public boolean isVipUser(String username) {
+	public boolean isVipUser(String username) { // verifica se un utente è vip
 		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB");
 
 		try {
-			connectdb.connect();
+			connectdb.connect(); // connessione aperta
 			connectdb.setStatement(connectdb.getConnection().createStatement());
 
+			// query di selezione
 			String query = "SELECT utenti.Username FROM utenti INNER JOIN utentipremium ON utenti.Username = utentipremium.UsernameUtente";
+			// risultato query
 			ResultSet rs = connectdb.getStatement().executeQuery(query);
 
 			ArrayList<String> listautentivip = new ArrayList<String>();
 			System.out.println(listautentivip);
-			while (rs.next()) {
+			while (rs.next()) { // inserimento utenti
 				listautentivip.add(rs.getString("Username"));
 			}
-			// logica per determinare se il login VIP Ã¨ valido
+			// logica per determinare se il login VIP è valido
 			boolean corretto = false;
 			boolean flagusername = listautentivip.contains(username);
 			if (flagusername)
@@ -234,9 +236,10 @@ public class User {
 			// Gestisci gli errori di query SQL
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user ï¿½ gia presente
+		boolean flagusername = listautenti.contains(username);// variabile usata per verificare se user è gia presente
+
 		System.out.println(flagusername);
-		if (!flagusername) {
+		if (!flagusername) { // se non inserito allora inserisce nel db
 			String queryregistrazione = "INSERT INTO utentipremium (CodAbbonamento, UsernameUtente) VALUES ('" + codice
 					+ "','" + username + "')";
 			listautenti.add(username);
@@ -247,7 +250,7 @@ public class User {
 
 			}
 		}
-		boolean checkusername = listautenti.contains(username); // verifica se utente ï¿½ inserito nell'arraylist
+		boolean checkusername = listautenti.contains(username); // verifica se utente è inserito nell'arraylist
 		return checkusername;
 
 	}

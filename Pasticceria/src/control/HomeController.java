@@ -25,7 +25,7 @@ public class HomeController {
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 
-	public HomeController(HomeIF homeif, User utente, LoginIF loginif) {
+	public HomeController(HomeIF homeif, User utente, LoginIF loginif) { // costrutore 1
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
@@ -37,7 +37,7 @@ public class HomeController {
 		// this.homeif.openSconto(new sconto());
 	}
 
-	public HomeController(HomeIF homeif, User utente, LoginIF loginif, Sconto sconto) {
+	public HomeController(HomeIF homeif, User utente, LoginIF loginif, Sconto sconto) { // costruttore 2
 		this.homeif = homeif;
 		this.utente = utente;
 		this.sconto = sconto;
@@ -49,7 +49,7 @@ public class HomeController {
 
 	}
 
-	class openNuovoOrdineIF implements ActionListener {
+	class openNuovoOrdineIF implements ActionListener { // gestione apertura interfaccia ordine
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
