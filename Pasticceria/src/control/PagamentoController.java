@@ -50,7 +50,8 @@ public class PagamentoController {
 				visualizzaordineif.dispose();
 				pagamentoif.dispose();
 				carrello.svuotaCarrello();
-				ordine.isOrderValid(ordine, utente, ordine.prezzoOrdine, ordine.getTipoOrdine());
+				System.out.println(ordine.getPrezzoOrdine());
+				ordine.isOrderValid(ordine, utente, ordine.getPrezzoOrdine(), ordine.getTipoOrdine());
 				// System.out.println(ordine.getTipoOrdine());
 				JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 				pagamentoif.dispose();
