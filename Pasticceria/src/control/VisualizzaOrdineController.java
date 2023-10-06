@@ -17,6 +17,7 @@ public class VisualizzaOrdineController {
 	private OrdineStandard carrello;
 	private TipoOrdine tipoOrdine;
 
+	// costruttore
 	public VisualizzaOrdineController(User utente, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello,
 			Ordine ordine) {
 		this.ordine = ordine;
@@ -28,15 +29,17 @@ public class VisualizzaOrdineController {
 		this.visualizzaordineif.cancellaOrdine(new cancella());
 	}
 
+	// gestione pulsante back
 	class back implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			visualizzaordineif.setVisible(false);
+			visualizzaordineif.setVisible(false); // modifica visualizzazione interfaccia
 		}
 
 	}
 
+	// gestione pulsante conferma
 	class conferma implements ActionListener {
 
 		@Override
@@ -44,7 +47,7 @@ public class VisualizzaOrdineController {
 
 			PagamentoIF pagamentoif = new PagamentoIF();
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, visualizzaordineif,
-					carrello, ordine);
+					carrello, ordine); // oggetto per la gestione del pagamento
 			if (utente.isVipUser(utente.getUsername())) {
 				ordine = new Ordine(utente);
 
@@ -52,7 +55,7 @@ public class VisualizzaOrdineController {
 				ordine = new Ordine(utente);
 
 			}
-			pagamentoif.setVisible(true);
+			pagamentoif.setVisible(true); // modifica visibilità interfaccia
 		}
 
 	}

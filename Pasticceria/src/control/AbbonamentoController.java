@@ -23,7 +23,8 @@ public class AbbonamentoController {
 		this.abbonamentoif.DiventaPremium(new abbonati());
 	}
 
-	class abbonati implements ActionListener {
+	class abbonati implements ActionListener { // abbonati gestisce gli eventi implememtando l'interfaccia
+												// ActionListener
 		private String username;
 		private int codiceAbbonamento;
 
@@ -31,9 +32,9 @@ public class AbbonamentoController {
 		public void actionPerformed(ActionEvent e) {
 			codiceAbbonamento = abbonamento.getId();
 			username = utente.getUsername();
-			if (utente.isSignVip(username, codiceAbbonamento)) {
+			if (utente.isSignVip(username, codiceAbbonamento)) { // si verifica la validità del pagamento
 				JOptionPane.showMessageDialog(abbonamentoif, "Sei diventato un Cliente Premium");
-				abbonamentoif.dispose();
+				abbonamentoif.dispose(); // chiusura interfaccia
 				LoginIF loginif = new LoginIF();
 				LoginController logincontroller = new LoginController(loginif, utente);
 			} else {
