@@ -90,7 +90,9 @@ public class HomeIF extends JFrame {
 		ScontoLabel.setBounds(311, 11, 113, 14);
 		HomeContentPane.add(ScontoLabel);
 
-		AbbonatiButton = new JButton("Diventa Cliente Premium");
+		AbbonatiButton = new JButton("Diventa Cliente Premium"); // bottone cliente premium
+		AbbonatiButton.setForeground(new Color(255, 255, 255));
+		AbbonatiButton.setBackground(new Color(255, 80, 120));
 		AbbonatiButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		AbbonatiButton.setBounds(102, 173, 183, 23);
 		HomeContentPane.add(AbbonatiButton);
