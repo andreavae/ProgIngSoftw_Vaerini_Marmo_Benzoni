@@ -15,4 +15,11 @@ class LoginTest {
 		assertEquals(true, flag);
 	}
 
+	@Test
+	void test2() {
+		User utente = new User("admin", "admin");
+		boolean flagvip = utente.isVipUser("admin");
+		assertEquals(true, flagvip);
+	}
+
 }
