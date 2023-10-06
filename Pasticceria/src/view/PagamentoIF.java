@@ -23,10 +23,10 @@ public class PagamentoIF extends JFrame {
 	 */
 	public PagamentoIF() {
 		setBounds(100, 100, 386, 300);
-		PagamentoContentPane = new JPanel();
+		PagamentoContentPane = new JPanel(); // per aggiungere componenti grafici
 		PagamentoContentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		setContentPane(PagamentoContentPane);
 		PagamentoContentPane.setBackground(new Color(255, 180, 180));
 		PagamentoContentPane.setLayout(null);
