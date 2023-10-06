@@ -46,10 +46,10 @@ public class VisualizzaOrdineController {
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, visualizzaordineif,
 					carrello, ordine);
 			if (utente.isVipUser(utente.getUsername())) {
-				ordine = new Ordine(utente, carrello.getTotale(0.3));
+				ordine = new Ordine(utente);
 
 			} else {
-				ordine = new Ordine(utente, carrello.getTotale(0));
+				ordine = new Ordine(utente);
 
 			}
 			pagamentoif.setVisible(true);

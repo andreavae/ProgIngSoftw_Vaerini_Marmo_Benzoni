@@ -16,12 +16,12 @@ public class Ordine {
 	private Set<String> CODICE_ORDINE_ASSEGNATI = new HashSet<String>();
 	public User utente;
 	public ArrayList<Prodotto> ListaProd;
-	public StatoOrdine Stato;
+	// public StatoOrdine Stato;
 	public double prezzoOrdine;
 	private final String codiceOrdine;
 	private TipoOrdine tipoOrdine;
 
-	public Ordine(User utente, double prezzoOrdine) { // devo inserire
+	public Ordine(User utente) { // devo inserire
 		this.utente = utente; // la data??
 		do {
 			CODICE_ORDINE_GENERATO = generaCodiceOrdine();
@@ -47,14 +47,6 @@ public class Ordine {
 
 	public ArrayList<Prodotto> getListaProd() {
 		return ListaProd;
-	}
-
-	public StatoOrdine getStato() {
-		return Stato;
-	}
-
-	public void setStato(StatoOrdine Stato) {
-		this.Stato = Stato;
 	}
 
 	public User getUtente() {

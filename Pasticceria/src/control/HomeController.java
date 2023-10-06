@@ -55,7 +55,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente, 0));
+					carrello, homeif, new Ordine(utente));
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -69,7 +69,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, sconto.getSconto());
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente, sconto.getSconto()));
+					carrello, homeif, new Ordine(utente));
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -88,6 +88,7 @@ public class HomeController {
 					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
 					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
 			homeif.setVisible(false);
+
 			ordinepersonalizzatoif.setVisible(true);
 
 		}
@@ -104,6 +105,7 @@ public class HomeController {
 					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
 					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
 					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
+
 			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
 
