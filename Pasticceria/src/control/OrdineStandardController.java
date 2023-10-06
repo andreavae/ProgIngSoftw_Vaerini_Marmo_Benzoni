@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Ordine;
 import model.OrdineStandard;
 import model.Prodotto;
 import model.Sconto;
@@ -18,13 +19,14 @@ public class OrdineStandardController {
 	private Prodotto prodotto;
 	private HomeIF homeif;
 	private Sconto sconto;
+	private Ordine ordine;
 
 	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
-			HomeIF homeif) {
+			HomeIF homeif, Ordine ordine) {
 		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
-
+		this.ordine = ordine;
 		this.carrello = new OrdineStandard(utente, 0);
 		this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
@@ -61,12 +63,12 @@ public class OrdineStandardController {
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
-						visualizzaordineif, carrello);
+						visualizzaordineif, carrello, ordine);
 			} else {
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, sconto.getSconto());
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
-						visualizzaordineif, carrello);
+						visualizzaordineif, carrello, ordine);
 			}
 
 		}

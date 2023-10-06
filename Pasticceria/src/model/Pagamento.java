@@ -3,8 +3,10 @@ package model;
 public class Pagamento {
 	private String numeroCarta;
 	private String dataScadenza;
+	private Ordine ordine;
 
-	public Pagamento(String numeroCarta, String dataScadenza) {
+	public Pagamento(Ordine ordine, String numeroCarta, String dataScadenza) {
+		this.ordine = ordine;
 		this.numeroCarta = numeroCarta;
 		this.dataScadenza = dataScadenza;
 	}

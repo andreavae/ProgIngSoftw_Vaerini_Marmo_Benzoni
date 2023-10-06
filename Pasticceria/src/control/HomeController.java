@@ -6,8 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.Abbonamento;
-import model.OrdineStandard;
+import model.Ordine;
 import model.OrdinePersonalizzato;
+import model.OrdineStandard;
 import model.Sconto;
 import model.User;
 import view.AbbonamentoIF;
@@ -54,7 +55,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif);
+					carrello, homeif, new Ordine(utente, 0));
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -68,7 +69,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, sconto.getSconto());
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif);
+					carrello, homeif, new Ordine(utente, sconto.getSconto()));
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 

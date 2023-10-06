@@ -13,10 +13,13 @@ import view.VisualizzaOrdineIF;
 public class VisualizzaOrdineController {
 	private User utente;
 	private VisualizzaOrdineIF visualizzaordineif;
-
+	private Ordine ordine;
 	private OrdineStandard carrello;
+	private TipoOrdine tipoOrdine;
 
-	public VisualizzaOrdineController(User utente, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello) {
+	public VisualizzaOrdineController(User utente, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello,
+			Ordine ordine) {
+		this.ordine = ordine;
 		this.utente = utente;
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;
@@ -38,20 +41,17 @@ public class VisualizzaOrdineController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Ordine ordine;
+
 			PagamentoIF pagamentoif = new PagamentoIF();
-			PagamentoController pagamentocontroller = new PagamentoController(pagamentoif, visualizzaordineif,
-					carrello);
+			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, visualizzaordineif,
+					carrello, ordine);
 			if (utente.isVipUser(utente.getUsername())) {
 				ordine = new Ordine(utente, carrello.getTotale(0.3));
+
 			} else {
 				ordine = new Ordine(utente, carrello.getTotale(0));
+
 			}
-			System.out.println(ordine.getCodiceOrdine());
-			System.out.println(ordine.getUsernameUtente());
-			TipoOrdine tipoordine = TipoOrdine.STANDARD;
-			System.out.println(tipoordine);
-			System.out.println(ordine.getPrezzoOrdine());
 			pagamentoif.setVisible(true);
 		}
 

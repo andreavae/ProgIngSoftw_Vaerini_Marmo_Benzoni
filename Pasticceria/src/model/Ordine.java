@@ -1,10 +1,14 @@
 
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+
+import db.ConnectingOnline;
 
 public class Ordine {
 
@@ -77,4 +81,46 @@ public class Ordine {
 		this.tipoOrdine = tipoOrdine;
 	}
 
+	public boolean isOrderValid(Ordine ordine, User utente, double prezzo, TipoOrdine tipoOrdine) {
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb"); // percorso database
+		connectdb.connect(); // apre connessione
+		try {
+			connectdb.setStatement(connectdb.getConnection().createStatement());
+		} catch (SQLException e) {
+
+		}
+
+		ResultSet rs = null;
+		String query = "SELECT Username FROM utenti"; // query
+		try {
+			rs = connectdb.getStatement().executeQuery(query);
+		} catch (SQLException e) {
+
+		}
+
+		ArrayList<String> listautenti = new ArrayList<String>();
+
+		try {
+			while (rs.next()) {
+				listautenti.add(rs.getString("Username"));
+			}
+		} catch (SQLException e) {
+
+		}
+		boolean corretto = false;
+		boolean flagusername = listautenti.contains(utente.getUsername());
+		if (flagusername) {
+			String queryUpdateOrdine = "INSERT INTO ordine (CodOrdine, Utente, TipoOrdine, Costo) VALUES ('"
+					+ ordine.getCodiceOrdine() + "','" + ordine.getUsernameUtente() + "','" + ordine.getTipoOrdine()
+					+ "','" + ordine.getPrezzoOrdine() + "')";
+			System.out.println(queryUpdateOrdine);
+			try {
+				connectdb.setStatement(connectdb.getConnection().createStatement());
+				connectdb.getStatement().executeUpdate(queryUpdateOrdine);
+			} catch (SQLException e) {
+
+			}
+		}
+		return flagusername;
+	}
 }
