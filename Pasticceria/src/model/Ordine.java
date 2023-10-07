@@ -21,8 +21,9 @@ public class Ordine {
 	private final String codiceOrdine;
 	private TipoOrdine tipoOrdine;
 
-	public Ordine(User utente) { // devo inserire
-		this.utente = utente; // la data??
+	// costruttore
+	public Ordine(User utente) { // associa utente all'ordine e genera un codice univoco
+		this.utente = utente;
 		do {
 			CODICE_ORDINE_GENERATO = generaCodiceOrdine();
 		} while (CODICE_ORDINE_ASSEGNATI.contains(CODICE_ORDINE_GENERATO));
@@ -32,17 +33,18 @@ public class Ordine {
 		this.prezzoOrdine = prezzoOrdine;
 	}
 
+	// metodo pee generare un codice ordine casuale
 	private static String generaCodiceOrdine() {
-		String caratteri = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		int dimCodice = 10;
-		Random random = new Random();
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < dimCodice; i++) {
-			int randomNumero = random.nextInt(caratteri.length());
-			char randomChar = caratteri.charAt(randomNumero);
-			builder.append(randomChar);
+		String caratteri = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // caratteri ammissibili
+		int dimCodice = 10; // lunghezza codice
+		Random random = new Random(); // ogetto per geneare numeri casuali
+		StringBuilder builder = new StringBuilder(); // per costruire il codice
+		for (int i = 0; i < dimCodice; i++) { // 10 ripetizioni
+			int randomNumero = random.nextInt(caratteri.length()); // numero tra 0 e lunghezza scringa caratteri
+			char randomChar = caratteri.charAt(randomNumero); // estrazione carattere alla posizione ottenuta
+			builder.append(randomChar); // aggiunta carattere estratto
 		}
-		return builder.toString();
+		return builder.toString(); // ritorno dl codice
 	}
 
 	public ArrayList<Prodotto> getListaProd() {
@@ -74,22 +76,23 @@ public class Ordine {
 	}
 
 	public boolean isOrderValid(Ordine ordine, User utente, double prezzo, TipoOrdine tipoOrdine) {
-		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb"); // percorso database
-		connectdb.connect(); // apre connessione
+		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb"); // inserimento percorso
+																								// database
+		connectdb.connect(); // connessione aperta
 		try {
-			connectdb.setStatement(connectdb.getConnection().createStatement());
+			connectdb.setStatement(connectdb.getConnection().createStatement()); // per eseguire query
 		} catch (SQLException e) {
 
 		}
 
 		ResultSet rs = null;
-		String query = "SELECT Username FROM utenti"; // query
+		String query = "SELECT Username FROM utenti"; // selezione username utenti
 		try {
 			rs = connectdb.getStatement().executeQuery(query);
 		} catch (SQLException e) {
 
 		}
-
+		// inserimento username nell'arraylist
 		ArrayList<String> listautenti = new ArrayList<String>();
 
 		try {
@@ -100,13 +103,15 @@ public class Ordine {
 
 		}
 		boolean corretto = false;
-		boolean flagusername = listautenti.contains(utente.getUsername());
-		if (flagusername) {
+		boolean flagusername = listautenti.contains(utente.getUsername()); // true se esiste nel db l'username
+		if (flagusername) { // se true
+			// query per l'inserimento dell'ordine nel database
 			String queryUpdateOrdine = "INSERT INTO ordine (CodOrdine, Utente, TipoOrdine, Costo) VALUES ('"
 					+ ordine.getCodiceOrdine() + "','" + ordine.getUsernameUtente() + "','" + ordine.getTipoOrdine()
 					+ "','" + ordine.getPrezzoOrdine() + "')";
 			System.out.println(queryUpdateOrdine);
 			try {
+				// inserimento effettivo dell'ordine
 				connectdb.setStatement(connectdb.getConnection().createStatement());
 				connectdb.getStatement().executeUpdate(queryUpdateOrdine);
 			} catch (SQLException e) {
