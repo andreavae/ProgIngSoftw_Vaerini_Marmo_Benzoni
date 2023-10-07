@@ -7,11 +7,13 @@ public class Catalogo {
 	private List<Prodotto> catalogo;
 
 	public Catalogo() {
-		catalogo = new ArrayList<Prodotto>();
+		catalogo = new ArrayList<Prodotto>(); // lista prodotti
+		// aggiunta prodotti al catalogo
 		catalogo.add(new Prodotto("Cheesecake", "resources/cheesecake.jpg"));
 		catalogo.add(new Prodotto("Cubana", "resources/cubana.jpg"));
 	}
 
+	// ritorno del catalogo
 	public List<Prodotto> getCatalogo() {
 		return catalogo;
 	}

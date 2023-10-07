@@ -10,6 +10,7 @@ public class Cliente {
 	public int NumOrdine;
 	public boolean Premium;
 
+	// costruttore
 	public Cliente(String ID, String nome, String cognome) {
 		this.IDcliente = ID;
 		this.Nome = nome;
@@ -17,6 +18,7 @@ public class Cliente {
 
 	}
 
+	// metodi per restituire le variabili
 	public String getIDcliente() {
 		return IDcliente;
 	}
@@ -65,6 +67,7 @@ public class Cliente {
 		this.Premium = Premium;
 	}
 
+	// eliminare
 	public void NuovoOrdine() {
 
 		NumOrdine++;
