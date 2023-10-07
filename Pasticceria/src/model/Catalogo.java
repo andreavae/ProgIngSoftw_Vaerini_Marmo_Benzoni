@@ -11,6 +11,7 @@ public class Catalogo {
 		// aggiunta prodotti al catalogo
 		catalogo.add(new Prodotto("Cheesecake", "resources/cheesecake.jpg"));
 		catalogo.add(new Prodotto("Cubana", "resources/cubana.jpg"));
+		catalogo.add(new Prodotto("Cream Tart", "resources/Cream-tart.jpg"));
 	}
 
 	// ritorno del catalogo
