@@ -32,6 +32,7 @@ public class OrdineStandardController {
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
 		this.ordinestandardif.addCreamtart(new addCreamtart());
+		this.ordinestandardif.addIris(new addIris());
 		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
 		this.ordinestandardif.back(new back());
 	}
@@ -62,6 +63,16 @@ public class OrdineStandardController {
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Creamtart = new Prodotto("Cream Tart", 20);
 			carrello.addProdotto(Creamtart); // aggiunta al carrello
+		}
+
+	}
+
+	class addIris implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Prodotto Iris = new Prodotto("Iris", 23);
+			carrello.addProdotto(Iris); // aggiunta al carrello
 		}
 
 	}
