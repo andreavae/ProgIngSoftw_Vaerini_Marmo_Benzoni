@@ -12,7 +12,9 @@ public class Catalogo {
 		catalogo.add(new Prodotto("Cheesecake", "resources/cheesecake.jpg"));
 		catalogo.add(new Prodotto("Cubana", "resources/cubana.jpg"));
 		catalogo.add(new Prodotto("Cream Tart", "resources/Cream-tart.jpg"));
-		catalogo.add(new Prodotto("Cream Tart", "resources/Iris.jpg"));
+		catalogo.add(new Prodotto("Iris", "resources/Iris.jpg"));
+		catalogo.add(new Prodotto("Mimosa", "resources/mimosa.jpg"));
+		catalogo.add(new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg"));
 	}
 
 	// ritorno del catalogo

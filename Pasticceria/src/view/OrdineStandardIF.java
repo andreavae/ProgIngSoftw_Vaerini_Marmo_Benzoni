@@ -22,6 +22,8 @@ public class OrdineStandardIF extends JFrame {
 	private JButton addCubanaButton;
 	private JButton addCreamtartButton;
 	private JButton addIrisButton;
+	private JButton addMimosaButton;
+	private JButton addSaintButton;
 	private JButton VisualizzaOrdineButton;
 	private JButton BackButton;
 
@@ -34,6 +36,8 @@ public class OrdineStandardIF extends JFrame {
 		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg");
 		Prodotto Creamtart = new Prodotto("Cream Tart", "resources/Cream-tart.jpg");
 		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg");
+		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg");
+		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg");
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +63,7 @@ public class OrdineStandardIF extends JFrame {
 
 		JLabel CheesecakeLabel = new JLabel("Cheesecake");
 		CheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
-		CheesecakeLabel.setBounds(52, 180, 80, 23);
+		CheesecakeLabel.setBounds(48, 180, 80, 23);
 		contentPane.add(CheesecakeLabel);
 
 		JLabel prezzoCheesecakeLabel = new JLabel("15,00 €"); // prezzo cheesecake
@@ -77,7 +81,7 @@ public class OrdineStandardIF extends JFrame {
 		// creazione pannello per visualizzare l'immagine (Cubana) e inserirlo
 		// nell'interfaccia utente
 		JPanel CubanaImagepanel = new JPanel();
-		CubanaImagepanel.setBounds(195, 89, 137, 92);
+		CubanaImagepanel.setBounds(380, 89, 137, 92);
 		contentPane.add(CubanaImagepanel);
 		CubanaImagepanel.setLayout(new BorderLayout());
 		String pathCubana = Cubana.getPathImmagine();
@@ -87,24 +91,24 @@ public class OrdineStandardIF extends JFrame {
 
 		JLabel CubanaLabel = new JLabel("Cubana"); // etichetta Cubana
 		CubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
-		CubanaLabel.setBounds(244, 184, 46, 14);
+		CubanaLabel.setBounds(424, 184, 46, 14);
 		contentPane.add(CubanaLabel);
 
 		JLabel prezzoCubanaLabel = new JLabel("12,00 €"); // prezzo cubana
 		prezzoCubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
-		prezzoCubanaLabel.setBounds(244, 201, 46, 14);
+		prezzoCubanaLabel.setBounds(430, 201, 46, 14);
 		contentPane.add(prezzoCubanaLabel);
 
 		addCubanaButton = new JButton("Add"); // bottone inserimento nel carrello
 		addCubanaButton.setForeground(new Color(255, 255, 255));
 		addCubanaButton.setBackground(new Color(255, 80, 120));
-		addCubanaButton.setBounds(221, 220, 80, 23);
+		addCubanaButton.setBounds(410, 220, 80, 23);
 		contentPane.add(addCubanaButton);
 
 		// creazione pannello per visualizzare l'immagine e inserirlo
 		// nell'interfaccia utente
 		JPanel CreamtartImagepanel = new JPanel();
-		CreamtartImagepanel.setBounds(380, 89, 137, 92);
+		CreamtartImagepanel.setBounds(195, 89, 137, 92); // 195, 89, 137, 92
 		contentPane.add(CreamtartImagepanel);
 		CreamtartImagepanel.setLayout(new BorderLayout());
 		String pathCreamtart = Creamtart.getPathImmagine();
@@ -112,20 +116,20 @@ public class OrdineStandardIF extends JFrame {
 		JLabel CreamtartImageLabel = new JLabel(imageiconcreamtart);
 		CreamtartImagepanel.add(CreamtartImageLabel, BorderLayout.WEST);
 
-		JLabel CreamtartLabel = new JLabel("Cream Tart"); // etichetta Iris
+		JLabel CreamtartLabel = new JLabel("Cream Tart"); // etichetta crea tart
 		CreamtartLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
-		CreamtartLabel.setBounds(417, 184, 80, 15); // 80 23
+		CreamtartLabel.setBounds(233, 184, 80, 15); // 244, 184, 46, 14
 		contentPane.add(CreamtartLabel);
 
-		JLabel prezzoCreamtartLabel = new JLabel("20,00 €"); // prezzo Iris
+		JLabel prezzoCreamtartLabel = new JLabel("20,00 €"); // prezzo cream tart
 		prezzoCreamtartLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
-		prezzoCreamtartLabel.setBounds(427, 201, 46, 14);
+		prezzoCreamtartLabel.setBounds(244, 201, 46, 14); // 244, 201, 46, 14
 		contentPane.add(prezzoCreamtartLabel);
 
 		addCreamtartButton = new JButton("Add"); // bottone inserimento nel carrello
 		addCreamtartButton.setForeground(new Color(255, 255, 255));
 		addCreamtartButton.setBackground(new Color(255, 80, 120));
-		addCreamtartButton.setBounds(410, 220, 80, 23);
+		addCreamtartButton.setBounds(221, 220, 80, 23); // 221, 220, 80, 23
 		contentPane.add(addCreamtartButton);
 
 		// creazione pannello per visualizzare l'immagine e inserirlo
@@ -154,6 +158,60 @@ public class OrdineStandardIF extends JFrame {
 		addIrisButton.setBackground(new Color(255, 80, 120));
 		addIrisButton.setBounds(36, 392, 80, 23);
 		contentPane.add(addIrisButton);
+
+		// creazione pannello per visualizzare l'immagine e inserirlo
+		// nell'interfaccia utente
+		JPanel MimosaImagepanel = new JPanel();
+		MimosaImagepanel.setBounds(195, 260, 137, 92);
+		contentPane.add(MimosaImagepanel);
+		MimosaImagepanel.setLayout(new BorderLayout());
+		String pathMimosa = Mimosa.getPathImmagine();
+		ImageIcon imageiconMimosa = new ImageIcon(pathMimosa);
+		JLabel MimosaImageLabel = new JLabel(imageiconMimosa);
+		MimosaImagepanel.add(MimosaImageLabel, BorderLayout.WEST);
+
+		JLabel MimosaLabel = new JLabel("Mimosa"); // nome torta
+		MimosaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		MimosaLabel.setBounds(240, 350, 80, 26);
+		contentPane.add(MimosaLabel);
+
+		JLabel prezzoMimosaLabel = new JLabel("20,00 €"); // prezzo Mimosa
+		prezzoMimosaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoMimosaLabel.setBounds(244, 373, 46, 14);
+		contentPane.add(prezzoMimosaLabel);
+
+		addMimosaButton = new JButton("Add"); // bottone inserimente nel carrello
+		addMimosaButton.setForeground(new Color(255, 255, 255));
+		addMimosaButton.setBackground(new Color(255, 80, 120));
+		addMimosaButton.setBounds(221, 392, 80, 23);
+		contentPane.add(addMimosaButton);
+
+		// creazione pannello per visualizzare l'immagine e inserirlo
+		// nell'interfaccia utente
+		JPanel SaintImagepanel = new JPanel();
+		SaintImagepanel.setBounds(380, 260, 137, 92);
+		contentPane.add(SaintImagepanel);
+		SaintImagepanel.setLayout(new BorderLayout());
+		String pathSaint = SaintHonore.getPathImmagine();
+		ImageIcon imageiconSaint = new ImageIcon(pathSaint);
+		JLabel SaintImageLabel = new JLabel(imageiconSaint);
+		SaintImagepanel.add(SaintImageLabel, BorderLayout.WEST);
+
+		JLabel SaintLabel = new JLabel("Saint Honorè"); // nome torta
+		SaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		SaintLabel.setBounds(411, 350, 80, 26);
+		contentPane.add(SaintLabel);
+
+		JLabel prezzoSaintLabel = new JLabel("25,00 €"); // prezzo Honorè
+		prezzoSaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoSaintLabel.setBounds(430, 373, 46, 14);
+		contentPane.add(prezzoSaintLabel);
+
+		addSaintButton = new JButton("Add"); // bottone inserimento nel carrello
+		addSaintButton.setForeground(new Color(255, 255, 255));
+		addSaintButton.setBackground(new Color(255, 80, 120));
+		addSaintButton.setBounds(410, 392, 80, 23);
+		contentPane.add(addSaintButton);
 
 		JLabel CatalogoLabel = new JLabel("ORDINA"); // etichetta ordina
 		CatalogoLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 20));
@@ -206,6 +264,14 @@ public class OrdineStandardIF extends JFrame {
 
 	public void addIris(ActionListener listern) {
 		addIrisButton.addActionListener(listern);
+	}
+
+	public void addMimosa(ActionListener listern) {
+		addMimosaButton.addActionListener(listern);
+	}
+
+	public void addSaintHonore(ActionListener listern) {
+		addSaintButton.addActionListener(listern);
 	}
 
 	public void visualizzaOrdine(ActionListener listener) {
