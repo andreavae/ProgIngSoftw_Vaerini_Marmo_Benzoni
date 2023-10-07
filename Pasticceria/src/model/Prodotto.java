@@ -11,16 +11,19 @@ public class Prodotto {
 	private String pathImmagine;
 	private ImageIcon imageicon;
 
+	// costruttore 1
 	public Prodotto(String nome, String pathImmagine) {
 		this.Nome = nome;
 		this.pathImmagine = pathImmagine;
 	}
 
+	// costruttore 2
 	public Prodotto(String nome, float prezzo) {
 		this.Nome = nome;
 		this.Prezzo = prezzo;
 	}
 
+	// ritorno delle variabili
 	public String getIDprodotto() {
 		return IDprodotto;
 	}
@@ -41,9 +44,9 @@ public class Prodotto {
 		return imageicon;
 	}
 
-	@Override
+	@Override // visualizzazione
 	public String toString() {
-		return Nome + " Prezzo: " + Prezzo + " â‚¬";
+		return Nome + " Prezzo: " + Prezzo + " €";
 	}
 
 }
