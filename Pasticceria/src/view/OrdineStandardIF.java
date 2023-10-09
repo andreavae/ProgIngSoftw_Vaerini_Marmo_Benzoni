@@ -47,7 +47,7 @@ public class OrdineStandardIF extends JFrame {
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600, 700);
+		setSize(550, 710);
 		setLocationRelativeTo(null); // posizione della finsetra al centro
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		contentPane = new JPanel(); // per aggiungere componenti grafici
@@ -317,7 +317,7 @@ public class OrdineStandardIF extends JFrame {
 		VisualizzaOrdineButton.setForeground(new Color(255, 255, 255));
 		VisualizzaOrdineButton.setBackground(new Color(255, 80, 120));
 		VisualizzaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		VisualizzaOrdineButton.setBounds(406, 630, 168, 23); // 340
+		VisualizzaOrdineButton.setBounds(340, 630, 168, 23); // 340
 		contentPane.add(VisualizzaOrdineButton);
 
 		BackButton = new JButton("Back"); // bottone back
