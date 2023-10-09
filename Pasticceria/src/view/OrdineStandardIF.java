@@ -26,6 +26,7 @@ public class OrdineStandardIF extends JFrame {
 	private JButton addSaintButton;
 	private JButton addSacherButton;
 	private JButton addSetteveliButton;
+	private JButton addTiramisuButton;
 	private JButton VisualizzaOrdineButton;
 	private JButton BackButton;
 
@@ -42,6 +43,7 @@ public class OrdineStandardIF extends JFrame {
 		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg");
 		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg");
 		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg");
+		Prodotto Tiramisu = new Prodotto("Tiramisù", "resources/Tiramisu.jpg");
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -271,6 +273,33 @@ public class OrdineStandardIF extends JFrame {
 		addSetteveliButton.setBounds(221, 564, 80, 23);
 		contentPane.add(addSetteveliButton);
 
+		// creazione pannello per visualizzare l'immagine e inserirlo
+		// nell'interfaccia utente
+		JPanel TiramisuImagepanel = new JPanel();
+		TiramisuImagepanel.setBounds(380, 431, 137, 92);
+		contentPane.add(TiramisuImagepanel);
+		TiramisuImagepanel.setLayout(new BorderLayout());
+		String pathTiramisu = Tiramisu.getPathImmagine();
+		ImageIcon imageiconTiramisu = new ImageIcon(pathTiramisu);
+		JLabel TiramisuImageLabel = new JLabel(imageiconTiramisu);
+		TiramisuImagepanel.add(TiramisuImageLabel, BorderLayout.WEST);
+
+		JLabel TiramisuLabel = new JLabel("Tiramisu"); // nome torta
+		TiramisuLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		TiramisuLabel.setBounds(421, 520, 80, 26);
+		contentPane.add(TiramisuLabel);
+
+		JLabel prezzoTiramisuLabel = new JLabel("16,00 €"); // prezzo Tiramisu
+		prezzoTiramisuLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoTiramisuLabel.setBounds(430, 545, 46, 14);
+		contentPane.add(prezzoTiramisuLabel);
+
+		addTiramisuButton = new JButton("Add"); // bottone inserimento nel carrello
+		addTiramisuButton.setForeground(new Color(255, 255, 255));
+		addTiramisuButton.setBackground(new Color(255, 80, 120));
+		addTiramisuButton.setBounds(410, 564, 80, 23);
+		contentPane.add(addTiramisuButton);
+
 		JLabel CatalogoLabel = new JLabel("ORDINA"); // etichetta ordina
 		CatalogoLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 20));
 		CatalogoLabel.setBounds(221, 11, 161, 47);
@@ -288,7 +317,7 @@ public class OrdineStandardIF extends JFrame {
 		VisualizzaOrdineButton.setForeground(new Color(255, 255, 255));
 		VisualizzaOrdineButton.setBackground(new Color(255, 80, 120));
 		VisualizzaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		VisualizzaOrdineButton.setBounds(406, 630, 168, 23);
+		VisualizzaOrdineButton.setBounds(406, 630, 168, 23); // 340
 		contentPane.add(VisualizzaOrdineButton);
 
 		BackButton = new JButton("Back"); // bottone back
@@ -338,6 +367,10 @@ public class OrdineStandardIF extends JFrame {
 
 	public void addSetteveli(ActionListener listern) {
 		addSetteveliButton.addActionListener(listern);
+	}
+
+	public void addTiramisu(ActionListener listern) {
+		addTiramisuButton.addActionListener(listern);
 	}
 
 	public void visualizzaOrdine(ActionListener listener) {
