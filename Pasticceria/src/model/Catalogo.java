@@ -15,6 +15,8 @@ public class Catalogo {
 		catalogo.add(new Prodotto("Iris", "resources/Iris.jpg"));
 		catalogo.add(new Prodotto("Mimosa", "resources/mimosa.jpg"));
 		catalogo.add(new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg"));
+		catalogo.add(new Prodotto("Sacher", "resources/Sacher.jpg"));
+		catalogo.add(new Prodotto("Setteveli", "resources/Setteveli.jpg"));
 	}
 
 	// ritorno del catalogo

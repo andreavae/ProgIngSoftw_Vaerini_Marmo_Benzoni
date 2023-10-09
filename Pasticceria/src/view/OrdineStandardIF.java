@@ -24,6 +24,8 @@ public class OrdineStandardIF extends JFrame {
 	private JButton addIrisButton;
 	private JButton addMimosaButton;
 	private JButton addSaintButton;
+	private JButton addSacherButton;
+	private JButton addSetteveliButton;
 	private JButton VisualizzaOrdineButton;
 	private JButton BackButton;
 
@@ -38,11 +40,13 @@ public class OrdineStandardIF extends JFrame {
 		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg");
 		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg");
 		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg");
+		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg");
+		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg");
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600, 600);
-		setLocationRelativeTo(null);
+		setSize(600, 700);
+		setLocationRelativeTo(null); // posizione della finsetra al centro
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		contentPane = new JPanel(); // per aggiungere componenti grafici
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -213,6 +217,60 @@ public class OrdineStandardIF extends JFrame {
 		addSaintButton.setBounds(410, 392, 80, 23);
 		contentPane.add(addSaintButton);
 
+		// creazione pannello per visualizzare l'immagine e inserirlo
+		// nell'interfaccia utente
+		JPanel SacherImagepanel = new JPanel();
+		SacherImagepanel.setBounds(10, 431, 137, 92);
+		contentPane.add(SacherImagepanel);
+		SacherImagepanel.setLayout(new BorderLayout());
+		String pathSacher = Sacher.getPathImmagine();
+		ImageIcon imageiconSacher = new ImageIcon(pathSacher);
+		JLabel SacherImageLabel = new JLabel(imageiconSacher);
+		SacherImagepanel.add(SacherImageLabel, BorderLayout.WEST);
+
+		JLabel SacherLabel = new JLabel("Sacher"); // nome torta
+		SacherLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		SacherLabel.setBounds(58, 520, 80, 26);
+		contentPane.add(SacherLabel);
+
+		JLabel prezzoSacherLabel = new JLabel("18,00 €"); // prezzo Sacher
+		prezzoSacherLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoSacherLabel.setBounds(60, 545, 46, 14);
+		contentPane.add(prezzoSacherLabel);
+
+		addSacherButton = new JButton("Add"); // bottone inserimente nel carrello
+		addSacherButton.setForeground(new Color(255, 255, 255));
+		addSacherButton.setBackground(new Color(255, 80, 120));
+		addSacherButton.setBounds(36, 564, 80, 23);
+		contentPane.add(addSacherButton);
+
+		// creazione pannello per visualizzare l'immagine e inserirlo
+		// nell'interfaccia utente
+		JPanel SetteveliImagepanel = new JPanel();
+		SetteveliImagepanel.setBounds(195, 431, 137, 92);
+		contentPane.add(SetteveliImagepanel);
+		SetteveliImagepanel.setLayout(new BorderLayout());
+		String pathSetteveli = Setteveli.getPathImmagine();
+		ImageIcon imageiconSetteveli = new ImageIcon(pathSetteveli);
+		JLabel SetteveliImageLabel = new JLabel(imageiconSetteveli);
+		SetteveliImagepanel.add(SetteveliImageLabel, BorderLayout.WEST);
+
+		JLabel SetteveliLabel = new JLabel("Setteveli"); // nome torta
+		SetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		SetteveliLabel.setBounds(240, 520, 80, 26);
+		contentPane.add(SetteveliLabel);
+
+		JLabel prezzoSetteveliLabel = new JLabel("15,00 €"); // prezzo Mimosa
+		prezzoSetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
+		prezzoSetteveliLabel.setBounds(244, 545, 46, 14);
+		contentPane.add(prezzoSetteveliLabel);
+
+		addSetteveliButton = new JButton("Add"); // bottone inserimente nel carrello
+		addSetteveliButton.setForeground(new Color(255, 255, 255));
+		addSetteveliButton.setBackground(new Color(255, 80, 120));
+		addSetteveliButton.setBounds(221, 564, 80, 23);
+		contentPane.add(addSetteveliButton);
+
 		JLabel CatalogoLabel = new JLabel("ORDINA"); // etichetta ordina
 		CatalogoLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 20));
 		CatalogoLabel.setBounds(221, 11, 161, 47);
@@ -230,14 +288,14 @@ public class OrdineStandardIF extends JFrame {
 		VisualizzaOrdineButton.setForeground(new Color(255, 255, 255));
 		VisualizzaOrdineButton.setBackground(new Color(255, 80, 120));
 		VisualizzaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		VisualizzaOrdineButton.setBounds(406, 508, 168, 23);
+		VisualizzaOrdineButton.setBounds(406, 630, 168, 23);
 		contentPane.add(VisualizzaOrdineButton);
 
 		BackButton = new JButton("Back"); // bottone back
 		BackButton.setForeground(new Color(255, 255, 255));
 		BackButton.setBackground(new Color(255, 80, 120));
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		BackButton.setBounds(20, 508, 89, 23);
+		BackButton.setBounds(20, 630, 89, 23);
 		contentPane.add(BackButton);
 
 		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%");
@@ -272,6 +330,14 @@ public class OrdineStandardIF extends JFrame {
 
 	public void addSaintHonore(ActionListener listern) {
 		addSaintButton.addActionListener(listern);
+	}
+
+	public void addSacher(ActionListener listern) {
+		addSacherButton.addActionListener(listern);
+	}
+
+	public void addSetteveli(ActionListener listern) {
+		addSetteveliButton.addActionListener(listern);
 	}
 
 	public void visualizzaOrdine(ActionListener listener) {
