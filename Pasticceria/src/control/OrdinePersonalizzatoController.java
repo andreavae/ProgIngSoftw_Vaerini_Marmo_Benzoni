@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
+import model.Ordine;
 import model.OrdinePersonalizzato;
 //import control.OrdinePersonalizzatoController.visualizzaOrdinePersonalizzato;
 import model.User;
@@ -18,7 +19,8 @@ import view.VisualizzaOrdinePersonalizzatoIF;
 public class OrdinePersonalizzatoController {
 	private User utente;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
-	private OrdinePersonalizzato ordinepersonalizzato;
+	// private OrdinePersonalizzato ordinepersonalizzato;
+	private OrdinePersonalizzato ordinepersonalizzato2;
 	private HomeIF homeif;
 	private JComboBox<String> nPiani;
 	private JTextField deadline;
@@ -28,7 +30,7 @@ public class OrdinePersonalizzatoController {
 	// costruttore
 	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif,
 			JTextField deadline, JComboBox<String> menuoccasioni, JComboBox<String> listapersone,
-			JComboBox<String> nPiani, OrdinePersonalizzato ordinepersonalizzato) {
+			JComboBox<String> nPiani, OrdinePersonalizzato ordinepersonalizzato2) {
 		this.utente = utente;
 		this.ordinepersonalizzatoif = ordinepersonalizzatoif;
 		this.homeif = homeif;
@@ -36,7 +38,7 @@ public class OrdinePersonalizzatoController {
 		this.menuoccasioni = menuoccasioni;
 		this.listapersone = listapersone;
 		this.nPiani = nPiani;
-		this.ordinepersonalizzato = ordinepersonalizzato;
+		this.ordinepersonalizzato2 = ordinepersonalizzato2;
 		// associazione gestori
 		this.ordinepersonalizzatoif.back(new back());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new VisualizzaOrdinePersonalizzato());
@@ -66,9 +68,7 @@ public class OrdinePersonalizzatoController {
 		public String getPiani(JComboBox<String> nPiani) {
 
 			return (String) nPiani.getSelectedItem();
-
 		}
-
 	}
 
 	// gestione del numero di persone a cui si offre la torta
@@ -139,7 +139,7 @@ public class OrdinePersonalizzatoController {
 	class back implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// visibilità delle interfaccie
+			// visibilitï¿½ delle interfaccie
 			ordinepersonalizzatoif.setVisible(false);
 			homeif.setVisible(true);
 		}
@@ -154,6 +154,7 @@ public class OrdinePersonalizzatoController {
 		private int importoPersone;
 		private int piano;
 		private double totale;
+		private Ordine ordine;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -181,7 +182,7 @@ public class OrdinePersonalizzatoController {
 			piani = getpiani.getPiani(nPiani);
 			Pattern pattern = Pattern.compile("\\d+");
 			Matcher matcher = pattern.matcher(piani); // per cercare le corrispondenze
-			if (matcher.find()) { // verifica se una corrispondenza è stata trovata
+			if (matcher.find()) { // verifica se una corrispondenza ï¿½ stata trovata
 				String valoreNumerico = matcher.group(); // estrae la stringa corrispondente le cifre
 				try {
 					piano = Integer.parseInt(valoreNumerico); // conversione in interi
@@ -194,25 +195,30 @@ public class OrdinePersonalizzatoController {
 			}
 
 			// creazione ordine personalizzato
-			ordinepersonalizzato = new OrdinePersonalizzato(piano, importoPersone);
-			totale = ordinepersonalizzato.getTotale(piano, importoPersone); // calcolo totale dell'ordine
-			if (utente.isVipUser(utente.getUsername())) {// veridica se l'utente è vip
+			ordine = new OrdinePersonalizzato(utente, piano, importoPersone);
+			totale = ((OrdinePersonalizzato) ordine).getTotale(piano, importoPersone); // calcolo totale dell'ordine
+			if (utente.isVipUser(utente.getUsername())) {// veridica se l'utente ï¿½ vip
 				// viene applicato uno sconto sul totale
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, nPersone, totale, 0.3);
 				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-						visualizzaordinepersonalizzatoif);
+						visualizzaordinepersonalizzatoif, (OrdinePersonalizzato) ordine);
+				System.out.println(totale);
 				visualizzaordinepersonalizzatoif.setVisible(true);
 			} else {
 				// lo sconto non viene applicato
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, nPersone, totale, 0.0);
 				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-						visualizzaordinepersonalizzatoif);
+						visualizzaordinepersonalizzatoif, (OrdinePersonalizzato) ordine);
+				System.out.println(totale);
 				visualizzaordinepersonalizzatoif.setVisible(true);
 			}
 
 		}
 
+		public double totaleOrdine(OrdinePersonalizzato ordinepersonalizzato2) {
+			return totale;
+		}
 	}
 }

@@ -1,29 +1,39 @@
 package model;
 
-public class OrdinePersonalizzato {
+public class OrdinePersonalizzato extends Ordine {
 	private int piani;
-	private int numeroPersone;
-	private int costopiano = 0;
-	private int costopersona = 0;
+	private int numPersone;
+	private int costoPiano = 0;
+	private int costoPersone = 0;
 
-	public OrdinePersonalizzato(int piani, int numeroPersone) {
+	public OrdinePersonalizzato(User utente, int piani, int numPersone) {
+		super(utente);
 		this.piani = piani;
-		this.numeroPersone = numeroPersone;
+		this.numPersone = numPersone;
 	}
 
 	public double getTotale(int piani, int numeroPersone) {
 		if (piani == 1)
-			costopiano = 0;
+			costoPiano = 0;
 		if (piani == 2)
-			costopiano = 30;
+			costoPiano = 30;
 		if (piani == 3)
-			costopiano = 50;
+			costoPiano = 50;
 		if (numeroPersone == 10)
-			costopersona = 10;
+			costoPersone = 10;
 		if (numeroPersone == 30)
-			costopersona = 30;
+			costoPersone = 30;
 		if (numeroPersone == 0)
-			costopersona = 0;
-		return costopiano + costopersona;
+			costoPersone = 0;
+		return costoPiano + costoPersone;
 	}
+
+	public int getPiani() {
+		return piani;
+	}
+
+	public int getNumPersone() {
+		return numPersone;
+	}
+
 }

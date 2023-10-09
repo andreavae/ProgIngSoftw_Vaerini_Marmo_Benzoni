@@ -23,7 +23,7 @@ public class HomeController {
 	private OrdineStandard carrello;
 	private Sconto sconto;
 	private LoginIF loginif;
-	private OrdinePersonalizzato ordinepersonalizzato;
+	private OrdinePersonalizzato ordinepersonalizzato2;
 
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) { // costrutore 1
 		this.homeif = homeif;
@@ -86,7 +86,7 @@ public class HomeController {
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
 					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
-					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
+					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato2);
 			homeif.setVisible(false);
 
 			ordinepersonalizzatoif.setVisible(true);
@@ -104,7 +104,7 @@ public class HomeController {
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif, homeif, ordinepersonalizzatoif.getDataConsegnaField(),
 					ordinepersonalizzatoif.getOccasioneComboBox(), ordinepersonalizzatoif.getnPersoneComboBox(),
-					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato);
+					ordinepersonalizzatoif.getPianiComboBox(), ordinepersonalizzato2);
 
 			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
