@@ -47,7 +47,7 @@ public class OrdineStandardIF extends JFrame {
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(550, 710);
+		setSize(550, 710); // grandezza finestra
 		setLocationRelativeTo(null); // posizione della finsetra al centro
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		contentPane = new JPanel(); // per aggiungere componenti grafici
