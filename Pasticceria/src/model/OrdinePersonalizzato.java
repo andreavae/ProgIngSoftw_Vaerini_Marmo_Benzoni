@@ -12,9 +12,11 @@ public class OrdinePersonalizzato extends Ordine {
 	private String occasione;
 	private String data;
 	private double totale;
+	private double costo;
 
-	public OrdinePersonalizzato(User utente) {
+	public OrdinePersonalizzato(User utente, double costo) {
 		super(utente);
+		this.costo = costo;
 
 	}
 

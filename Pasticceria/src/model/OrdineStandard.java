@@ -10,11 +10,6 @@ public class OrdineStandard extends Ordine {
 		super(utente);
 		carrello = new ArrayList<Prodotto>();
 	}
-	// costruttore
-	/*
-	 * public OrdineStandard(User utente, double sconto) { this.utente = utente;
-	 * carrello = new ArrayList<Prodotto>(); }
-	 */
 
 	// metodo per aggiungere il prodotto nel carrello
 	public void addProdotto(Prodotto prodotto) {

@@ -29,7 +29,8 @@ public class OrdinePersonalizzatoController {
 			throw new IllegalArgumentException("L'oggetto loginif non può essere null.");
 		}
 		// this.nPiani = nPiani;
-		this.ordinepersonalizzato = new OrdinePersonalizzato(utente);
+		this.ordinepersonalizzato = new OrdinePersonalizzato(utente, 0);
+		System.out.println("ordinepersonalizzatocontroller: " + ordinepersonalizzato);
 		// associazione gestori
 		this.ordinepersonalizzatoif.back(new back());
 		this.ordinepersonalizzatoif.visualizzaOrdine(new VisualizzaOrdinePersonalizzato());
@@ -58,17 +59,18 @@ public class OrdinePersonalizzatoController {
 			double costopersone = ordinepersonalizzato.numerodipersone(ordinepersonalizzatoif.getnPersoneComboBox());
 			double totale = costopiani + costopersone;
 			boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
+			// Ordine op = new OrdinePersonalizzato(utente, totale);
 			if (!flagVip) {
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersionalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, persone, totale, 0);
 				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-						utente, visualizzaordinepersionalizzatoif, ordinepersonalizzato);
+						utente, visualizzaordinepersionalizzatoif, ordinepersonalizzato, loginif);
 				visualizzaordinepersionalizzatoif.setVisible(true);
 			} else {
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersionalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, persone, totale, 0.3);
 				VisualizzaOrdinePersonalizzatoController visualizzaordinepersonalizzatocontroller = new VisualizzaOrdinePersonalizzatoController(
-						utente, visualizzaordinepersionalizzatoif, ordinepersonalizzato);
+						utente, visualizzaordinepersionalizzatoif, ordinepersonalizzato, loginif);
 				visualizzaordinepersionalizzatoif.setVisible(true);
 			}
 

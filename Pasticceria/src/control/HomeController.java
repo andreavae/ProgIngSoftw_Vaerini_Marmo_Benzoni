@@ -25,25 +25,29 @@ public class HomeController {
 	private OrdinePersonalizzato ordinepersonalizzato;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
 
+	// costruttore per il cliente standard
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) { // costrutore 1
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
-		carrello = new OrdineStandard(utente, 0);
-		ordinepersonalizzato = new OrdinePersonalizzato(utente);
+		// carrello = new OrdineStandard(utente, 0);
+		ordinepersonalizzato = new OrdinePersonalizzato(utente, 0);
+		System.out.println("HomeControoler: " + ordinepersonalizzato);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
 		this.homeif.openAbbonamento(new abbonamento());
 
-		// this.homeif.openSconto(new sconto());
 	}
 
+	// costruttore per il cliente vip
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif, double sconto) { // costruttore 2
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
-		carrello = new OrdineStandard(utente, 0.3);
+		// carrello = new OrdineStandard(utente, 0.3);
+		ordinepersonalizzato = new OrdinePersonalizzato(utente, 0);
+		System.out.println("HomeController: " + ordinepersonalizzato);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIFVip());
 		this.homeif.openSconto(new sconto(0.3));
@@ -83,12 +87,11 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
-			ordinepersonalizzato = new OrdinePersonalizzato(utente);
+			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
+			OrdinePersonalizzato op = new OrdinePersonalizzato(utente, 0);
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif, homeif, ordinepersonalizzato, loginif);
+					ordinepersonalizzatoif, homeif, op, loginif);
 			homeif.setVisible(false);
-
 			ordinepersonalizzatoif.setVisible(true);
 
 		}
@@ -99,8 +102,8 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
-			ordinepersonalizzato = new OrdinePersonalizzato(utente);
+			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente);
+			ordinepersonalizzato = new OrdinePersonalizzato(utente, 0);
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
 					ordinepersonalizzatoif, homeif, ordinepersonalizzato, loginif);
 			homeif.setVisible(false);
