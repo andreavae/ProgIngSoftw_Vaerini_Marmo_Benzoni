@@ -3,17 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdineStandard {
-	private User utente;
+public class OrdineStandard extends Ordine {
 	private List<Prodotto> carrello;
-	private double sconto;
 
-	// costruttore
 	public OrdineStandard(User utente, double sconto) {
-		this.sconto = sconto;
-		this.utente = utente;
+		super(utente);
 		carrello = new ArrayList<Prodotto>();
 	}
+
+	// private User utente;
+
+	// costruttore
+	/*
+	 * public OrdineStandard(User utente, double sconto) { this.sconto = sconto;
+	 * this.utente = utente; carrello = new ArrayList<Prodotto>(); }
+	 */
 
 	// metodo per aggiungere il prodotto nel carrello
 	public void addProdotto(Prodotto prodotto) {

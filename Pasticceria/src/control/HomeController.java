@@ -45,7 +45,7 @@ public class HomeController {
 		this.utente = utente;
 		this.sconto = sconto;
 		this.loginif = loginif;
-		carrello = new OrdineStandard(utente, sconto.getSconto());
+		carrello = new OrdineStandard(utente, 0.3);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIFVip());
 		this.homeif.openSconto(new sconto(sconto.getSconto()));
