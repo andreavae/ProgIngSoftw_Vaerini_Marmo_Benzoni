@@ -19,7 +19,6 @@ public class Ordine {
 	// public StatoOrdine Stato;
 	public double prezzoOrdine;
 	private final String codiceOrdine;
-	private TipoOrdine tipoOrdine;
 
 	// costruttore
 	public Ordine(User utente) { // associa utente all'ordine e genera un codice univoco
@@ -29,7 +28,7 @@ public class Ordine {
 		} while (CODICE_ORDINE_ASSEGNATI.contains(CODICE_ORDINE_GENERATO));
 		this.codiceOrdine = CODICE_ORDINE_GENERATO;
 		CODICE_ORDINE_ASSEGNATI.add(codiceOrdine);
-		this.tipoOrdine = tipoOrdine;
+
 		this.prezzoOrdine = prezzoOrdine;
 	}
 
@@ -67,15 +66,7 @@ public class Ordine {
 		return utente.getUsername();
 	}
 
-	public TipoOrdine getTipoOrdine() {
-		return tipoOrdine;
-	}
-
-	public void setTipoOrdine(TipoOrdine tipoOrdine) {
-		this.tipoOrdine = tipoOrdine;
-	}
-
-	public boolean isOrderValid(Ordine ordine, User utente, double prezzo, TipoOrdine tipoOrdine) {
+	public boolean isOrderValid(Ordine ordine, User utente, double prezzo) {
 		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/pasticceriadb"); // inserimento percorso
 																								// database
 		connectdb.connect(); // connessione aperta
@@ -106,9 +97,8 @@ public class Ordine {
 		boolean flagusername = listautenti.contains(utente.getUsername()); // true se esiste nel db l'username
 		if (flagusername) { // se true
 			// query per l'inserimento dell'ordine nel database
-			String queryUpdateOrdine = "INSERT INTO ordine (CodOrdine, Utente, TipoOrdine, Costo) VALUES ('"
-					+ ordine.getCodiceOrdine() + "','" + ordine.getUsernameUtente() + "','" + ordine.getTipoOrdine()
-					+ "','" + ordine.getPrezzoOrdine() + "')";
+			String queryUpdateOrdine = "INSERT INTO ordine (CodOrdine, Utente, Costo) VALUES ('"
+					+ ordine.getCodiceOrdine() + "','" + ordine.getUsernameUtente() + "','" + prezzo + "')";
 			System.out.println(queryUpdateOrdine);
 			try {
 				// inserimento effettivo dell'ordine

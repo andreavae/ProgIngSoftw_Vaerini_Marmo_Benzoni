@@ -59,7 +59,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente));
+					carrello, homeif, new Ordine(utente), loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -73,7 +73,7 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0.3);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente));
+					carrello, homeif, new Ordine(utente), loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 

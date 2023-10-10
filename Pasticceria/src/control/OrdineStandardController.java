@@ -9,6 +9,7 @@ import model.Prodotto;
 //import model.Sconto;
 import model.User;
 import view.HomeIF;
+import view.LoginIF;
 import view.OrdineStandardIF;
 import view.VisualizzaOrdineIF;
 
@@ -20,13 +21,15 @@ public class OrdineStandardController {
 	private HomeIF homeif;
 	// private Sconto sconto;
 	private Ordine ordine;
+	private LoginIF loginif;
 
 	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
-			HomeIF homeif, Ordine ordine) {
+			HomeIF homeif, Ordine ordine, LoginIF loginif) {
 		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
 		this.ordine = ordine;
+		this.loginif = loginif;
 		this.carrello = new OrdineStandard(utente, 0);
 		// this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
@@ -139,18 +142,18 @@ public class OrdineStandardController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
 			System.out.println(utente.isVipUser(utente.getUsername()));
-			if (!utente.isVipUser(utente.getUsername())) { // se utente non � vip
+			if (!loginif.getClientePremiumRadioButton().isSelected()) { // se utente non � vip
 				// visualizzazione carrello senza sconto sul totale
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
-						visualizzaordineif, carrello, ordine);
+						visualizzaordineif, carrello, ordine, loginif);
 			} else {
 				// visualizzazione carrello con sconto giornaliero sul totale
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0.3);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
-						visualizzaordineif, carrello, ordine);
+						visualizzaordineif, carrello, ordine, loginif);
 			}
 
 		}

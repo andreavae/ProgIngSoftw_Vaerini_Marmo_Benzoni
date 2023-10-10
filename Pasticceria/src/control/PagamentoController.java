@@ -10,6 +10,7 @@ import model.OrdinePersonalizzato;
 import model.OrdineStandard;
 import model.Pagamento;
 import model.User;
+import view.LoginIF;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
 import view.VisualizzaOrdinePersonalizzatoIF;
@@ -23,15 +24,18 @@ public class PagamentoController {
 	private OrdineStandard carrello;
 	private Ordine ordine;
 	private OrdinePersonalizzato ordinepersonalizzato;
+	private LoginIF loginif;
 
+	// private String numerocarta;
 	public PagamentoController(User utente, PagamentoIF pagamentoif, VisualizzaOrdineIF visualizzaordineif,
-			OrdineStandard carrello, Ordine ordine) { // costruttore
+			OrdineStandard carrello, Ordine ordine, LoginIF loginif) { // costruttore
 		this.utente = utente;
 		this.ordine = ordine;
+		this.loginif = loginif;
 		this.pagamentoif = pagamentoif;
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;
-		this.pagamentoif.pagamento(new pagamento()); // associazione evento per pagamento
+		this.pagamentoif.pagamento(new pagamentostandard()); // associazione evento per pagamento
 	}
 
 	public PagamentoController(User utente, PagamentoIF pagamentoif, OrdinePersonalizzato ordinepersonalizzato,
@@ -41,50 +45,59 @@ public class PagamentoController {
 		this.ordinepersonalizzato = ordinepersonalizzato;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
 
-		this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
+		// this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
 	}
 
-	class pagamento implements ActionListener {
+	class pagamentostandard implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) { // per gestire l'evento pagamento
 			String numerocarta = pagamentoif.getNumeroCartaField().getText(); // recupera dati inseriti dall'utente
 			String datascadenza = pagamentoif.getDataScadenzaField().getText();
 			Pagamento pagamento = new Pagamento(ordine, numerocarta, datascadenza);
-			if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) { // notifica di successo o insuccesso
-				visualizzaordineif.dispose();
-				pagamentoif.dispose();
-				carrello.svuotaCarrello();
-				System.out.println(ordine.getPrezzoOrdine());
-				ordine.isOrderValid(ordine, utente, ordine.getPrezzoOrdine(), ordine.getTipoOrdine());
-				// System.out.println(ordine.getTipoOrdine());
-				JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
-				pagamentoif.dispose();
 
+			if (!loginif.getClientePremiumRadioButton().isSelected()) {
+				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) { // notifica di successo o insuccesso
+					visualizzaordineif.dispose();
+					pagamentoif.dispose();
+					ordine.isOrderValid(ordine, utente, carrello.getTotale(0));
+					carrello.svuotaCarrello();
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+					pagamentoif.dispose();
+				} else {
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+				}
 			} else {
-				JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
+					visualizzaordineif.dispose();
+					pagamentoif.dispose();
+					ordine.isOrderValid(ordine, utente, carrello.getTotale(0.3));
+					carrello.svuotaCarrello();
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+					pagamentoif.dispose();
+				} else {
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+				}
 			}
-
 		}
 
 	}
 
-	class pagamentoOrdinePersonalizzato implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			String numerocarta = pagamentoif.getNumeroCartaField().getText(); // recupera dati inseriti dall'utente
-			String datascadenza = pagamentoif.getDataScadenzaField().getText();
-			Pagamento pagamento = new Pagamento(ordine, numerocarta, datascadenza);
-			if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) { // notifica di successo o insuccesso
-				pagamentoif.dispose();
-				JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
-
-			} else {
-				JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
-			}
-
-		}
-
-	}
+	/*
+	 * class pagamentoOrdinePersonalizzato implements ActionListener {
+	 * 
+	 * @Override public void actionPerformed(ActionEvent e) { String numerocarta =
+	 * pagamentoif.getNumeroCartaField().getText(); // recupera dati inseriti
+	 * dall'utente String datascadenza =
+	 * pagamentoif.getDataScadenzaField().getText(); Pagamento pagamento = new
+	 * Pagamento(ordine, numerocarta, datascadenza); if
+	 * (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) { // notifica
+	 * di successo o insuccesso pagamentoif.dispose();
+	 * JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+	 * 
+	 * } else { JOptionPane.showMessageDialog(pagamentoif,
+	 * "Pagamento non riuscito!"); }
+	 * 
+	 * }
+	 */
 }

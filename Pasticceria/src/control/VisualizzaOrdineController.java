@@ -7,6 +7,7 @@ import model.Ordine;
 import model.OrdineStandard;
 import model.TipoOrdine;
 import model.User;
+import view.LoginIF;
 import view.PagamentoIF;
 import view.VisualizzaOrdineIF;
 
@@ -16,12 +17,14 @@ public class VisualizzaOrdineController {
 	private Ordine ordine;
 	private OrdineStandard carrello;
 	private TipoOrdine tipoOrdine;
+	private LoginIF loginif;
 
 	// costruttore
 	public VisualizzaOrdineController(User utente, VisualizzaOrdineIF visualizzaordineif, OrdineStandard carrello,
-			Ordine ordine) {
+			Ordine ordine, LoginIF loginif) {
 		this.ordine = ordine;
 		this.utente = utente;
+		this.loginif = loginif;
 		this.visualizzaordineif = visualizzaordineif;
 		this.carrello = carrello;
 		this.visualizzaordineif.back(new back());
@@ -47,7 +50,7 @@ public class VisualizzaOrdineController {
 
 			PagamentoIF pagamentoif = new PagamentoIF();
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, visualizzaordineif,
-					carrello, ordine); // oggetto per la gestione del pagamento
+					carrello, ordine, loginif); // oggetto per la gestione del pagamento
 			if (utente.isVipUser(utente.getUsername())) {
 				ordine = new Ordine(utente);
 
@@ -55,7 +58,7 @@ public class VisualizzaOrdineController {
 				ordine = new Ordine(utente);
 
 			}
-			pagamentoif.setVisible(true); // modifica visibilità interfaccia
+			pagamentoif.setVisible(true); // modifica visibilitï¿½ interfaccia
 		}
 
 	}
