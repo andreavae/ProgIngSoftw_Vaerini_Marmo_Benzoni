@@ -5,15 +5,11 @@ import java.util.List;
 
 public class OrdineStandard extends Ordine {
 	private List<Prodotto> carrello;
-	public TipoOrdine tipoordine;
 
 	public OrdineStandard(User utente, double sconto) {
 		super(utente);
-		tipoordine = TipoOrdine.STANDARD;
 		carrello = new ArrayList<Prodotto>();
 	}
-
-	// private User utente;
 
 	// costruttore
 	/*

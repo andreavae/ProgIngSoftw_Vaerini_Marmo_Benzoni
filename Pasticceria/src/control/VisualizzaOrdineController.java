@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import model.Ordine;
 import model.OrdineStandard;
-import model.TipoOrdine;
 import model.User;
 import view.LoginIF;
 import view.PagamentoIF;
@@ -16,7 +15,6 @@ public class VisualizzaOrdineController {
 	private VisualizzaOrdineIF visualizzaordineif;
 	private Ordine ordine;
 	private OrdineStandard carrello;
-	private TipoOrdine tipoOrdine;
 	private LoginIF loginif;
 
 	// costruttore
