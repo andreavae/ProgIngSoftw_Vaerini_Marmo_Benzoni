@@ -14,7 +14,7 @@ public class OrdinePersonalizzato extends Ordine {
 	private double totale;
 	private double costo;
 
-	public OrdinePersonalizzato(User utente, double costo) {
+	public OrdinePersonalizzato(User utente) {
 		super(utente);
 		this.costo = costo;
 
@@ -67,4 +67,5 @@ public class OrdinePersonalizzato extends Ordine {
 		System.out.println("TOTALE: " + totale);
 		return totale;
 	}
+
 }

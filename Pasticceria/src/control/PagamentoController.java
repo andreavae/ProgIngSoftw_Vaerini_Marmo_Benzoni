@@ -95,6 +95,7 @@ public class PagamentoController {
 			if (!loginif.getClientePremiumRadioButton().isSelected()) {
 				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
 
+					// qyeryupdate
 					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 					pagamentoif.dispose();
 				} else {
@@ -102,6 +103,7 @@ public class PagamentoController {
 				}
 			} else {
 				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
+
 					// queryupdate
 					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 					pagamentoif.dispose();
