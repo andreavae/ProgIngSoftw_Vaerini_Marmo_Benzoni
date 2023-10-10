@@ -1,39 +1,68 @@
 package model;
 
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 public class OrdinePersonalizzato extends Ordine {
-	private int piani;
-	private int numPersone;
-	private int costoPiano = 0;
-	private int costoPersone = 0;
 
-	public OrdinePersonalizzato(User utente, int piani, int numPersone) {
+	private double costoPiani;
+	private String pianistringa; // per la view
+	private double costoPersone;
+	private String personestringa; // per la view
+	private String occasione;
+	private String data;
+	private double totale;
+
+	public OrdinePersonalizzato(User utente) {
 		super(utente);
-		this.piani = piani;
-		this.numPersone = numPersone;
+
 	}
 
-	public double getTotale(int piani, int numeroPersone) {
-		if (piani == 1)
-			costoPiano = 0;
-		if (piani == 2)
-			costoPiano = 30;
-		if (piani == 3)
-			costoPiano = 50;
-		if (numeroPersone == 10)
-			costoPersone = 10;
-		if (numeroPersone == 30)
-			costoPersone = 30;
-		if (numeroPersone == 0)
-			costoPersone = 0;
-		return costoPiano + costoPersone;
+	public double numerodeipiani(JComboBox<String> nPiani) {
+		String valoreSelezionato = (String) nPiani.getSelectedItem();
+		int indicedx = valoreSelezionato.lastIndexOf(")");
+		int indicesx = valoreSelezionato.lastIndexOf('(', indicedx);
+		String pianistringa = valoreSelezionato.substring(indicesx + 2, indicedx - 1);
+		costoPiani = Double.parseDouble(pianistringa);
+		return costoPiani;
 	}
 
-	public int getPiani() {
-		return piani;
+	public String pianiStringa(JComboBox<String> nPiani) {
+		pianistringa = (String) nPiani.getSelectedItem();
+		System.out.println("NUMERO DI PIANI " + pianistringa);
+		return pianistringa;
 	}
 
-	public int getNumPersone() {
-		return numPersone;
+	public double numerodipersone(JComboBox<String> nPersone) {
+		String valoreSelezionato = (String) nPersone.getSelectedItem();
+		int indicedx = valoreSelezionato.lastIndexOf(")");
+		int indicesx = valoreSelezionato.lastIndexOf('(', indicedx);
+		String personestringa = valoreSelezionato.substring(indicesx + 2, indicedx - 1);
+		costoPersone = Double.parseDouble(personestringa);
+		return costoPersone;
 	}
 
+	public String personeStringa(JComboBox<String> nPersone) {
+		personestringa = (String) nPersone.getSelectedItem();
+		System.out.println("NUMERO DI PERSONE: " + personestringa);
+		return personestringa;
+	}
+
+	public String occasione(JComboBox<String> occasioni) {
+		occasione = (String) occasioni.getSelectedItem();
+		System.out.println("OCCASIONE: " + occasione);
+		return occasione;
+	}
+
+	public String dataConsegna(JTextField date) {
+		data = date.getText();
+		System.out.println("DATA CONSEGNA: " + data);
+		return data;
+	}
+
+	public double getTotale(double piani, double persone) {
+		totale = piani + persone;
+		System.out.println("TOTALE: " + totale);
+		return totale;
+	}
 }

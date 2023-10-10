@@ -36,7 +36,7 @@ public class LoginController {
 			if (!loginif.getClientePremiumRadioButton().isSelected()) {
 				if (user.isLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
-					loginif.dispose();
+					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
 					homeif.setVisible(true);
 					HomeController homecontroller = new HomeController(homeif, user, loginif);
@@ -46,7 +46,7 @@ public class LoginController {
 			} else {
 				if (user.isVipLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
-					loginif.dispose();
+					loginif.setVisible(false);
 					sconto = new Sconto();
 					HomeIF homeif = new HomeIF(user, loginif, 0);
 					homeif.setVisible(true);

@@ -4,18 +4,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.OrdinePersonalizzato;
+import model.User;
 import view.PagamentoIF;
 import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class VisualizzaOrdinePersonalizzatoController {
+	private User utente;
 	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
-	private OrdinePersonalizzato ordinepersonalizzato2;
+	private OrdinePersonalizzato ordinepersonalizzato;
 
 	// costruttore
-	public VisualizzaOrdinePersonalizzatoController(VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif,
+	public VisualizzaOrdinePersonalizzatoController(User utente,
+			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif,
 			OrdinePersonalizzato ordinpersonalizzato) {
+		this.utente = utente;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
-		this.ordinepersonalizzato2 = ordinepersonalizzato2;
+		this.ordinepersonalizzato = ordinepersonalizzato;
 
 		this.visualizzaordinepersonalizzatoif.back(new back());
 		this.visualizzaordinepersonalizzatoif.conferma(new conferma());
@@ -38,8 +42,8 @@ public class VisualizzaOrdinePersonalizzatoController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			PagamentoIF pagamentoif = new PagamentoIF(); // interfaccia pagamento
-			PagamentoController pagamentocontroller = new PagamentoController(pagamentoif,
-					visualizzaordinepersonalizzatoif); // oggetto per gestire il pagamento
+			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, ordinepersonalizzato,
+					visualizzaordinepersonalizzatoif);
 
 			pagamentoif.setVisible(true); // modifica visibilit� interfaccia
 		}

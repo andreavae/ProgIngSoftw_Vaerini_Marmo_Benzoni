@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.Ordine;
+import model.OrdinePersonalizzato;
 import model.OrdineStandard;
 import model.Pagamento;
 import model.User;
@@ -21,6 +22,7 @@ public class PagamentoController {
 	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
 	private OrdineStandard carrello;
 	private Ordine ordine;
+	private OrdinePersonalizzato ordinepersonalizzato;
 
 	public PagamentoController(User utente, PagamentoIF pagamentoif, VisualizzaOrdineIF visualizzaordineif,
 			OrdineStandard carrello, Ordine ordine) { // costruttore
@@ -32,10 +34,13 @@ public class PagamentoController {
 		this.pagamentoif.pagamento(new pagamento()); // associazione evento per pagamento
 	}
 
-	public PagamentoController(PagamentoIF pagamentoif,
+	public PagamentoController(User utente, PagamentoIF pagamentoif, OrdinePersonalizzato ordinepersonalizzato,
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif) {
+		this.utente = utente;
 		this.pagamentoif = pagamentoif;
+		this.ordinepersonalizzato = ordinepersonalizzato;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
+
 		this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
 	}
 
