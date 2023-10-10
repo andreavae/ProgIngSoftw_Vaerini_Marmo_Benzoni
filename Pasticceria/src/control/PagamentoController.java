@@ -40,9 +40,10 @@ public class PagamentoController {
 
 	// costruttore per il pagamento personalizzato
 	public PagamentoController(User utente, PagamentoIF pagamentoif, OrdinePersonalizzato ordinepersonalizzato,
-			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif, LoginIF loginif) {
+			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzaoif, LoginIF loginif, Ordine ordine) {
 		this.utente = utente;
 		this.ordine = ordine;
+		this.loginif = loginif;
 		this.pagamentoif = pagamentoif;
 		this.ordinepersonalizzato = ordinepersonalizzato;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
@@ -91,9 +92,26 @@ public class PagamentoController {
 			String numerocarta = pagamentoif.getNumeroCartaField().getText();
 			String datascadenza = pagamentoif.getDataScadenzaField().getText();
 			Pagamento pagamento = new Pagamento(ordinepersonalizzato, numerocarta, datascadenza);
+			if (!loginif.getClientePremiumRadioButton().isSelected()) {
+				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
+
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+					pagamentoif.dispose();
+				} else {
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+				}
+			} else {
+				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
+					// queryupdate
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
+					pagamentoif.dispose();
+				} else {
+					JOptionPane.showMessageDialog(pagamentoif, "Pagamento non riuscito!");
+				}
+
+			}
 
 		}
 
 	}
-
 }

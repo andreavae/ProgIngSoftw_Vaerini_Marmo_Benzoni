@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Ordine;
 import model.OrdinePersonalizzato;
 import model.User;
 import view.LoginIF;
@@ -14,6 +15,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 	private LoginIF loginif;
+	private Ordine ordine;
 
 	// costruttore
 	public VisualizzaOrdinePersonalizzatoController(User utente,
@@ -21,6 +23,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 			LoginIF loginif) {
 		this.utente = utente;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
+		this.ordine = ordine;
 		this.ordinepersonalizzato = ordinepersonalizzato;
 		System.out.println("VisualizzaOrdinePersonalizzatoController: " + ordinepersonalizzato);
 		this.loginif = loginif;
@@ -46,7 +49,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 		public void actionPerformed(ActionEvent e) {
 			PagamentoIF pagamentoif = new PagamentoIF(); // interfaccia pagamento
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, ordinepersonalizzato,
-					visualizzaordinepersonalizzatoif, loginif);
+					visualizzaordinepersonalizzatoif, loginif, ordine);
 			System.out.println("visualizzaordinepersionalizzato: " + ordinepersonalizzato);
 			pagamentoif.setVisible(true); // modifica visibilit� interfaccia
 		}
