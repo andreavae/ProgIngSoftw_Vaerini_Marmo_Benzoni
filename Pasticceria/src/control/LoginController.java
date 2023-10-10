@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import model.Sconto;
+//import model.Sconto;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
@@ -14,7 +14,7 @@ import view.SignIF;
 public class LoginController {
 	private LoginIF loginif; // dichiarazione variabili
 	private User user;
-	private Sconto sconto;
+	// private Sconto sconto;
 
 	public LoginController(LoginIF loginif, User user) { // costruttore
 		this.loginif = loginif;
@@ -47,10 +47,10 @@ public class LoginController {
 				if (user.isVipLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.setVisible(false);
-					sconto = new Sconto();
+					// sconto = new Sconto();
 					HomeIF homeif = new HomeIF(user, loginif, 0);
 					homeif.setVisible(true);
-					HomeController homecontroller = new HomeController(homeif, user, loginif, new Sconto());
+					HomeController homecontroller = new HomeController(homeif, user, loginif, 0.3);
 				} else {
 					JOptionPane.showMessageDialog(loginif,
 							"Utente non riconociuto come cliente Premium. Entra come cliente oppure paga l'abboanmento.");

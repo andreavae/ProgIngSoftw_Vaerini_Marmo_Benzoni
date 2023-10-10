@@ -9,7 +9,7 @@ import model.Abbonamento;
 import model.Ordine;
 import model.OrdinePersonalizzato;
 import model.OrdineStandard;
-import model.Sconto;
+//import model.Sconto;
 import model.User;
 import view.AbbonamentoIF;
 import view.HomeIF;
@@ -21,7 +21,7 @@ public class HomeController {
 	private HomeIF homeif;
 	private User utente;
 	private OrdineStandard carrello;
-	private Sconto sconto;
+	// private Sconto sconto;
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
@@ -40,15 +40,15 @@ public class HomeController {
 		// this.homeif.openSconto(new sconto());
 	}
 
-	public HomeController(HomeIF homeif, User utente, LoginIF loginif, Sconto sconto) { // costruttore 2
+	public HomeController(HomeIF homeif, User utente, LoginIF loginif, double sconto) { // costruttore 2
 		this.homeif = homeif;
 		this.utente = utente;
-		this.sconto = sconto;
+		// this.sconto = sconto;
 		this.loginif = loginif;
 		carrello = new OrdineStandard(utente, 0.3);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIFVip());
-		this.homeif.openSconto(new sconto(sconto.getSconto()));
+		this.homeif.openSconto(new sconto(0.3));
 		this.homeif.quit(new Quit());
 
 	}
@@ -71,7 +71,7 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, sconto.getSconto());
+			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0.3);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
 					carrello, homeif, new Ordine(utente));
 			homeif.setVisible(false);
@@ -124,7 +124,7 @@ public class HomeController {
 
 	class sconto implements ActionListener {
 		private double valoreSconto;
-		private Sconto sconto;
+		// private Sconto sconto;
 
 		public sconto(double valoreSconto) {
 			this.valoreSconto = valoreSconto;
@@ -132,17 +132,17 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			sconto = new Sconto();
-			valoreSconto = sconto.getSconto();
+			// sconto = new Sconto();
+			valoreSconto = 0.3;
 			JOptionPane.showMessageDialog(homeif, "Sconto Giornaliero del " + valoreSconto * 100 + "%");
 			HomeIF homeifvip = new HomeIF(utente, new LoginIF(), valoreSconto);
 			homeifvip.setVisible(true);
-			HomeController homecontrollervip = new HomeController(homeifvip, utente, loginif, sconto);
+			HomeController homecontrollervip = new HomeController(homeifvip, utente, loginif, 0.3);
 			// System.out.println(sconto.getSconto());
 		}
 
 		public double getValoreSconto(double valoreSconto) {
-			System.out.println(sconto.getSconto());
+			System.out.println(0.3);
 			return valoreSconto;
 		}
 

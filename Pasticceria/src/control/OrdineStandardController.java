@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import model.Ordine;
 import model.OrdineStandard;
 import model.Prodotto;
-import model.Sconto;
+//import model.Sconto;
 import model.User;
 import view.HomeIF;
 import view.OrdineStandardIF;
@@ -18,7 +18,7 @@ public class OrdineStandardController {
 	private OrdineStandard carrello;
 	private Prodotto prodotto;
 	private HomeIF homeif;
-	private Sconto sconto;
+	// private Sconto sconto;
 	private Ordine ordine;
 
 	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
@@ -28,7 +28,7 @@ public class OrdineStandardController {
 		this.homeif = homeif;
 		this.ordine = ordine;
 		this.carrello = new OrdineStandard(utente, 0);
-		this.sconto = new Sconto();
+		// this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
 		this.ordinestandardif.addCreamtart(new addCreamtart());
@@ -96,7 +96,7 @@ public class OrdineStandardController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Prodotto Saint = new Prodotto("Saint Honorè", 25);
+			Prodotto Saint = new Prodotto("Saint Honorï¿½", 25);
 			carrello.addProdotto(Saint); // aggiunta al carrello
 		}
 
@@ -139,7 +139,7 @@ public class OrdineStandardController {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
 			System.out.println(utente.isVipUser(utente.getUsername()));
-			if (!utente.isVipUser(utente.getUsername())) { // se utente non è vip
+			if (!utente.isVipUser(utente.getUsername())) { // se utente non ï¿½ vip
 				// visualizzazione carrello senza sconto sul totale
 				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
@@ -147,7 +147,7 @@ public class OrdineStandardController {
 						visualizzaordineif, carrello, ordine);
 			} else {
 				// visualizzazione carrello con sconto giornaliero sul totale
-				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, sconto.getSconto());
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0.3);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine);
@@ -162,7 +162,7 @@ public class OrdineStandardController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// visibilità interfacce
+			// visibilitï¿½ interfacce
 			homeif.setVisible(true);
 			ordinestandardif.setVisible(false);
 		}
