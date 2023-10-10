@@ -21,7 +21,6 @@ public class HomeController {
 	private HomeIF homeif;
 	private User utente;
 	private OrdineStandard carrello;
-	// private Sconto sconto;
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
@@ -43,7 +42,6 @@ public class HomeController {
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif, double sconto) { // costruttore 2
 		this.homeif = homeif;
 		this.utente = utente;
-		// this.sconto = sconto;
 		this.loginif = loginif;
 		carrello = new OrdineStandard(utente, 0.3);
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
@@ -124,7 +122,6 @@ public class HomeController {
 
 	class sconto implements ActionListener {
 		private double valoreSconto;
-		// private Sconto sconto;
 
 		public sconto(double valoreSconto) {
 			this.valoreSconto = valoreSconto;

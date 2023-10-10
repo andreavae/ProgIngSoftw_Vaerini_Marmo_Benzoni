@@ -19,7 +19,6 @@ public class OrdineStandardController {
 	private OrdineStandard carrello;
 	private Prodotto prodotto;
 	private HomeIF homeif;
-	// private Sconto sconto;
 	private Ordine ordine;
 	private LoginIF loginif;
 
@@ -31,7 +30,6 @@ public class OrdineStandardController {
 		this.ordine = ordine;
 		this.loginif = loginif;
 		this.carrello = new OrdineStandard(utente, 0);
-		// this.sconto = new Sconto();
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
 		this.ordinestandardif.addCreamtart(new addCreamtart());
@@ -56,7 +54,6 @@ public class OrdineStandardController {
 
 	// gestione prodotto
 	class addCubana implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Cubana = new Prodotto("Cubana", 12);
@@ -66,7 +63,6 @@ public class OrdineStandardController {
 	}
 
 	class addCreamtart implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Creamtart = new Prodotto("Cream Tart", 20);
@@ -76,7 +72,6 @@ public class OrdineStandardController {
 	}
 
 	class addIris implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Iris = new Prodotto("Iris", 23);
@@ -86,7 +81,6 @@ public class OrdineStandardController {
 	}
 
 	class addMimosa implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Mimosa = new Prodotto("Mimosa", 20);
@@ -96,7 +90,6 @@ public class OrdineStandardController {
 	}
 
 	class addSaintHonore implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Saint = new Prodotto("Saint Honor�", 25);
@@ -106,7 +99,6 @@ public class OrdineStandardController {
 	}
 
 	class addSacher implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Sacher = new Prodotto("Sacher", 18);
@@ -116,7 +108,6 @@ public class OrdineStandardController {
 	}
 
 	class addSetteveli implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Setteveli = new Prodotto("Setteveli", 15);
@@ -126,7 +117,6 @@ public class OrdineStandardController {
 	}
 
 	class addTiramisu implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Tiramisu = new Prodotto("Tiramisu", 16);
@@ -137,7 +127,6 @@ public class OrdineStandardController {
 
 	// gestione visualizzazione ordine
 	class visualizzaOrdine implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
@@ -162,7 +151,6 @@ public class OrdineStandardController {
 
 	// gestione pulsante back
 	class back implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// visibilit� interfacce
