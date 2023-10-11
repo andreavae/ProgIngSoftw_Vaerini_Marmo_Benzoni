@@ -101,7 +101,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		SetNumPersoneLabel.setBounds(145, 198, 263, 14);
 		contentPane.add(SetNumPersoneLabel);
 
-		JLabel TotaleLabel = new JLabel("Totale: " + totale + "€");
+		JLabel TotaleLabel = new JLabel("Totale: " + (totale + 30) + "€");
 		TotaleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		TotaleLabel.setBounds(10, 238, 75, 14);
 		contentPane.add(TotaleLabel);
@@ -125,6 +125,11 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		CancellaButton.setBounds(170, 279, 89, 23);
 		contentPane.add(CancellaButton);
+
+		JLabel initMoneyLabel = new JLabel("a partire da 30€");
+		initMoneyLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		initMoneyLabel.setBounds(243, 48, 114, 14);
+		contentPane.add(initMoneyLabel);
 
 	}
 

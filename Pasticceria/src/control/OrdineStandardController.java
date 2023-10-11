@@ -93,7 +93,7 @@ public class OrdineStandardController {
 	class addSaintHonore implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Prodotto Saint = new Prodotto("Saint Honor�", 25);
+			Prodotto Saint = new Prodotto("Saint Honorè", 25);
 			carrello.addProdotto(Saint); // aggiunta al carrello
 		}
 

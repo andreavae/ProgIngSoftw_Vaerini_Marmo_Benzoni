@@ -40,10 +40,10 @@ public class OrdineStandardIF extends JFrame {
 		Prodotto Creamtart = new Prodotto("Cream Tart", "resources/Cream-tart.jpg");
 		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg");
 		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg");
-		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg");
+		Prodotto SaintHonore = new Prodotto("Saint Honorï¿½", "resources/Saint-honorï¿½.jpg");
 		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg");
 		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg");
-		Prodotto Tiramisu = new Prodotto("Tiramisù", "resources/Tiramisu.jpg");
+		Prodotto Tiramisu = new Prodotto("Tiramisï¿½", "resources/Tiramisu.jpg");
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,7 +72,7 @@ public class OrdineStandardIF extends JFrame {
 		CheesecakeLabel.setBounds(48, 180, 80, 23);
 		contentPane.add(CheesecakeLabel);
 
-		JLabel prezzoCheesecakeLabel = new JLabel("15,00 €"); // prezzo cheesecake
+		JLabel prezzoCheesecakeLabel = new JLabel("15,00 â‚¬"); // prezzo cheesecake
 		prezzoCheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoCheesecakeLabel.setBounds(60, 201, 46, 14);
 		contentPane.add(prezzoCheesecakeLabel);
@@ -100,7 +100,7 @@ public class OrdineStandardIF extends JFrame {
 		CubanaLabel.setBounds(424, 184, 46, 14);
 		contentPane.add(CubanaLabel);
 
-		JLabel prezzoCubanaLabel = new JLabel("12,00 €"); // prezzo cubana
+		JLabel prezzoCubanaLabel = new JLabel("12,00 â‚¬"); // prezzo cubana
 		prezzoCubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoCubanaLabel.setBounds(430, 201, 46, 14);
 		contentPane.add(prezzoCubanaLabel);
@@ -127,7 +127,7 @@ public class OrdineStandardIF extends JFrame {
 		CreamtartLabel.setBounds(233, 184, 80, 15); // 244, 184, 46, 14
 		contentPane.add(CreamtartLabel);
 
-		JLabel prezzoCreamtartLabel = new JLabel("20,00 €"); // prezzo cream tart
+		JLabel prezzoCreamtartLabel = new JLabel("20,00 â‚¬"); // prezzo cream tart
 		prezzoCreamtartLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoCreamtartLabel.setBounds(244, 201, 46, 14); // 244, 201, 46, 14
 		contentPane.add(prezzoCreamtartLabel);
@@ -154,7 +154,7 @@ public class OrdineStandardIF extends JFrame {
 		IrisLabel.setBounds(68, 350, 40, 26);
 		contentPane.add(IrisLabel);
 
-		JLabel prezzoIrisLabel = new JLabel("23,00 €"); // prezzo Iris
+		JLabel prezzoIrisLabel = new JLabel("23,00 â‚¬"); // prezzo Iris
 		prezzoIrisLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoIrisLabel.setBounds(60, 373, 46, 14);
 		contentPane.add(prezzoIrisLabel);
@@ -181,7 +181,7 @@ public class OrdineStandardIF extends JFrame {
 		MimosaLabel.setBounds(240, 350, 80, 26);
 		contentPane.add(MimosaLabel);
 
-		JLabel prezzoMimosaLabel = new JLabel("20,00 €"); // prezzo Mimosa
+		JLabel prezzoMimosaLabel = new JLabel("20,00 â‚¬"); // prezzo Mimosa
 		prezzoMimosaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoMimosaLabel.setBounds(244, 373, 46, 14);
 		contentPane.add(prezzoMimosaLabel);
@@ -203,12 +203,12 @@ public class OrdineStandardIF extends JFrame {
 		JLabel SaintImageLabel = new JLabel(imageiconSaint);
 		SaintImagepanel.add(SaintImageLabel, BorderLayout.WEST);
 
-		JLabel SaintLabel = new JLabel("Saint Honorè"); // nome torta
+		JLabel SaintLabel = new JLabel("Saint HonorÃ¨"); // nome torta
 		SaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		SaintLabel.setBounds(411, 350, 80, 26);
 		contentPane.add(SaintLabel);
 
-		JLabel prezzoSaintLabel = new JLabel("25,00 €"); // prezzo Honorè
+		JLabel prezzoSaintLabel = new JLabel("25,00 â‚¬"); // prezzo Honorï¿½
 		prezzoSaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoSaintLabel.setBounds(430, 373, 46, 14);
 		contentPane.add(prezzoSaintLabel);
@@ -235,7 +235,7 @@ public class OrdineStandardIF extends JFrame {
 		SacherLabel.setBounds(58, 520, 80, 26);
 		contentPane.add(SacherLabel);
 
-		JLabel prezzoSacherLabel = new JLabel("18,00 €"); // prezzo Sacher
+		JLabel prezzoSacherLabel = new JLabel("18,00 â‚¬"); // prezzo Sacher
 		prezzoSacherLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoSacherLabel.setBounds(60, 545, 46, 14);
 		contentPane.add(prezzoSacherLabel);
@@ -262,7 +262,7 @@ public class OrdineStandardIF extends JFrame {
 		SetteveliLabel.setBounds(240, 520, 80, 26);
 		contentPane.add(SetteveliLabel);
 
-		JLabel prezzoSetteveliLabel = new JLabel("15,00 €"); // prezzo Mimosa
+		JLabel prezzoSetteveliLabel = new JLabel("15,00 â‚¬"); // prezzo Mimosa
 		prezzoSetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoSetteveliLabel.setBounds(244, 545, 46, 14);
 		contentPane.add(prezzoSetteveliLabel);
@@ -289,7 +289,7 @@ public class OrdineStandardIF extends JFrame {
 		TiramisuLabel.setBounds(421, 520, 80, 26);
 		contentPane.add(TiramisuLabel);
 
-		JLabel prezzoTiramisuLabel = new JLabel("16,00 €"); // prezzo Tiramisu
+		JLabel prezzoTiramisuLabel = new JLabel("16,00 â‚¬"); // prezzo Tiramisu
 		prezzoTiramisuLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoTiramisuLabel.setBounds(430, 545, 46, 14);
 		contentPane.add(prezzoTiramisuLabel);

@@ -46,7 +46,7 @@ public class Prodotto {
 
 	@Override // visualizzazione
 	public String toString() {
-		return Nome + " Prezzo: " + Prezzo + " €";
+		return Nome + " Prezzo: " + Prezzo + " â‚¬";
 	}
 
 }
