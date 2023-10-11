@@ -1,12 +1,12 @@
 
 package model;
 
-public class ClientePremium extends User {
+public class ClienteStandard extends User {
 	private boolean flagPremium;
 
-	public ClientePremium(String username, String password) {
+	public ClienteStandard(String username, String password) {
 		super(username, password);
-		this.flagPremium = true;
+		this.flagPremium = false;
 	}
 
 	public boolean isFlagPremium() {
