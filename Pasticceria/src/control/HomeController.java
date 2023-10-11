@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.Abbonamento;
-import model.ClienteStandard;
 import model.Ordine;
 import model.OrdinePersonalizzato;
 import model.OrdineStandard;
@@ -21,7 +20,6 @@ import view.OrdineStandardIF;
 public class HomeController {
 	private HomeIF homeif;
 	private User utente;
-	private ClienteStandard clienteStandard;
 	private OrdineStandard carrello;
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
@@ -30,7 +28,7 @@ public class HomeController {
 	// costruttore per il cliente standard
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) { // costrutore 1
 		this.homeif = homeif;
-		this.utente = new ClienteStandard(utente.getUsername(), utente.getPassword());
+		this.utente = utente;
 		this.loginif = loginif;
 		// carrello = new OrdineStandard(utente, 0);
 		ordinepersonalizzato = new OrdinePersonalizzato(utente);
@@ -62,8 +60,8 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
-			OrdineStandardController ordinestandardcontroller = new OrdineStandardController((ClienteStandard) utente,
-					ordinestandardif, carrello, homeif, new Ordine(utente), loginif);
+			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
+					carrello, homeif, new Ordine(utente), loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -76,8 +74,8 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0.3);
-			OrdineStandardController ordinestandardcontroller = new OrdineStandardController((ClienteStandard) utente,
-					ordinestandardif, carrello, homeif, new Ordine(utente), loginif);
+			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
+					carrello, homeif, new Ordine(utente), loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 

@@ -1,10 +1,10 @@
 
 package model;
 
-public class ClienteStandard extends User {
+public class Cliente extends User {
 	private boolean flagPremium;
 
-	public ClienteStandard(String username, String password) {
+	public Cliente(String username, String password) {
 		super(username, password);
 		this.flagPremium = false;
 	}

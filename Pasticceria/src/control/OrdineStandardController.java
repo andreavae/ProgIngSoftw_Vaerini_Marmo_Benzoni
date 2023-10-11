@@ -3,18 +3,19 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.ClienteStandard;
+import model.Cliente;
+import model.ClientePremium;
 import model.Ordine;
 import model.OrdineStandard;
 import model.Prodotto;
+import model.User;
 import view.HomeIF;
 import view.LoginIF;
 import view.OrdineStandardIF;
 import view.VisualizzaOrdineIF;
 
 public class OrdineStandardController {
-	// private User utente;
-	private ClienteStandard clientestandard;
+	private User utente;
 	private OrdineStandardIF ordinestandardif;
 	private OrdineStandard carrello;
 	private Prodotto prodotto;
@@ -22,14 +23,14 @@ public class OrdineStandardController {
 	private Ordine ordine;
 	private LoginIF loginif;
 
-	public OrdineStandardController(ClienteStandard clientestandard, OrdineStandardIF ordinestandardif,
-			OrdineStandard carrello, HomeIF homeif, Ordine ordine, LoginIF loginif) {
-		this.clientestandard = clientestandard;
+	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
+			HomeIF homeif, Ordine ordine, LoginIF loginif) {
+		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
 		this.ordine = ordine;
 		this.loginif = loginif;
-		this.carrello = new OrdineStandard(clientestandard, 0);
+		this.carrello = new OrdineStandard(utente, 0);
 		this.ordinestandardif.addCheesecake(new addCheesecake());
 		this.ordinestandardif.addCubana(new addCubana());
 		this.ordinestandardif.addCreamtart(new addCreamtart());
@@ -130,18 +131,20 @@ public class OrdineStandardController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
-			System.out.println(clientestandard.isVipUser(clientestandard.getUsername()));
+			System.out.println(utente.isVipUser(utente.getUsername()));
 			if (!loginif.getClientePremiumRadioButton().isSelected()) { // se utente non � vip
 				// visualizzazione carrello senza sconto sul totale
-				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(clientestandard, carrello, 0);
+				utente = new Cliente(utente.getUsername(), utente.getPassword());
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
-				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(clientestandard,
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine, loginif);
 			} else {
 				// visualizzazione carrello con sconto giornaliero sul totale
-				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(clientestandard, carrello, 0.3);
+				utente = new ClientePremium(utente.getUsername(), utente.getPassword());
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0.3);
 				visualizzaordineif.setVisible(true);
-				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(clientestandard,
+				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine, loginif);
 			}
 

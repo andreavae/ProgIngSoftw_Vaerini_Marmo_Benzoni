@@ -6,8 +6,8 @@ import java.util.List;
 public class OrdineStandard extends Ordine {
 	private List<Prodotto> carrello;
 
-	public OrdineStandard(ClienteStandard clientestandard, double sconto) {
-		super(clientestandard);
+	public OrdineStandard(User utente, double sconto) {
+		super(utente);
 		carrello = new ArrayList<Prodotto>();
 	}
 
