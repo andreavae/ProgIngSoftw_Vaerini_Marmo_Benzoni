@@ -6,6 +6,7 @@ import control.IntroController;
 import view.IntroIF;
 
 public class Main {
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() { // avvio dell'interfaccia utente
 			@Override
@@ -19,5 +20,6 @@ public class Main {
 				}
 			}
 		});
+
 	}
 }

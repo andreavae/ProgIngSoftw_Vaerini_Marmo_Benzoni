@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import model.Home;
 //import model.Sconto;
 import model.User;
 import view.HomeIF;
@@ -33,12 +34,14 @@ public class LoginController {
 			String password = loginif.getPasswordField();
 
 			user = new User(username, password); // creato un oggetto User
-			// boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
+			boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
 			if (!flagVip) {
 				if (user.isLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
 					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
+					Home home = new Home(loginif);
+					System.out.println(home.getCliente(user, flagVip).getClass());
 					homeif.setVisible(true);
 					HomeController homecontroller = new HomeController(homeif, user, loginif);
 				} else {
@@ -49,6 +52,8 @@ public class LoginController {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
+					Home home = new Home(loginif);
+					System.out.println(home.getCliente(user, flagVip).getClass());
 					homeif.setVisible(true);
 					HomeController homecontroller = new HomeController(homeif, user, loginif, 0.3);
 				} else {
