@@ -7,7 +7,6 @@ public class Prodotto {
 
 	private String IDprodotto;
 	private String Nome;
-	private float Prezzo;
 	private String pathImmagine;
 	private ImageIcon imageicon;
 	private double prezzo;
@@ -20,9 +19,9 @@ public class Prodotto {
 	}
 
 	// costruttore 2
-	public Prodotto(String nome, float prezzo) {
+	public Prodotto(String nome, double prezzo) {
 		this.Nome = nome;
-		this.Prezzo = prezzo;
+		this.prezzo = prezzo;
 	}
 
 	// ritorno delle variabili
@@ -34,8 +33,8 @@ public class Prodotto {
 		return Nome;
 	}
 
-	public float getPrezzo() {
-		return Prezzo;
+	public double getPrezzo() {
+		return prezzo;
 	}
 
 	public String getPathImmagine() {
