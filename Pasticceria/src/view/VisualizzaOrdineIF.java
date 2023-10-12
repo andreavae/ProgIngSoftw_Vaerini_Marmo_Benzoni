@@ -21,7 +21,7 @@ import model.Prodotto;
 import model.User;
 
 public class VisualizzaOrdineIF extends JFrame {
-
+	private LoginIF loginif;
 	private JPanel VisualizzaOrdineContentPane;
 	private JButton BackButton;
 	private JButton ConfermaOrdineButton;
@@ -32,8 +32,9 @@ public class VisualizzaOrdineIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VisualizzaOrdineIF(User utente, OrdineStandard carrello, double sconto) {
+	public VisualizzaOrdineIF(LoginIF loginif, User utente, OrdineStandard carrello, double sconto) {
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.loginif = loginif;
 		this.utente = utente;
 		setMinimumSize(new Dimension(450, 300)); // Imposta le dimensioni minime
 		setLocationRelativeTo(null);
@@ -65,7 +66,8 @@ public class VisualizzaOrdineIF extends JFrame {
 		JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
 		// Aggiungi le due JLabel affiancate
-		if (!utente.isVipLoginValid()) {
+		boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
+		if (!flagVip) {
 			totale = carrello.getTotale(0);
 		} else {
 			totale = carrello.getTotale(0.3);

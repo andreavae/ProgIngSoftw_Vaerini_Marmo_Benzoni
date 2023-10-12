@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import model.User;
+import view.IntroIF;
 import view.LoginIF;
 import view.SignIF;
 
@@ -18,6 +19,7 @@ public class SignController { // dichiarazione variabili
 		this.user = user;
 
 		this.signif.addResgistratiListener(new RegistratiListener());
+		this.signif.addBackListener(new back());
 	}
 
 	class RegistratiListener implements ActionListener {
@@ -37,8 +39,17 @@ public class SignController { // dichiarazione variabili
 			} else {
 				JOptionPane.showMessageDialog(signif, "Registrazione fallita. Riprova!");
 			}
-
 		}
+	}
 
+	class back implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			IntroIF introif = new IntroIF();
+			IntroController introcontroller = new IntroController(introif);
+			signif.dispose();
+			introif.setVisible(true);
+		}
 	}
 }

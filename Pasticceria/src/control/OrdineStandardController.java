@@ -142,14 +142,14 @@ public class OrdineStandardController {
 			if (!loginif.getClientePremiumRadioButton().isSelected()) { // se utente non � vip
 				// visualizzazione carrello senza sconto sul totale
 				utente = new Cliente(utente.getUsername(), utente.getPassword());
-				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0);
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(loginif, utente, carrello, 0);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine, loginif);
 			} else {
 				// visualizzazione carrello con sconto giornaliero sul totale
 				utente = new ClientePremium(utente.getUsername(), utente.getPassword());
-				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(utente, carrello, 0.3);
+				VisualizzaOrdineIF visualizzaordineif = new VisualizzaOrdineIF(loginif, utente, carrello, 0.3);
 				visualizzaordineif.setVisible(true);
 				VisualizzaOrdineController visualizzaordinecontroller = new VisualizzaOrdineController(utente,
 						visualizzaordineif, carrello, ordine, loginif);

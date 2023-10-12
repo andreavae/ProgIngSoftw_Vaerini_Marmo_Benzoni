@@ -19,13 +19,14 @@ public class LoginIF extends JFrame {
 	private JTextField passwordField;
 	private JButton loginButton;
 	private JRadioButton ClientePremiumRadioButton;
+	private JButton BackButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public LoginIF() { // interfaccia Login //costruttore per l'aspetto grafico
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
-		setBounds(100, 100, 272, 225);
+		setBounds(100, 100, 334, 225);
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		LoginContentPane = new JPanel(); // per aggiungere componenti grafici
@@ -67,7 +68,7 @@ public class LoginIF extends JFrame {
 		loginButton.setForeground(new Color(255, 255, 255));
 		loginButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		loginButton.setBackground(new Color(255, 80, 120));
-		loginButton.setBounds(178, 128, 68, 40);
+		loginButton.setBounds(221, 75, 68, 31);
 		LoginContentPane.add(loginButton);
 
 		ClientePremiumRadioButton = new JRadioButton("Cliente Premium"); // selezione cliente premium
@@ -76,6 +77,13 @@ public class LoginIF extends JFrame {
 		ClientePremiumRadioButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ClientePremiumRadioButton.setBounds(21, 137, 146, 23);
 		LoginContentPane.add(ClientePremiumRadioButton);
+
+		BackButton = new JButton("Back");
+		BackButton.setForeground(new Color(255, 255, 255));
+		BackButton.setBackground(new Color(255, 80, 120));
+		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		BackButton.setBounds(200, 137, 89, 23);
+		LoginContentPane.add(BackButton);
 	}
 
 	// cattura testo inserito nei campi di testo
@@ -94,5 +102,9 @@ public class LoginIF extends JFrame {
 
 	public void addLoginListener(ActionListener listener) { // associa ascoltatore
 		loginButton.addActionListener(listener);
+	}
+
+	public void addBackListener(ActionListener listener) {
+		BackButton.addActionListener(listener);
 	}
 }

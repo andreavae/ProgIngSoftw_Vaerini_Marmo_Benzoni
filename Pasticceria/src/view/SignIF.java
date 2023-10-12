@@ -17,13 +17,14 @@ public class SignIF extends JFrame {
 	private JTextField SignUsernameField;
 	private JTextField SignPasswordField;
 	private JButton registratiButton;
+	private JButton BackButton;
 
 	/**
 	 * Create the frame.
 	 */
 	public SignIF() { // interfaccia Sign //costruttore per l'aspetto grafico
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
-		setBounds(100, 100, 304, 227);
+		setBounds(100, 100, 304, 275);
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		SignoContentPane = new JPanel();
@@ -69,6 +70,13 @@ public class SignIF extends JFrame {
 		registratiButton.setBounds(81, 124, 101, 53);
 		SignoContentPane.add(registratiButton);
 
+		BackButton = new JButton("Back");
+		BackButton.setForeground(new Color(255, 255, 255));
+		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		BackButton.setBackground(new Color(255, 80, 120));
+		BackButton.setBounds(189, 202, 89, 23);
+		SignoContentPane.add(BackButton);
+
 	}
 
 	// cattura inserimento testo utente
@@ -83,5 +91,9 @@ public class SignIF extends JFrame {
 	// associa ascoltatore
 	public void addResgistratiListener(ActionListener listener) {
 		registratiButton.addActionListener(listener);
+	}
+
+	public void addBackListener(ActionListener listener) {
+		BackButton.addActionListener(listener);
 	}
 }
