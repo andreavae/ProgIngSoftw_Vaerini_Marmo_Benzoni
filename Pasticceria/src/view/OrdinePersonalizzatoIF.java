@@ -36,7 +36,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public OrdinePersonalizzatoIF(User utente) {
+	public OrdinePersonalizzatoIF(User utente, double sconto) {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 508, 379);
@@ -134,7 +134,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		ScontoLabel.setBounds(370, 11, 46, 14);
 		contentPane.add(ScontoLabel);
 
-		ScontoSetLabel = new JLabel("");
+		ScontoSetLabel = new JLabel("" + (sconto * 100) + "%");
 		ScontoSetLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoSetLabel.setBounds(417, 11, 46, 14);
 		contentPane.add(ScontoSetLabel);

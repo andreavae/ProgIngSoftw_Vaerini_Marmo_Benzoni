@@ -165,7 +165,7 @@ public class OrdineStandardController {
 		public void actionPerformed(ActionEvent e) {
 			// visibilit� interfacce
 			homeif.setVisible(true);
-			ordinestandardif.setVisible(false);
+			ordinestandardif.dispose();
 		}
 
 	}
