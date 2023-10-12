@@ -54,7 +54,7 @@ public class VisualizzaOrdineIF extends JFrame {
 		for (Prodotto prodotto : carrello.getCarrello()) {
 			listModel.addElement(prodotto);
 		}
-		JList<Prodotto> lista = new JList<>(listModel);
+		JList<Prodotto> lista = new JList<Prodotto>(listModel);
 		JScrollPane scrollPane = new JScrollPane(lista); // per scorrere la lista
 		VisualizzaOrdineContentPane.add(scrollPane, BorderLayout.CENTER);
 

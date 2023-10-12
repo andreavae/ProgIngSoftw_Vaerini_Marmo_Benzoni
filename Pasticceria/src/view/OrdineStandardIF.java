@@ -40,7 +40,7 @@ public class OrdineStandardIF extends JFrame {
 		Prodotto Creamtart = new Prodotto("Cream Tart", "resources/Cream-tart.jpg", 20);
 		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg", 23);
 		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg", 20);
-		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg", 25);
+		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honore.jpg", 25);
 		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg", 18);
 		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg", 15);
 		Prodotto Tiramisu = new Prodotto("Tiramis�", "resources/Tiramisu.jpg", 16);
