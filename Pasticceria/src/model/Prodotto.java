@@ -10,11 +10,13 @@ public class Prodotto {
 	private float Prezzo;
 	private String pathImmagine;
 	private ImageIcon imageicon;
+	private double prezzo;
 
 	// costruttore 1
-	public Prodotto(String nome, String pathImmagine) {
+	public Prodotto(String nome, String pathImmagine, double prezzo) {
 		this.Nome = nome;
 		this.pathImmagine = pathImmagine;
+		this.prezzo = prezzo;
 	}
 
 	// costruttore 2
@@ -46,7 +48,7 @@ public class Prodotto {
 
 	@Override // visualizzazione
 	public String toString() {
-		return Nome + " Prezzo: " + Prezzo + " €";
+		return Nome + " Prezzo: " + prezzo + " €\n";
 	}
 
 }

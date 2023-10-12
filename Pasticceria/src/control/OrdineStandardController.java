@@ -2,7 +2,9 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
+import model.Catalogo;
 import model.Cliente;
 import model.ClientePremium;
 import model.Ordine;
@@ -42,6 +44,11 @@ public class OrdineStandardController {
 		this.ordinestandardif.addTiramisu(new addTiramisu());
 		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
 		this.ordinestandardif.back(new back());
+
+		System.out.println("CATALOGO - ORDINE STANDARD");
+		Catalogo catalogo = Catalogo.getIstance();
+		List<Prodotto> listaprodotti = catalogo.getCatalogo();
+		System.out.println(listaprodotti);
 	}
 
 	// gestione prodotto

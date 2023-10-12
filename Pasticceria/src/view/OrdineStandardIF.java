@@ -35,15 +35,15 @@ public class OrdineStandardIF extends JFrame {
 	 */
 	public OrdineStandardIF(User utente, double sconto) {
 		// prodotti
-		Prodotto Cheesecake = new Prodotto("Cheesecake", "resources/cheesecake.jpg");
-		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg");
-		Prodotto Creamtart = new Prodotto("Cream Tart", "resources/Cream-tart.jpg");
-		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg");
-		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg");
-		Prodotto SaintHonore = new Prodotto("Saint Honor�", "resources/Saint-honor�.jpg");
-		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg");
-		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg");
-		Prodotto Tiramisu = new Prodotto("Tiramis�", "resources/Tiramisu.jpg");
+		Prodotto Cheesecake = new Prodotto("Cheesecake", "resources/cheesecake.jpg", 15);
+		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg", 12);
+		Prodotto Creamtart = new Prodotto("Cream Tart", "resources/Cream-tart.jpg", 20);
+		Prodotto Iris = new Prodotto("Iris", "resources/Iris.jpg", 23);
+		Prodotto Mimosa = new Prodotto("Mimosa", "resources/mimosa.jpg", 20);
+		Prodotto SaintHonore = new Prodotto("Saint Honorè", "resources/Saint-honorè.jpg", 25);
+		Prodotto Sacher = new Prodotto("Sacher", "resources/Sacher.jpg", 18);
+		Prodotto Setteveli = new Prodotto("Setteveli", "resources/Setteveli.jpg", 15);
+		Prodotto Tiramisu = new Prodotto("Tiramis�", "resources/Tiramisu.jpg", 16);
 
 		// chiusura interfaccia
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
