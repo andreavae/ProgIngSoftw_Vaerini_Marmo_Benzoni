@@ -22,4 +22,22 @@ class LoginTest {
 		assertEquals(true, flagvip);
 	}
 
+	@Test
+	void test3() {
+		User utente = new User("admin", "admin");
+		boolean flagvip = utente.isVipLoginValid();
+		assertEquals(true, flagvip);
+	}
+
+	@Test
+	void test4() {
+		User utente = new User("admin", "admin");
+		boolean flagsign = utente.isSignValid();
+		assertEquals(true, flagsign);
+	}
+
+	/*
+	 * @Test void test5() { User utente = new User("user", 2); boolean flagsignvip =
+	 * utente.isSignVip(); assertEquals(true, flagsignvip); }
+	 */
 }
