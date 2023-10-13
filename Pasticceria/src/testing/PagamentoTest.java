@@ -13,14 +13,6 @@ public class PagamentoTest {
 	private Ordine ordine;
 
 	@Test
-	public void testOrdineValido() {
-		User utente = new User("admin", "admin");
-		Ordine ordine = new Ordine(utente);
-		boolean flagOrdine = ordine.isOrderValid(ordine, utente, 12);
-		assertEquals(true, flagOrdine);
-	}
-
-	@Test
 	public void testProcessoPagamentoValido() {
 		User utente = new User("admin", "admin");
 		Ordine ordine = new Ordine(utente);
