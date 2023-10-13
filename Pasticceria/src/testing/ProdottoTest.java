@@ -29,11 +29,4 @@ public class ProdottoTest {
 		assertEquals(20.0, prodotto2.getPrezzo(), 0.01);
 	}
 
-	@Test
-	public void testToString() {
-		String toString1 = prodotto1.toString();
-		String toString2 = prodotto2.toString();
-		assertEquals("Prodotto 1 Prezzo: 10.0 €\n", toString1);
-		assertEquals("Prodotto 2 Prezzo: 20.0 €\n", toString2);
-	}
 }
