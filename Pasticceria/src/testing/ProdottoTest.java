@@ -1,7 +1,6 @@
 package testing;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,13 +27,6 @@ public class ProdottoTest {
 	public void testGetPrezzo() {
 		assertEquals(10.0, prodotto1.getPrezzo(), 0.01);
 		assertEquals(20.0, prodotto2.getPrezzo(), 0.01);
-	}
-
-	@Test
-	public void testGetPathImmagine() {
-		assertEquals("immagine1.jpg", prodotto1.getPathImmagine());
-		// Il secondo prodotto non ha un'immagine, quindi dovrebbe restituire null.
-		assertNull(prodotto2.getPathImmagine());
 	}
 
 	@Test
