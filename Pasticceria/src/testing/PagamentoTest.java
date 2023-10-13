@@ -64,4 +64,13 @@ public class PagamentoTest {
 		assertEquals("1234567890123456", pagamento.getNumeroCarta());
 	}
 
+	@Test
+	public void testGetDataScadenza() {
+		User utente = new User("admin", "admin");
+		Ordine ordine = new Ordine(utente);
+		String numeroCarta = "1234567890123456";
+		String dataScadenza = "12/23";
+		Pagamento pagamento = new Pagamento(ordine, numeroCarta, dataScadenza);
+		assertEquals("12/23", pagamento.getDataScadenza());
+	}
 }
