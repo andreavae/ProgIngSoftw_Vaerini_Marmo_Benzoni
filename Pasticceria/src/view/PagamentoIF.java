@@ -16,7 +16,7 @@ public class PagamentoIF extends JFrame {
 	private JPanel PagamentoContentPane;
 	private JTextField NumeroCartaField;
 	private JTextField DataScadenzaField;
-	private JButton PagamentoButton;
+	public JButton PagamentoButton;
 
 	/**
 	 * Create the frame.
