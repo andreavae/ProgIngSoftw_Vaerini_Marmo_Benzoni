@@ -107,4 +107,14 @@ public class LoginIF extends JFrame {
 	public void addBackListener(ActionListener listener) {
 		BackButton.addActionListener(listener);
 	}
+
+	public void setUsernameFieldText(String string) {
+
+	}
+
+	public void setPasswordFieldText(String string) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
