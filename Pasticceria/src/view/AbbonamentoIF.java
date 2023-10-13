@@ -13,11 +13,11 @@ import javax.swing.border.EmptyBorder;
 
 public class AbbonamentoIF extends JFrame {
 
-	private JPanel DiventaPremiumContentPane;
-	private JTextField UsernameTextField;
-	private JTextField NumeroCartaTextField;
-	private JTextField ScadenzaCartaTextField;
-	private JButton AbbonatiButton;
+	public JPanel DiventaPremiumContentPane;
+	public JTextField UsernameTextField;
+	public JTextField NumeroCartaTextField;
+	public JTextField ScadenzaCartaTextField;
+	public JButton AbbonatiButton;
 
 	/**
 	 * Create the frame.

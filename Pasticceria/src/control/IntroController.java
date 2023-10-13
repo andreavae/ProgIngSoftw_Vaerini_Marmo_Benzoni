@@ -10,6 +10,7 @@ import view.SignIF;
 
 public class IntroController { // interfaccia iniziale
 	private IntroIF introif;
+	public Object openLogin;
 
 	public IntroController(IntroIF introif) {
 		this.introif = introif;
