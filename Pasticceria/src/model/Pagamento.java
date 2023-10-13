@@ -29,12 +29,12 @@ public class Pagamento {
 		return dataScadenza.matches("\\d{2}/\\d{2}");
 	}
 
-	// restituisce il nuero della carta
+	// restituisce il numero della carta
 	public String getNumeroCarta() {
 		return numeroCarta;
 	}
 
-	// restituisce la scandenza
+	// restituisce la scadenza
 	public String getDataScadenza() {
 		return dataScadenza;
 	}
