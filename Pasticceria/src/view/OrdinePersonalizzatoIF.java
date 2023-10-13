@@ -17,7 +17,7 @@ import model.User;
 public class OrdinePersonalizzatoIF extends JFrame {
 
 	private JPanel contentPane; // variabili
-	private JButton backButton;
+	public JButton backButton;
 	private JLabel UtenteLabel;
 	private JLabel UtenteInLabel;
 	private JLabel NpersoneLabel;
@@ -113,7 +113,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(OccasioneComboBox);
 
 		String[] nPersone = { "Da  5 a 10 persone (+00.00€)", "Da 10 a 15 persone (+10.00€)", // num persone per la
-																								// torta
+																									// torta
 				"Da 15 a 25 persone (+30.00€)" };
 		nPersoneComboBox = new JComboBox<String>(); // menu a tendina
 		for (String persona : nPersone) { // inserimento valori
