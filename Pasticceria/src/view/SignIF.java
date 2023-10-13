@@ -16,8 +16,8 @@ public class SignIF extends JFrame {
 	private JPanel SignoContentPane; // dichiarazione variabili
 	private JTextField SignUsernameField;
 	private JTextField SignPasswordField;
-	private JButton registratiButton;
-	private JButton BackButton;
+	public JButton registratiButton;
+	public JButton BackButton;
 
 	/**
 	 * Create the frame.
