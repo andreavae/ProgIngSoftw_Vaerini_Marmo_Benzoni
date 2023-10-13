@@ -55,5 +55,6 @@ class LoginTest {
 		User utente = new User("admin", "admin");
 		String flagpassword = utente.getPassword();
 		assertEquals("admin", flagpassword);
+
 	}
 }
