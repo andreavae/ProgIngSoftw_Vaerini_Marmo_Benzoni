@@ -62,4 +62,9 @@ public class IntroIF extends JFrame {
 		SigButton.addActionListener(listener);
 	}
 
+	public JButton getSigButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -124,4 +124,19 @@ public class HomeIF extends JFrame {
 	public void openAbbonamento(ActionListener listener) {
 		AbbonatiButton.addActionListener(listener);
 	}
+
+	public JButton getOrdineStandardButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public JButton getOrdinePersonalizzatoButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public JButton getQuitButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
