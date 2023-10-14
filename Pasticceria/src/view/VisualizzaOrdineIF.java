@@ -23,9 +23,9 @@ import model.User;
 public class VisualizzaOrdineIF extends JFrame {
 	private LoginIF loginif;
 	private JPanel VisualizzaOrdineContentPane;
-	private JButton BackButton;
-	private JButton ConfermaOrdineButton;
-	private JButton CancellaButton;
+	public JButton BackButton;
+	public JButton ConfermaOrdineButton;
+	public JButton CancellaButton;
 	private User utente;
 	private double totale;
 

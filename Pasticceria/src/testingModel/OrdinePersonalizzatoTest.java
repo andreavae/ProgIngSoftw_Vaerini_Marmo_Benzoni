@@ -63,7 +63,7 @@ public class OrdinePersonalizzatoTest {
 
 	@Test
 	public void testDataConsegna() {
-		JTextField date = new JTextField("2023-10-15");
+		JTextField date = new JTextField("2023-15-10");
 		String data = ordinePersonalizzato.dataConsegna(date);
 		assertNotNull(data); // Verifica che la data non sia nulla
 	}

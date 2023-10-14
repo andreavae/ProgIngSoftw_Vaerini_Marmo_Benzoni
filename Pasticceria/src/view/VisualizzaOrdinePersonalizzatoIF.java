@@ -16,13 +16,13 @@ import model.User;
 public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 
 	private JPanel contentPane;
-	private String descrizioneOrdine;
+	public String descrizioneOrdine;
 	private User utente;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
 	private OrdinePersonalizzatoController ordinepersonalizzatocontroller;
-	private JButton BackButton;
-	private JButton ConfermaOrdineButton;
-	private JButton CancellaButton;
+	public JButton BackButton;
+	public JButton ConfermaOrdineButton;
+	public JButton CancellaButton;
 
 	/**
 	 * Create the frame.
