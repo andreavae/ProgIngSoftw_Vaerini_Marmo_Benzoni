@@ -50,7 +50,7 @@ public class PagamentoController {
 		this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
 	}
 
-	class pagamentostandard implements ActionListener {
+	public class pagamentostandard implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) { // per gestire l'evento pagamento

@@ -52,7 +52,7 @@ public class OrdineStandardController {
 	}
 
 	// gestione prodotto
-	class addCheesecake implements ActionListener {
+	public class addCheesecake implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Prodotto Cheesecake = new Prodotto("Cheesecake", 15); // oggetto prodotto con nome e prezzo
@@ -134,7 +134,7 @@ public class OrdineStandardController {
 	}
 
 	// gestione visualizzazione ordine
-	class visualizzaOrdine implements ActionListener {
+	public class visualizzaOrdine implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
@@ -160,7 +160,7 @@ public class OrdineStandardController {
 	}
 
 	// gestione pulsante back
-	class back implements ActionListener {
+	public class back implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// visibilit� interfacce

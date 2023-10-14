@@ -81,4 +81,9 @@ public class AbbonamentoIF extends JFrame {
 	public void DiventaPremium(ActionListener listener) {
 		AbbonatiButton.addActionListener(listener);
 	}
+
+	public String showMessageDialog(String string) {
+		return string;
+
+	}
 }

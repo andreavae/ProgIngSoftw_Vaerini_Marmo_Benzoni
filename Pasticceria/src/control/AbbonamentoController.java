@@ -32,7 +32,7 @@ public class AbbonamentoController {
 		public void actionPerformed(ActionEvent e) {
 			codiceAbbonamento = abbonamento.getId();
 			username = utente.getUsername();
-			if (utente.isSignVip(username, codiceAbbonamento)) { // si verifica la validità del pagamento
+			if (utente.isSignVip(username, codiceAbbonamento)) { // si verifica la validitï¿½ del pagamento
 				JOptionPane.showMessageDialog(abbonamentoif, "Sei diventato un Cliente Premium");
 				abbonamentoif.dispose(); // chiusura interfaccia
 				LoginIF loginif = new LoginIF();

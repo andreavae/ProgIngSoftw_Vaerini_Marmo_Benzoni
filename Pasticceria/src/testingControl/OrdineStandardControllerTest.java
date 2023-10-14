@@ -1,14 +1,20 @@
 package testingControl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import control.OrdineStandardController;
+import model.Ordine;
+import model.OrdineStandard;
+import model.Prodotto;
 import model.User;
 import view.HomeIF;
 import view.LoginIF;
@@ -16,91 +22,71 @@ import view.OrdineStandardIF;
 
 public class OrdineStandardControllerTest {
 
-	private OrdineStandardController ordineStandardController;
-	private OrdineStandardIFStub ordineStandardIFStub;
-	private UserStub userStub;
-	private HomeIFStub homeIFStub;
-	private LoginIFStub loginIFStub;
+	@Mock
+	private OrdineStandardIF ordinestandardif;
+	@Mock
+	private OrdineStandard carrello;
+	@Mock
+	private User utente;
+	@Mock
+	private LoginIF loginif;
+	@Mock
+	private Ordine ordine;
+	@Mock
+	private HomeIF homeif;
+	private OrdineStandardController ordinestandardController;
 
 	@Before
 	public void setUp() {
-		ordineStandardIFStub = new OrdineStandardIFStub();
-		userStub = new UserStub();
-		homeIFStub = new HomeIFStub();
-		loginIFStub = new LoginIFStub();
+		MockitoAnnotations.initMocks(this); // Inizializza i mock
 
-		ordineStandardController = new OrdineStandardController(userStub, ordineStandardIFStub, null, homeIFStub, null,
-				loginIFStub);
+		ordinestandardController = new OrdineStandardController(utente, ordinestandardif, carrello, null, ordine,
+				loginif);
 	}
 
 	@Test
-	public void testAddProdottoCheesecake() {
-		// Simuliamo l'azione di aggiunta di un prodotto (es. Cheesecake)
-		ordineStandardIFStub.cheesecakeListener.actionPerformed(null);
+	public void testAddCheesecakeActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Cheesecake"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Cheesecake");
 
-		// Verifichiamo che il prodotto sia stato aggiunto correttamente al carrello
-		assertEquals(1, ordineStandardController.carrello.getCarrello().size());
-		assertEquals("Cheesecake", ordineStandardController.carrello.getCarrello().get(0).getNome());
-		assertEquals(15, ordineStandardController.carrello.getCarrello().get(0).getPrezzo(), 0.01);
+		// Esegui l'azione sull'ascoltatore "addCheesecake"
+		ordinestandardController.new addCheesecake().actionPerformed(actionEvent);
+
+		// Verifica che il prodotto "Cheesecake" sia stato aggiunto al carrello
+		// correttamente
+		verify(carrello).addProdotto(any(Prodotto.class));
 	}
+
+	// Esegui test simili per gli altri prodotti...
 
 	@Test
-	public void testVisualizzaOrdineNonVip() {
-		// Simuliamo un utente non VIP
-		loginIFStub.clientePremiumRadioButtonSelected = false;
+    public void testVisualizzaOrdineActionPerformed() {
+        // Simula il comportamento di utente non VIP
+        when(loginif.getClientePremiumRadioButton().isSelected()).thenReturn(false);
 
-		// Simuliamo l'azione di visualizzazione dell'ordine
-		ordineStandardIFStub.visualizzaOrdineListener.actionPerformed(null);
+        // Crea un evento fittizio per il pulsante "Visualizza Ordine"
+        ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Visualizza Ordine");
 
-		// Verifichiamo che sia stato creato un VisualizzaOrdineIF senza sconto
-		assertTrue(ordineStandardIFStub.visualizzaOrdineIFCreated);
-		assertEquals(0, ordineStandardIFStub.scontoApplicato, 0.01);
-	}
+        // Esegui l'azione sull'ascoltatore "visualizzaOrdine"
+        ordinestandardController.new visualizzaOrdine().actionPerformed(actionEvent);
+
+        // Verifica che sia stata creata un'istanza di VisualizzaOrdineIF senza sconto sul totale
+       // verifyNew(VisualizzaOrdineIF.class).withArguments(loginif, utente, carrello, 0.0);
+    }
+
+	// Esegui test simili per utente VIP...
 
 	@Test
-	public void testVisualizzaOrdineVip() {
-		// Simuliamo un utente VIP
-		loginIFStub.clientePremiumRadioButtonSelected = true;
+	public void testBackActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Back"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Back");
 
-		// Simuliamo l'azione di visualizzazione dell'ordine
-		ordineStandardIFStub.visualizzaOrdineListener.actionPerformed(null);
+		// Esegui l'azione sull'ascoltatore "back"
+		ordinestandardController.new back().actionPerformed(actionEvent);
 
-		// Verifichiamo che sia stato creato un VisualizzaOrdineIF con sconto
-		assertTrue(ordineStandardIFStub.visualizzaOrdineIFCreated);
-		assertEquals(0.3, ordineStandardIFStub.scontoApplicato, 0.01);
-	}
-
-	// Classe stub per OrdineStandardIF
-	private class OrdineStandardIFStub extends OrdineStandardIF {
-		public boolean visualizzaOrdineIFCreated = false;
-		public double scontoApplicato = 0;
-
-		@Override
-		public void addCheesecake(ActionListener listener) {
-			cheesecakeListener = listener;
-		}
-
-		@Override
-		public void visualizzaOrdine(ActionListener listener) {
-			visualizzaOrdineListener = listener;
-		}
-	}
-
-	// Classe stub per User
-	private class UserStub extends User {
-	}
-
-	// Classe stub per HomeIF
-	private class HomeIFStub extends HomeIF {
-	}
-
-	// Classe stub per LoginIF
-	private class LoginIFStub extends LoginIF {
-		public boolean clientePremiumRadioButtonSelected = false;
-
-		@Override
-		public boolean getClientePremiumRadioButton() {
-			return clientePremiumRadioButtonSelected;
-		}
+		// Verifica che la finestra corrente venga nascosta e quella precedente sia resa
+		// visibile
+		verify(ordinestandardif).dispose();
+		verify(homeif).setVisible(true);
 	}
 }

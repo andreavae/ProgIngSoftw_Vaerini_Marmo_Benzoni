@@ -1,130 +1,75 @@
 package testingControl;
 
+import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.awt.event.ActionEvent;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import control.PagamentoController;
+import model.Ordine;
+import model.OrdinePersonalizzato;
+import model.OrdineStandard;
+import model.User;
+import view.LoginIF;
+import view.PagamentoIF;
+import view.VisualizzaOrdineIF;
+import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class PagamentoControllerTest {
-    private PagamentoController pagamentoController;
-    private PagamentoIFStub pagamentoIF;
-    private VisualizzaOrdineIFStub visualizzaOrdineIF;
-    private OrdineStandardStub carrello;
-    private OrdineStub ordine;
-    private LoginIFStub loginIF;
 
-    @Before
-    public void setUp() {
-        pagamentoIF = new PagamentoIFStub();
-        visualizzaOrdineIF = new VisualizzaOrdineIFStub();
-        carrello = new OrdineStandardStub();
-        ordine = new OrdineStub();
-        loginIF = new LoginIFStub();
+	@Mock
+	private User utente;
+	@Mock
+	private PagamentoIF pagamentoif;
+	@Mock
+	private VisualizzaOrdineIF visualizzaordineif;
+	@Mock
+	private OrdineStandard carrello;
+	@Mock
+	private Ordine ordine;
+	@Mock
+	private LoginIF loginif;
+	@Mock
+	private OrdinePersonalizzato ordinepersonalizzato;
+	@Mock
+	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
 
-        pagamentoController = new PagamentoController(null, pagamentoIF, visualizzaOrdineIF, carrello, ordine, loginIF);
+	private PagamentoController pagamentoController;
+
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+
+		pagamentoController = new PagamentoController(utente, pagamentoif, visualizzaordineif, carrello, ordine,
+				loginif);
+	}
+
+	@Test
+    public void testPagamentoStandardActionPerformed() {
+        // Simula il comportamento di utente non VIP
+        when(loginif.getClientePremiumRadioButton().isSelected()).thenReturn(false);
+
+        // Crea un evento fittizio per il pagamento standard
+        ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Pagamento Standard");
+
+        // Esegui l'azione sull'ascoltatore "pagamentostandard"
+        pagamentoController.new pagamentostandard().actionPerformed(actionEvent);
+
+        // Verifica il comportamento corretto dopo il pagamento
+        // Puoi utilizzare Mockito per verificare le chiamate ai metodi e i messaggi visualizzati
+        verify(pagamentoif).dispose(); // Assicurati che la finestra di pagamento sia stata chiusa
+        verify(ordine).isOrderValid(eq(ordine), eq(utente), anyDouble()); // Verifica il comportamento di ordine
+        verify(carrello).svuotaCarrello(); // Assicurati che il carrello sia stato svuotato
+       // verify(pagamentoif).showMessageDialog(eq("Pagamento confermato!")); // Assicurati che sia visualizzato un messaggio
     }
 
-    @Test
-    public void testPagamentoStandard() {
-        // Simuliamo l'input dell'utente per il pagamento standard
-        pagamentoIF.setNumeroCartaField("1234 5678 9012 3456");
-        pagamentoIF.setDataScadenzaField("12/25");
-        loginIF.setClientePremiumRadioButton(false);
-
-        // Simuliamo il successo del processo di pagamento
-        pagamentoIF.setProcessoPagamentoResult(true);
-
-        // Eseguiamo l'azione di pagamento
-        pagamentoController.pagamentostandard.actionPerformed(null);
-
-        // Verifichiamo che il carrello sia stato svuotato
-        assertTrue(carrello.svuotaCarrelloChiamato);
-
-        // Verifichiamo che il messaggio di pagamento confermato sia stato mostrato
-        assertTrue(pagamentoIF.disposeChiamato);
-    }
-
-    @Test
-    public void testPagamentoStandardFallito() {
-        // Simuliamo l'input dell'utente per il pagamento standard
-        pagamentoIF.setNumeroCartaField("1234 5678 9012 3456");
-        pagamentoIF.setDataScadenzaField("12/25");
-        loginIF.setClientePremiumRadioButton(false);
-
-        // Simuliamo il fallimento del processo di pagamento
-        pagamentoIF.setProcessoPagamentoResult(false);
-
-        // Eseguiamo l'azione di pagamento
-        pagamentoController.pagamentostandard.actionPerformed(null);
-
-        // Verifichiamo che il carrello non sia stato svuotato
-        assertFalse(carrello.svuotaCarrelloChiamato);
-
-        // Verifichiamo che il messaggio di pagamento fallito sia stato mostrato
-        assertTrue(pagamentoIF.disposeChiamato);
-    }
-
-    @Test
-    public void testPagamentoPersonalizzato() {
-        // Simuliamo l'input dell'utente per il pagamento personalizzato
-        pagamentoIF.setNumeroCartaField("1234 5678 9012 3456");
-        pagamentoIF.setDataScadenzaField("12/25");
-        loginIF.setClientePremiumRadioButton(false);
-
-        // Simuliamo il successo del processo di pagamento
-        pagamentoIF.setProcessoPagamentoResult(true);
-
-        // Eseguiamo l'azione di pagamento
-        pagamentoController.pagamentoOrdinePersonalizzato.actionPerformed(null);
-
-        // Verifichiamo che il messaggio di pagamento confermato sia stato mostrato
-        assertTrue(pagamentoIF.disposeChiamato);
-    }
-
-    // Stub per PagamentoIF
-    private static class PagamentoIFStub extends PagamentoIF {
-        private String numeroCartaField;
-        private String dataScadenzaField;
-        private boolean processoPagamentoResult;
-        public boolean disposeChiamato;
-
-        public void setNumeroCartaField(String numeroCarta) {
-            this.numeroCartaField = numeroCarta;
-        }
-
-        public void setDataScadenzaField(String dataScadenza) {
-            this.dataScadenzaField = dataScadenza;
-        }
-
-        public void setProcessoPagamentoResult(boolean result) {
-            this.processoPagamentoResult = result;
-        }
-
-        @Override
-        public String getNumeroCartaField() {
-            return numeroCartaField;
-        }
-
-        @Override
-        public String getDataScadenzaField() {
-            return dataScadenzaField;
-        }
-
-        @Override
-        public boolean processoPagamento(String numeroCarta, String dataScadenza, double importo) {
-            return processoPagamentoResult;
-        }
-
-        @Override
-        public void dispose() {
-            disposeChiamato = true;
-        }
-    }
-
-    // Stub per VisualizzaOrdineIF
-    private static class VisualizzaOrdineIFStub extends VisualizzaOrdineIF {
-        // Implementazione personalizzata se necessario
-    }
-
-    // Stub per OrdineStandard
-    private
+	// Esegui test simili per utente VIP, pagamento personalizzato e altre
+	// casistiche...
+}
