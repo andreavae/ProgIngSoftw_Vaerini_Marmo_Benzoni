@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +33,7 @@ public class IngredientiIF extends JFrame {
 		BackButton.setBounds(30, 350, 89, 23);
 		contentPane.add(BackButton);
 
+		// inserimento ingredinti torte
 		JLabel CheesecakeLabel = new JLabel(
 				"CHEESECAKE:  Biscotti, Burro, Zucchero, Limone, Philadelphia, Panna, Gelatina");
 		CheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
@@ -44,6 +46,16 @@ public class IngredientiIF extends JFrame {
 		CubanaLabel.setBounds(20, 70, 700, 23);
 		contentPane.add(CubanaLabel);
 
+		JLabel CreamtartLabel = new JLabel("CREAM TART:  Farina, Burro, Uova, Zucchero, Panna, Mascarpone, Vaniglia");
+		CreamtartLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		CreamtartLabel.setBounds(20, 100, 700, 23);
+		contentPane.add(CreamtartLabel);
+
+	}
+
+	// attivazione ascoltatore
+	public void back(ActionListener listener) {
+		BackButton.addActionListener(listener);
 	}
 
 }
