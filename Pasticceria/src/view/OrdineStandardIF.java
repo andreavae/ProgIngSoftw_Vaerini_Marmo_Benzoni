@@ -29,6 +29,7 @@ public class OrdineStandardIF extends JFrame {
 	private JButton addTiramisuButton;
 	public JButton VisualizzaOrdineButton;
 	public JButton BackButton;
+	public JButton IngredientiButton;
 
 	/**
 	 * Create the frame.
@@ -327,6 +328,13 @@ public class OrdineStandardIF extends JFrame {
 		BackButton.setBounds(20, 630, 89, 23);
 		contentPane.add(BackButton);
 
+		IngredientiButton = new JButton("Ingredienti"); // bottone per visualizzare gli ingredienti
+		IngredientiButton.setForeground(new Color(255, 255, 255));
+		IngredientiButton.setBackground(new Color(255, 80, 120));
+		IngredientiButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		IngredientiButton.setBounds(180, 630, 100, 23);
+		contentPane.add(IngredientiButton);
+
 		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%");
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(435, 11, 117, 14);
@@ -379,6 +387,10 @@ public class OrdineStandardIF extends JFrame {
 
 	public void back(ActionListener listener) {
 		BackButton.addActionListener(listener);
+	}
+
+	public void ingredienti(ActionListener listener) {
+		IngredientiButton.addActionListener(listener);
 	}
 
 }
