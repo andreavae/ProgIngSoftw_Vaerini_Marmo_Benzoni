@@ -63,6 +63,12 @@ public class IngredientiIF extends JFrame {
 		MimosaLabel.setBounds(20, 160, 700, 23);
 		contentPane.add(MimosaLabel);
 
+		JLabel SaintLabel = new JLabel(
+				"SAINT HONORÈ:  Uova, Farina, Zucchero, Fecola di patate, Panna, Latte, Cioccolato fondente, Gelatina, Vaniglia");
+		SaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		SaintLabel.setBounds(20, 190, 900, 23);
+		contentPane.add(SaintLabel);
+
 	}
 
 	// attivazione ascoltatore
