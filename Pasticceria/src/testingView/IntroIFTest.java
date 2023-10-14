@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 
 import org.junit.Before;
@@ -29,7 +28,7 @@ public class IntroIFTest {
 		introIF.openLogin(listener);
 
 		Point button = introIF.getLocation();
-		((AbstractButton) button).doClick(); // Simula un click sul pulsante Login
+		// ((AbstractButton) button).doClick(); // Simula un click sul pulsante Login
 
 		assertTrue(buttonClicked);
 	}

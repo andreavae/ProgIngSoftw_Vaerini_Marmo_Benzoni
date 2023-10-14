@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import model.Prodotto;
+import model.User;
 
 public class OrdineStandardIF extends JFrame {
 
@@ -32,7 +33,7 @@ public class OrdineStandardIF extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public OrdineStandardIF(String string, double sconto) {
+	public OrdineStandardIF(User utente, double sconto) {
 		// prodotti
 		Prodotto Cheesecake = new Prodotto("Cheesecake", "resources/cheesecake.jpg", 15);
 		Prodotto Cubana = new Prodotto("Cubana", "resources/cubana.jpg", 12);
@@ -308,7 +309,7 @@ public class OrdineStandardIF extends JFrame {
 		userLabel.setBounds(10, 11, 35, 14);
 		contentPane.add(userLabel);
 
-		JLabel UserINLabel = new JLabel(" " + string.getUsername()); // etichetta nome utente
+		JLabel UserINLabel = new JLabel(" " + utente.getUsername()); // etichetta nome utente
 		UserINLabel.setBounds(40, 11, 69, 14);
 		contentPane.add(UserINLabel);
 

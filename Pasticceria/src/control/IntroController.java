@@ -11,10 +11,11 @@ import view.SignIF;
 public class IntroController { // interfaccia iniziale
 	private IntroIF introif;
 	public Object openLogin;
+	public boolean buttonClick;
 
 	public IntroController(IntroIF introif) {
 		this.introif = introif;
-
+		this.buttonClick = false;
 		this.introif.openLogin(new openLogin()); // associazione gestore eventi
 		this.introif.openSign(new openSign());
 	}
@@ -23,6 +24,7 @@ public class IntroController { // interfaccia iniziale
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			buttonClick = true;
 			LoginIF loginif = new LoginIF();
 			User loginmodel = new User("", "");
 			LoginController logincontroller = new LoginController(loginif, loginmodel);
@@ -45,4 +47,9 @@ public class IntroController { // interfaccia iniziale
 		}
 
 	}
+
+	public boolean isButtonClick() {
+		return buttonClick;
+	}
+
 }
