@@ -11,6 +11,7 @@ public class IngredientiController {
 	private IngredientiIF ingredientiif;
 	private OrdineStandardIF ordinestandardif;
 
+	// costruttore
 	public IngredientiController(IngredientiIF ingredientiif, OrdineStandardIF ordinestandardif) {
 		this.ingredientiif = ingredientiif;
 		this.ordinestandardif = ordinestandardif;
@@ -21,7 +22,7 @@ public class IngredientiController {
 	// gestione pulsante back
 	public class back implements ActionListener {
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) { // torna ad ordine standard
 			// visibilit� interfacce
 			ordinestandardif.setVisible(true);
 			ingredientiif.dispose();

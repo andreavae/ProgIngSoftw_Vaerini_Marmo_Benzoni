@@ -80,6 +80,11 @@ public class IngredientiIF extends JFrame {
 		SetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
 		SetteveliLabel.setBounds(20, 250, 900, 23);
 		contentPane.add(SetteveliLabel);
+
+		JLabel TiramisuLabel = new JLabel("TIRAMUSÙ:  Farina, Zucchero, Uova, Mascarpone, Caffè, Cacao");
+		TiramisuLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		TiramisuLabel.setBounds(20, 280, 900, 23);
+		contentPane.add(TiramisuLabel);
 	}
 
 	// attivazione ascoltatore
