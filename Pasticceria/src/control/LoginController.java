@@ -25,7 +25,7 @@ public class LoginController {
 		this.loginif.addBackListener(new back());
 	}
 
-	class LoginListener implements ActionListener {
+	public class LoginListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

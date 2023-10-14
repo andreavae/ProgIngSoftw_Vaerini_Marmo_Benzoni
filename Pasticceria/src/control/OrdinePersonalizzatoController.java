@@ -37,7 +37,7 @@ public class OrdinePersonalizzatoController {
 	}
 
 	// gestione bottone back
-	class back implements ActionListener {
+	public class back implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// visibilit� delle interfaccie
@@ -47,7 +47,7 @@ public class OrdinePersonalizzatoController {
 	}
 
 	// gestione della visualizzazione di un ordine personalizzato
-	class VisualizzaOrdinePersonalizzato implements ActionListener {
+	public class VisualizzaOrdinePersonalizzato implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -80,4 +80,5 @@ public class OrdinePersonalizzatoController {
 		}
 
 	}
+
 }
