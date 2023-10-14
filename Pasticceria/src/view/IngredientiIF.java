@@ -74,6 +74,12 @@ public class IngredientiIF extends JFrame {
 		SacherLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
 		SacherLabel.setBounds(20, 220, 900, 23);
 		contentPane.add(SacherLabel);
+
+		JLabel SetteveliLabel = new JLabel(
+				"SETTEVELI:  Farina, Panna, Latte, Zucchero, Cioccolato, Uova, Gelatina, Nocciole, Cereali corn flakes");
+		SetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		SetteveliLabel.setBounds(20, 250, 900, 23);
+		contentPane.add(SetteveliLabel);
 	}
 
 	// attivazione ascoltatore
