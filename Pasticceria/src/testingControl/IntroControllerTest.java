@@ -3,62 +3,45 @@ package testingControl;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import control.IntroController;
 import view.IntroIF;
-import view.LoginIF;
-import view.SignIF;
 
 public class IntroControllerTest {
-
+	private IntroIF introif;
 	private IntroController introController;
-	private IntroIFStub introIFStub;
 
 	@Before
 	public void setUp() {
-		introIFStub = new IntroIFStub();
-		introController = new IntroController(introIFStub);
+		// Inizializzazione dei componenti necessari per i test
+		introif = new IntroIF();
+		introController = new IntroController(introif);
 	}
 
 	@Test
-	public void testOpenLogin() {
-		// Simula un evento fittizio per aprire l'interfaccia di login
-		introIFStub.openLoginActionPerformed(null);
+	public void testOpenLoginActionPerformed() {
+		// Test del listener openLogin
+		IntroController.openLogin listener = introController.new openLogin();
+		ActionEvent event = new ActionEvent(introif, ActionEvent.ACTION_PERFORMED, "OpenLogin");
 
-		// Verifica che l'interfaccia Intro sia nascosta e quella di Login sia visibile
-		assertFalse(introIFStub.isVisible());
-		assertTrue(introIFStub.loginIF.isVisible());
+		assertFalse(introController.isButtonClick()); // Assicurati che buttonClick sia inizialmente false
+		listener.actionPerformed(event); // Simula un evento di clic
+		assertTrue(introController.isButtonClick()); // Assicurati che buttonClick sia true dopo il clic
 	}
 
 	@Test
-	public void testOpenSign() {
-		// Simula un evento fittizio per aprire l'interfaccia di registrazione (Sign)
-		introIFStub.openSignActionPerformed(null);
+	public void testOpenSignActionPerformed() {
+		// Test del listener openSign
+		IntroController.openSign listener = introController.new openSign();
+		ActionEvent event = new ActionEvent(introif, ActionEvent.ACTION_PERFORMED, "OpenSign");
 
-		// Verifica che l'interfaccia Intro sia nascosta e quella di Sign sia visibile
-		assertFalse(introIFStub.isVisible());
-		assertTrue(introIFStub.signIF.isVisible());
-	}
-
-	// Classe stub per IntroIF
-	private class IntroIFStub extends IntroIF {
-		public LoginIF loginIF;
-		public SignIF signIF;
-
-		@Override
-		public void openLogin(ActionListener listener) {
-			loginIF = new LoginIF();
-			listener.actionPerformed(null);
-		}
-
-		@Override
-		public void openSign(ActionListener listener) {
-			signIF = new SignIF();
-			listener.actionPerformed(null);
-		}
+		// Assicurati che buttonClick sia inizialmente false
+		assertFalse(introController.isButtonClick());
+		listener.actionPerformed(event); // Simula un evento di clic
+		assertFalse(introController.isButtonClick()); // Assicurati che buttonClick rimanga false
 	}
 }

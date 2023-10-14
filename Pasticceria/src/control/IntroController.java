@@ -20,7 +20,7 @@ public class IntroController { // interfaccia iniziale
 		this.introif.openSign(new openSign());
 	}
 
-	class openLogin implements ActionListener { // apertura innterfaccia per il login
+	public class openLogin implements ActionListener { // apertura innterfaccia per il login
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -34,7 +34,7 @@ public class IntroController { // interfaccia iniziale
 		}
 	}
 
-	class openSign implements ActionListener { // apertura per interfaccia sign
+	public class openSign implements ActionListener { // apertura per interfaccia sign
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
