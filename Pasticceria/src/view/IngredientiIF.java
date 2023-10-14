@@ -51,6 +51,12 @@ public class IngredientiIF extends JFrame {
 		CreamtartLabel.setBounds(20, 100, 700, 23);
 		contentPane.add(CreamtartLabel);
 
+		JLabel IrisLabel = new JLabel(
+				"IRIS:  Latte, Farina, Zuccero, Uova, Burro, Ricotta di pecora, Gocce di cioccolato");
+		IrisLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		IrisLabel.setBounds(20, 130, 700, 23);
+		contentPane.add(IrisLabel);
+
 	}
 
 	// attivazione ascoltatore
