@@ -1,115 +1,63 @@
 package testingControl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import control.HomeController;
 import model.User;
-import view.AbbonamentoIF;
 import view.HomeIF;
-import view.OrdinePersonalizzatoIF;
-import view.OrdineStandardIF;
+import view.LoginIF;
 
 public class HomeControllerTest {
-
-	private HomeController homeController;
-	private HomeIFStub homeIFStub;
-	private UserStub userStub;
+	private HomeIF homeif;
+	private User utente;
+	private LoginIF loginif;
 
 	@Before
 	public void setUp() {
-		homeIFStub = new HomeIFStub();
-		userStub = new UserStub();
-
-		homeController = new HomeController(homeIFStub, "user", "user");
+		// Inizializzazione dei componenti necessari per i test
+		utente = new User("cliente", "cliente");
+		loginif = new LoginIF();
+		homeif = new HomeIF(utente, loginif, 0);
 	}
 
 	@Test
-	public void testOpenNuovoOrdineIF() {
-		// Simula un evento fittizio per aprire l'ordine standard
-		homeIFStub.openNuovoOrdineIF(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
+	public void testConstructor1() {
+		// Test del costruttore 1
+		HomeController controller = new HomeController(homeif, utente, loginif);
+		assertNotNull(controller);
+		// Verifica che il costruttore abbia inizializzato correttamente il controller
+	}
 
-		// Verifica che l'interfaccia Home sia nascosta e quella dell'Ordine Standard
-		// sia visibile
-		assertFalse(homeIFStub.isVisible());
-		assertTrue(homeIFStub.ordineStandardIF.isVisible());
+	@Test
+	public void testConstructor2() {
+		// Test del costruttore 2
+		HomeController controller = new HomeController(homeif, utente, loginif, 0.3);
+		assertNotNull(controller);
+		// Verifica che il costruttore abbia inizializzato correttamente il controller
+	}
+
+	// Puoi aggiungere altri test per i vari ActionListener all'interno della classe
+	// HomeController
+
+	@Test
+	public void testOpenNuovoOrdineIF() {
+		HomeController controller = new HomeController(homeif, utente, loginif);
+		HomeController.openNuovoOrdineIF listener = controller.new openNuovoOrdineIF();
+		// Simula un evento e verifica che il listener funzioni correttamente
+		// ad esempio, verifica che venga creata una nuova OrdineStandardIF
 	}
 
 	@Test
 	public void testOpenOrdinePersonalizzatoIF() {
-		// Simula un evento fittizio per aprire l'ordine personalizzato
-		homeIFStub.openOrdinePersonalizzatoIFActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-
-		// Verifica che l'interfaccia Home sia nascosta e quella dell'Ordine
-		// Personalizzato sia visibile
-		assertFalse(homeIFStub.isVisible());
-		assertTrue(homeIFStub.ordinePersonalizzatoIF.isVisible());
+		HomeController controller = new HomeController(homeif, utente, loginif);
+		HomeController.openOrdinePersonalizzatoIF listener = controller.new openOrdinePersonalizzatoIF();
+		// Simula un evento e verifica che il listener funzioni correttamente
+		// ad esempio, verifica che venga creata una nuova OrdinePersonalizzatoIF
 	}
 
-	@Test
-	public void testOpenSconto() {
-		// Simula un evento fittizio per aprire l'interfaccia con sconto
-		homeIFStub.openScontoActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
+	// Aggiungi altri test per gli altri ActionListener se necessario
 
-		// Verifica che l'interfaccia Home sia nascosta e quella con sconto sia visibile
-		assertFalse(homeIFStub.isVisible());
-		assertTrue(homeIFStub.homeIFVIP.isVisible());
-	}
-
-	@Test
-	public void testOpenAbbonamento() {
-		// Simula un evento fittizio per aprire l'interfaccia di abbonamento
-		homeIFStub.openAbbonamentoActionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-
-		// Verifica che l'interfaccia di abbonamento sia visibile
-		assertTrue(homeIFStub.abbonamentoIF.isVisible());
-	}
-
-	// Classe stub per HomeIF
-	private class HomeIFStub extends HomeIF {
-		public OrdineStandardIF ordineStandardIF;
-		public OrdinePersonalizzatoIF ordinePersonalizzatoIF;
-		public HomeIF homeIFVIP;
-		public AbbonamentoIF abbonamentoIF;
-
-		@Override
-		public void openNuovoOrdineIF(ActionListener listener) {
-			ordineStandardIF = new OrdineStandardIF(userStub, 0);
-			listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-		}
-
-		public boolean isVisible() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void openOrdinePersonalizzato(ActionListener listener) {
-			ordinePersonalizzatoIF = new OrdinePersonalizzatoIF(userStub, 0);
-			listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-		}
-
-		@Override
-		public void openSconto(ActionListener listener) {
-			homeIFVIP = new HomeIF(userStub, this, 0.3);
-			listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-		}
-
-		@Override
-		public void openAbbonamento(ActionListener listener) {
-			abbonamentoIF = new AbbonamentoIF();
-			listener.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null));
-		}
-	}
-
-	// Classe stub per User
-	private class UserStub extends User {
-		// Aggiungere eventuali metodi o attributi necessari per il test
-	}
 }

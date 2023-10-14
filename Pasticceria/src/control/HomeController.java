@@ -55,7 +55,7 @@ public class HomeController {
 
 	}
 
-	class openNuovoOrdineIF implements ActionListener { // gestione apertura interfaccia ordine
+	public class openNuovoOrdineIF implements ActionListener { // gestione apertura interfaccia ordine
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class HomeController {
 
 	}
 
-	class openOrdinePersonalizzatoIF implements ActionListener {
+	public class openOrdinePersonalizzatoIF implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
