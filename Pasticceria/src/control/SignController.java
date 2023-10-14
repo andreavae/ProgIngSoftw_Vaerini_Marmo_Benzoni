@@ -22,7 +22,7 @@ public class SignController { // dichiarazione variabili
 		this.signif.addBackListener(new back());
 	}
 
-	class RegistratiListener implements ActionListener {
+	public class RegistratiListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

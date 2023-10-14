@@ -32,7 +32,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 	}
 
 	// gestione pulsante back
-	class back implements ActionListener {
+	public class back implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -43,7 +43,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 	}
 
 	// gestione pulsante conferma
-	class conferma implements ActionListener {
+	public class conferma implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
