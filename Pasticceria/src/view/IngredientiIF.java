@@ -57,6 +57,12 @@ public class IngredientiIF extends JFrame {
 		IrisLabel.setBounds(20, 130, 700, 23);
 		contentPane.add(IrisLabel);
 
+		JLabel MimosaLabel = new JLabel(
+				"MIMOSA:  Farina, Zucchero, Fecola di patate, Uova, Vaniglia, Panna, Latte, Grand Marnier");
+		MimosaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		MimosaLabel.setBounds(20, 160, 700, 23);
+		contentPane.add(MimosaLabel);
+
 	}
 
 	// attivazione ascoltatore
