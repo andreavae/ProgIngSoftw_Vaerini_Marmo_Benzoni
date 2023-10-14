@@ -179,6 +179,7 @@ public class OrdineStandardController {
 			IngredientiIF ingredientiif = new IngredientiIF();
 			// visibilit� interfacce
 			ingredientiif.setVisible(true);
+			ordinestandardif.dispose();
 			IngredientiController ingredienticontroller = new IngredientiController(ingredientiif, ordinestandardif);
 		}
 
