@@ -59,6 +59,8 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		BackButton = new JButton("Back");
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBounds(10, 279, 75, 23);
+		BackButton.setForeground(new Color(255, 255, 255));
+		BackButton.setBackground(new Color(255, 80, 120));
 		contentPane.add(BackButton);
 
 		JLabel DataLabel = new JLabel("Data Consegna:");
@@ -109,6 +111,8 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		ConfermaOrdineButton = new JButton("Conferma Ordine");
 		ConfermaOrdineButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ConfermaOrdineButton.setBounds(336, 279, 150, 23);
+		ConfermaOrdineButton.setForeground(new Color(255, 255, 255));
+		ConfermaOrdineButton.setBackground(new Color(255, 80, 120));
 		contentPane.add(ConfermaOrdineButton);
 
 		JLabel ScontoLabel = new JLabel("Sconto: ");
@@ -124,6 +128,8 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		CancellaButton = new JButton("Cancella");
 		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		CancellaButton.setBounds(170, 279, 89, 23);
+		CancellaButton.setForeground(new Color(255, 255, 255));
+		CancellaButton.setBackground(new Color(255, 80, 120));
 		contentPane.add(CancellaButton);
 
 		JLabel initMoneyLabel = new JLabel("a partire da 30€");
