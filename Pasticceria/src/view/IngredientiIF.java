@@ -69,6 +69,11 @@ public class IngredientiIF extends JFrame {
 		SaintLabel.setBounds(20, 190, 900, 23);
 		contentPane.add(SaintLabel);
 
+		JLabel SacherLabel = new JLabel(
+				"SACHER:  Uova, Cioccolato, Burro, Farina, Panna, Zucchero, Vaniglia, Confettura di albicocche");
+		SacherLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		SacherLabel.setBounds(20, 220, 900, 23);
+		contentPane.add(SacherLabel);
 	}
 
 	// attivazione ascoltatore
