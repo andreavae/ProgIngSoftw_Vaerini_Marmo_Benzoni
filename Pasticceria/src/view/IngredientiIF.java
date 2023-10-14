@@ -38,6 +38,12 @@ public class IngredientiIF extends JFrame {
 		CheesecakeLabel.setBounds(20, 40, 700, 23);
 		contentPane.add(CheesecakeLabel);
 
+		JLabel CubanaLabel = new JLabel(
+				"CUBANA:  Uova, Burro, Zucchero, Latte, Mandorle, Uvetta, Noci, Farina, Arancia");
+		CubanaLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		CubanaLabel.setBounds(20, 70, 700, 23);
+		contentPane.add(CubanaLabel);
+
 	}
 
 }
