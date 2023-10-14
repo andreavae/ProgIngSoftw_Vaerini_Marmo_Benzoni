@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -30,6 +31,12 @@ public class IngredientiIF extends JFrame {
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBounds(30, 350, 89, 23);
 		contentPane.add(BackButton);
+
+		JLabel CheesecakeLabel = new JLabel(
+				"CHEESECAKE:  Biscotti, Burro, Zucchero, Limone, Philadelphia, Panna, Gelatina");
+		CheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
+		CheesecakeLabel.setBounds(20, 40, 700, 23);
+		contentPane.add(CheesecakeLabel);
 
 	}
 
