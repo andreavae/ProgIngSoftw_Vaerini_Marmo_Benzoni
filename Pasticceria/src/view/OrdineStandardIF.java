@@ -27,8 +27,8 @@ public class OrdineStandardIF extends JFrame {
 	private JButton addSacherButton;
 	private JButton addSetteveliButton;
 	private JButton addTiramisuButton;
-	private JButton VisualizzaOrdineButton;
-	private JButton BackButton;
+	public JButton VisualizzaOrdineButton;
+	public JButton BackButton;
 
 	/**
 	 * Create the frame.

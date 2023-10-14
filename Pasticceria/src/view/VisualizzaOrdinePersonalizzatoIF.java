@@ -101,7 +101,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		SetNumPersoneLabel.setBounds(145, 198, 263, 14);
 		contentPane.add(SetNumPersoneLabel);
 
-		JLabel TotaleLabel = new JLabel("Totale: " + (totale + 30) + "€");
+		JLabel TotaleLabel = new JLabel("Totale: " + (totale - (totale * 0.3) + 30) + "€");
 		TotaleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		TotaleLabel.setBounds(10, 238, 75, 14);
 		contentPane.add(TotaleLabel);
