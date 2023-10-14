@@ -70,6 +70,4 @@ public class PagamentoControllerTest {
        // verify(pagamentoif).showMessageDialog(eq("Pagamento confermato!")); // Assicurati che sia visualizzato un messaggio
     }
 
-	// Esegui test simili per utente VIP, pagamento personalizzato e altre
-	// casistiche...
 }

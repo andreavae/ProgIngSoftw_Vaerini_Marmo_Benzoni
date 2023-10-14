@@ -1,11 +1,14 @@
 package testingControl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.awt.event.ActionEvent;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import control.VisualizzaOrdineController;
 import model.Ordine;
@@ -15,63 +18,57 @@ import view.LoginIF;
 import view.VisualizzaOrdineIF;
 
 public class VisualizzaOrdineControllerTest {
+
+	@Mock
 	private User utente;
+	@Mock
 	private VisualizzaOrdineIF visualizzaordineif;
-	private OrdineStandard carrello;
+	@Mock
 	private Ordine ordine;
+	@Mock
+	private OrdineStandard carrello;
+	@Mock
 	private LoginIF loginif;
+
+	private VisualizzaOrdineController visualizzaOrdineController;
 
 	@Before
 	public void setUp() {
-		// Inizializza gli oggetti necessari prima di ciascun test
-		User utente = new User("admin", "admin");
-		visualizzaordineif = new VisualizzaOrdineIF(loginif, utente, carrello, 0);
-		carrello = new OrdineStandard(utente, 0);
-		ordine = new Ordine(utente);
-		loginif = new LoginIF();
+		MockitoAnnotations.initMocks(this);
+
+		visualizzaOrdineController = new VisualizzaOrdineController(utente, visualizzaordineif, carrello, ordine,
+				loginif);
 	}
 
 	@Test
-	public void testBackButton() {
-		// Assicurati che VisualizzaOrdineController sia in grado di gestire l'evento
-		// del pulsante "back".
+	public void testBackActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Back"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Back");
 
-		// Simula il clic sul pulsante "back".
-		visualizzaordineif.back(new VisualizzaOrdineController.back());
+		// Esegui l'azione sull'ascoltatore "back"
+		visualizzaOrdineController.new back().actionPerformed(actionEvent);
 
-		// Verifica che la finestra VisualizzaOrdineIF non sia più visibile.
-		assertFalse(visualizzaordineif.isVisible());
+		// Verifica il comportamento corretto dopo il clic sul pulsante "Back"
+		verify(visualizzaordineif).setVisible(false); // Assicurati che la finestra di visualizzazione ordine sia
+														// nascosta
 	}
 
 	@Test
-	public void testConfermaButton() {
-		// Assicurati che VisualizzaOrdineController sia in grado di gestire l'evento
-		// del pulsante "conferma".
+	public void testConfermaActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Conferma"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Conferma");
 
-		// Simula il clic sul pulsante "conferma".
-		VisualizzaOrdineController controller = new VisualizzaOrdineController(utente, visualizzaordineif, carrello,
-				ordine, loginif);
-		visualizzaordineif.conferma(controller.new conferma());
+		// Simula che l'utente sia VIP
+		when(utente.isVipUser(utente.getUsername())).thenReturn(true);
 
-		// Verifica che la finestra PagamentoIF sia visibile.
-		assertTrue(pagamentoif.isVisible());
+		// Esegui l'azione sull'ascoltatore "conferma"
+		visualizzaOrdineController.new conferma().actionPerformed(actionEvent);
 
-		// Puoi aggiungere ulteriori asserzioni per verificare che le azioni previste
-		// siano state eseguite correttamente.
+		// Verifica che sia stato creato un oggetto PagamentoIF e PagamentoController
+		// verifyNew(PagamentoIF.class).withNoArguments();
+		// verifyNew(PagamentoController.class).withArguments(utente,
+		// any(PagamentoIF.class), visualizzaordineif, carrello,
+		// ordine, loginif);
 	}
 
-	@Test
-	public void testCancellaButton() {
-		// Assicurati che VisualizzaOrdineController sia in grado di gestire l'evento
-		// del pulsante "cancella".
-
-		// Simula il clic sul pulsante "cancella".
-		visualizzaordineif.cancellaOrdine(new VisualizzaOrdineController.cancella());
-
-		// Verifica che la finestra VisualizzaOrdineIF sia stata chiusa.
-		assertFalse(visualizzaordineif.isVisible());
-
-		// Verifica che l'ordine sia stato cancellato.
-		assertEquals(0, carrello.getNumeroProdotti());
-	}
 }

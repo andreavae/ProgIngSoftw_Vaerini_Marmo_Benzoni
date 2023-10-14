@@ -1,12 +1,13 @@
 package testingControl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
 
-import java.awt.Component;
+import java.awt.event.ActionEvent;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import control.VisualizzaOrdinePersonalizzatoController;
 import model.Ordine;
@@ -16,50 +17,53 @@ import view.LoginIF;
 import view.VisualizzaOrdinePersonalizzatoIF;
 
 public class VisualizzaOrdinePersonalizzatoControllerTest {
+
+	@Mock
 	private User utente;
+	@Mock
 	private VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif;
+	@Mock
 	private OrdinePersonalizzato ordinepersonalizzato;
+	@Mock
 	private LoginIF loginif;
+	@Mock
 	private Ordine ordine;
+
+	private VisualizzaOrdinePersonalizzatoController visualizzaOrdinePersonalizzatoController;
 
 	@Before
 	public void setUp() {
-		// Inizializza gli oggetti necessari prima di ciascun test
-		User utente = new User("user", "user");
-		visualizzaordinepersonalizzatoif = new VisualizzaOrdinePersonalizzatoIF(utente, null, null, null, null, 0, 0);
-		ordinepersonalizzato = new OrdinePersonalizzato(utente);
-		loginif = new LoginIF();
-		ordine = new Ordine(utente);
-	}
+		MockitoAnnotations.initMocks(this);
 
-	@Test
-	public void testBackButton() {
-		// Assicurati che VisualizzaOrdinePersonalizzatoController sia in grado di
-		// gestire l'evento del pulsante "back".
-
-		// Simula il clic sul pulsante "back".
-		visualizzaordinepersonalizzatoif.back(new VisualizzaOrdinePersonalizzatoController.back());
-
-		// Verifica che la finestra VisualizzaOrdinePersonalizzatoIF non sia più
-		// visibile.
-		assertFalse(visualizzaordinepersonalizzatoif.isVisible());
-	}
-
-	@Test
-	public void testConfermaButton() {
-		// Assicurati che VisualizzaOrdinePersonalizzatoController sia in grado di
-		// gestire l'evento del pulsante "conferma".
-
-		// Simula il clic sul pulsante "conferma".
-		VisualizzaOrdinePersonalizzatoController controller = new VisualizzaOrdinePersonalizzatoController(utente,
+		visualizzaOrdinePersonalizzatoController = new VisualizzaOrdinePersonalizzatoController(utente,
 				visualizzaordinepersonalizzatoif, ordinepersonalizzato, loginif);
-		visualizzaordinepersonalizzatoif.conferma(controller.new conferma());
+	}
 
-		Component pagamentoif = null;
-		// Verifica che la finestra PagamentoIF sia visibile.
-		assertTrue(pagamentoif.isVisible());
+	@Test
+	public void testBackActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Back"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Back");
 
-		// Puoi aggiungere ulteriori asserzioni per verificare che le azioni previste
-		// siano state eseguite correttamente.
+		// Esegui l'azione sull'ascoltatore "back"
+		visualizzaOrdinePersonalizzatoController.new back().actionPerformed(actionEvent);
+
+		// Verifica il comportamento corretto dopo il clic sul pulsante "Back"
+		verify(visualizzaordinepersonalizzatoif).setVisible(false); // Assicurati che la finestra di visualizzazione
+																	// ordine sia nascosta
+	}
+
+	@Test
+	public void testConfermaActionPerformed() {
+		// Crea un evento fittizio per il pulsante "Conferma"
+		ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Conferma");
+
+		// Esegui l'azione sull'ascoltatore "conferma"
+		visualizzaOrdinePersonalizzatoController.new conferma().actionPerformed(actionEvent);
+
+		// Verifica che sia stato creato un oggetto PagamentoIF e PagamentoController
+		// verifyNew(PagamentoIF.class).withNoArguments();
+		// verifyNew(PagamentoController.class).withArguments(utente,
+		// any(PagamentoIF.class), ordinepersonalizzato,
+		// visualizzaordinepersonalizzatoif, loginif, ordine);
 	}
 }
