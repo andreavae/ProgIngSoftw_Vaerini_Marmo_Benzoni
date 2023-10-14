@@ -12,6 +12,7 @@ import model.OrdineStandard;
 import model.Prodotto;
 import model.User;
 import view.HomeIF;
+import view.IngredientiIF;
 import view.LoginIF;
 import view.OrdineStandardIF;
 import view.VisualizzaOrdineIF;
@@ -44,6 +45,7 @@ public class OrdineStandardController {
 		this.ordinestandardif.addTiramisu(new addTiramisu());
 		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
 		this.ordinestandardif.back(new back());
+		this.ordinestandardif.ingredienti(new ingredienti());
 
 		System.out.println("CATALOGO - ORDINE STANDARD");
 		Catalogo catalogo = Catalogo.getIstance();
@@ -166,6 +168,18 @@ public class OrdineStandardController {
 			// visibilit� interfacce
 			homeif.setVisible(true);
 			ordinestandardif.dispose();
+		}
+
+	}
+
+	// gestione pulsante ingredienti
+	public class ingredienti implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			IngredientiIF ingredientiif = new IngredientiIF();
+			// visibilit� interfacce
+			ingredientiif.setVisible(true);
+			IngredientiController ingredienticontroller = new IngredientiController(ingredientiif, ordinestandardif);
 		}
 
 	}
