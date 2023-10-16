@@ -78,7 +78,7 @@ public class LoginIF extends JFrame {
 		ClientePremiumRadioButton.setBounds(21, 137, 146, 23);
 		LoginContentPane.add(ClientePremiumRadioButton);
 
-		BackButton = new JButton("Back");
+		BackButton = new JButton("Back"); // boottone back
 		BackButton.setForeground(new Color(255, 255, 255));
 		BackButton.setBackground(new Color(255, 80, 120));
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
@@ -100,7 +100,7 @@ public class LoginIF extends JFrame {
 		return ClientePremiumRadioButton;
 	}
 
-	public void addLoginListener(ActionListener listener) { // associa ascoltatore
+	public void addLoginListener(ActionListener listener) {
 		loginButton.addActionListener(listener);
 	}
 

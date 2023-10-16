@@ -70,7 +70,7 @@ public class SignIF extends JFrame {
 		registratiButton.setBounds(81, 124, 101, 53);
 		SignoContentPane.add(registratiButton);
 
-		BackButton = new JButton("Back");
+		BackButton = new JButton("Back"); // bottone back
 		BackButton.setForeground(new Color(255, 255, 255));
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBackground(new Color(255, 80, 120));

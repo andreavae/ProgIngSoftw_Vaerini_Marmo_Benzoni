@@ -113,7 +113,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(OccasioneComboBox);
 
 		String[] nPersone = { "Da  5 a 10 persone (+00.00€)", "Da 10 a 15 persone (+10.00€)", // num persone per la
-																								// torta
+																									// torta
 				"Da 15 a 25 persone (+30.00€)" };
 		nPersoneComboBox = new JComboBox<String>(); // menu a tendina
 		for (String persona : nPersone) { // inserimento valori
@@ -129,12 +129,12 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		VisualizzaOrdinePersonalizzatoButton.setBounds(349, 306, 133, 23);
 		contentPane.add(VisualizzaOrdinePersonalizzatoButton);
 
-		ScontoLabel = new JLabel("Sconto:");
+		ScontoLabel = new JLabel("Sconto:"); // etichetta sconto
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(370, 11, 46, 14);
 		contentPane.add(ScontoLabel);
 
-		ScontoSetLabel = new JLabel("" + (sconto * 100) + "%");
+		ScontoSetLabel = new JLabel("" + (sconto * 100) + "%"); // visualizzazione sconto in perentuale
 		ScontoSetLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoSetLabel.setBounds(417, 11, 46, 14);
 		contentPane.add(ScontoSetLabel);

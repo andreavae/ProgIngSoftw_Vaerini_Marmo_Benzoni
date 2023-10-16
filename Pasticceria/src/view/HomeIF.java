@@ -85,7 +85,7 @@ public class HomeIF extends JFrame {
 		ScontoButton.setBounds(102, 139, 183, 23);
 		HomeContentPane.add(ScontoButton);
 
-		ScontoLabel = new JLabel("Sconto:" + sconto * 100 + "%");
+		ScontoLabel = new JLabel("Sconto:" + sconto * 100 + "%"); // etichetta sconto
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(311, 11, 113, 14);
 		HomeContentPane.add(ScontoLabel);

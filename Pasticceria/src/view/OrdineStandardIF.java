@@ -68,7 +68,7 @@ public class OrdineStandardIF extends JFrame {
 		JLabel CheesecakeImageLabel = new JLabel(imageIcon);
 		CheesecakeImagepanel.add(CheesecakeImageLabel, BorderLayout.WEST);
 
-		JLabel CheesecakeLabel = new JLabel("Cheesecake");
+		JLabel CheesecakeLabel = new JLabel("Cheesecake"); // etichetta nome
 		CheesecakeLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		CheesecakeLabel.setBounds(48, 180, 80, 23);
 		contentPane.add(CheesecakeLabel);
@@ -115,7 +115,7 @@ public class OrdineStandardIF extends JFrame {
 		// creazione pannello per visualizzare l'immagine e inserirlo
 		// nell'interfaccia utente
 		JPanel CreamtartImagepanel = new JPanel();
-		CreamtartImagepanel.setBounds(195, 89, 137, 92); // 195, 89, 137, 92
+		CreamtartImagepanel.setBounds(195, 89, 137, 92);
 		contentPane.add(CreamtartImagepanel);
 		CreamtartImagepanel.setLayout(new BorderLayout());
 		String pathCreamtart = Creamtart.getPathImmagine();
@@ -123,7 +123,7 @@ public class OrdineStandardIF extends JFrame {
 		JLabel CreamtartImageLabel = new JLabel(imageiconcreamtart);
 		CreamtartImagepanel.add(CreamtartImageLabel, BorderLayout.WEST);
 
-		JLabel CreamtartLabel = new JLabel("Cream Tart"); // etichetta crea tart
+		JLabel CreamtartLabel = new JLabel("Cream Tart"); // etichetta cream tart
 		CreamtartLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		CreamtartLabel.setBounds(233, 184, 80, 15); // 244, 184, 46, 14
 		contentPane.add(CreamtartLabel);
@@ -263,7 +263,7 @@ public class OrdineStandardIF extends JFrame {
 		SetteveliLabel.setBounds(240, 520, 80, 26);
 		contentPane.add(SetteveliLabel);
 
-		JLabel prezzoSetteveliLabel = new JLabel("15,00 €"); // prezzo Mimosa
+		JLabel prezzoSetteveliLabel = new JLabel("15,00 €"); // prezzo Setteveli
 		prezzoSetteveliLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 11));
 		prezzoSetteveliLabel.setBounds(244, 545, 46, 14);
 		contentPane.add(prezzoSetteveliLabel);
@@ -335,7 +335,7 @@ public class OrdineStandardIF extends JFrame {
 		IngredientiButton.setBounds(180, 630, 100, 23);
 		contentPane.add(IngredientiButton);
 
-		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%");
+		JLabel ScontoLabel = new JLabel("Sconto: " + sconto * 100 + "%"); // etichetta sconto
 		ScontoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoLabel.setBounds(435, 11, 117, 14);
 		contentPane.add(ScontoLabel);
