@@ -22,7 +22,6 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	private OrdinePersonalizzatoController ordinepersonalizzatocontroller;
 	public JButton BackButton;
 	public JButton ConfermaOrdineButton;
-	public JButton CancellaButton;
 
 	/**
 	 * Create the frame.
@@ -132,14 +131,6 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		ScontoSetLabel.setBounds(421, 11, 46, 14);
 		contentPane.add(ScontoSetLabel);
 
-		// Bottone Cancella
-		CancellaButton = new JButton("Cancella");
-		CancellaButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		CancellaButton.setBounds(170, 279, 89, 23);
-		CancellaButton.setForeground(new Color(255, 255, 255));
-		CancellaButton.setBackground(new Color(255, 80, 120));
-		contentPane.add(CancellaButton);
-
 		JLabel initMoneyLabel = new JLabel("a partire da 30€");
 		initMoneyLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		initMoneyLabel.setBounds(243, 48, 114, 14);
@@ -161,7 +152,4 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		ConfermaOrdineButton.addActionListener(listener);
 	}
 
-	public void cancella(ActionListener listener) {
-		CancellaButton.addActionListener(listener);
-	}
 }

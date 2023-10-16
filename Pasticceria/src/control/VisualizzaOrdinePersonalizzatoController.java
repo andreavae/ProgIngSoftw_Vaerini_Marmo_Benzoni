@@ -29,6 +29,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 		this.loginif = loginif;
 		this.visualizzaordinepersonalizzatoif.back(new back());
 		this.visualizzaordinepersonalizzatoif.conferma(new conferma());
+
 	}
 
 	// gestione pulsante back
