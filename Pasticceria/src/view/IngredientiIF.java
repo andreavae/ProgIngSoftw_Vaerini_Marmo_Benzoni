@@ -64,7 +64,7 @@ public class IngredientiIF extends JFrame {
 		contentPane.add(MimosaLabel);
 
 		JLabel SaintLabel = new JLabel(
-				"SAINT HONORÈ:  Uova, Farina, Zucchero, Fecola di patate, Panna, Latte, Cioccolato fondente, Gelatina, Vaniglia");
+				"SAINT HONORE':  Uova, Farina, Zucchero, Fecola di patate, Panna, Latte, Cioccolato fondente, Gelatina, Vaniglia");
 		SaintLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
 		SaintLabel.setBounds(20, 190, 900, 23);
 		contentPane.add(SaintLabel);
@@ -81,7 +81,7 @@ public class IngredientiIF extends JFrame {
 		SetteveliLabel.setBounds(20, 250, 900, 23);
 		contentPane.add(SetteveliLabel);
 
-		JLabel TiramisuLabel = new JLabel("TIRAMUSÙ:  Farina, Zucchero, Uova, Mascarpone, Caffè, Cacao");
+		JLabel TiramisuLabel = new JLabel("TIRAMISU':  Farina, Zucchero, Uova, Mascarpone, CaffÃ¨, Cacao");
 		TiramisuLabel.setFont(new Font("Century Schoolbook", Font.BOLD | Font.ITALIC, 14));
 		TiramisuLabel.setBounds(20, 280, 900, 23);
 		contentPane.add(TiramisuLabel);
