@@ -68,7 +68,7 @@ public class LoginIF extends JFrame {
 		loginButton.setForeground(new Color(255, 255, 255));
 		loginButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		loginButton.setBackground(new Color(255, 80, 120));
-		loginButton.setBounds(221, 75, 68, 31);
+		loginButton.setBounds(221, 75, 68, 25);
 		LoginContentPane.add(loginButton);
 
 		ClientePremiumRadioButton = new JRadioButton("Cliente Premium"); // selezione cliente premium
