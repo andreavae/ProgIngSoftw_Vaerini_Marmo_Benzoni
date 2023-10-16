@@ -35,7 +35,7 @@ public class LoginController {
 
 			user = new User(username, password); // creato un oggetto User
 			boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
-			if (!flagVip) {
+			if (!flagVip) { // se l'utente non � vip accede come standard
 				if (user.isLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
 					loginif.setVisible(false);
@@ -48,7 +48,7 @@ public class LoginController {
 					JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
 				}
 			} else {
-				if (flagVip) {
+				if (flagVip) { // se l'utente � vip viene confermato oppure mostra errore
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
@@ -64,7 +64,7 @@ public class LoginController {
 		}
 	}
 
-	class back implements ActionListener {
+	class back implements ActionListener { // gestione pulsante back
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

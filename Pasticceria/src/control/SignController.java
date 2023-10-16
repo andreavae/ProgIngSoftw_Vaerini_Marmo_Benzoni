@@ -42,7 +42,7 @@ public class SignController { // dichiarazione variabili
 		}
 	}
 
-	class back implements ActionListener {
+	class back implements ActionListener { // gestione pulsante back
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

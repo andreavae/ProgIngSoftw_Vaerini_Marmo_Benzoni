@@ -59,7 +59,7 @@ public class OrdinePersonalizzatoController {
 			double costopersone = ordinepersonalizzato.numerodipersone(ordinepersonalizzatoif.getnPersoneComboBox());
 			double totale = costopiani + costopersone;
 			boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
-			if (!flagVip) {
+			if (!flagVip) { // se l'utente non � vip visualizza senza sconto l'ordine
 
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersionalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, persone, totale, 0);
@@ -67,7 +67,7 @@ public class OrdinePersonalizzatoController {
 						utente, visualizzaordinepersionalizzatoif, ordinepersonalizzato, loginif);
 
 				visualizzaordinepersionalizzatoif.setVisible(true);
-			} else {
+			} else { // altrimento ha lo sconto
 
 				VisualizzaOrdinePersonalizzatoIF visualizzaordinepersionalizzatoif = new VisualizzaOrdinePersonalizzatoIF(
 						utente, dataConsegna, occasione, piani, persone, totale, 0.3);

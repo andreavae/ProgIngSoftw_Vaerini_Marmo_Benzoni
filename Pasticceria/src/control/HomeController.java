@@ -69,7 +69,7 @@ public class HomeController {
 
 	}
 
-	class openNuovoOrdineIFVip implements ActionListener {
+	class openNuovoOrdineIFVip implements ActionListener { // gestione nuovo ordine vip
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,8 @@ public class HomeController {
 
 	}
 
-	public class openOrdinePersonalizzatoIF implements ActionListener {
+	public class openOrdinePersonalizzatoIF implements ActionListener { // gestione apertura interfaccia
+																		// personalizzazione
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -98,7 +99,7 @@ public class HomeController {
 
 	}
 
-	class openOrdinePersonalizzatoIFVip implements ActionListener {
+	class openOrdinePersonalizzatoIFVip implements ActionListener { // gestion personalizza vip
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -114,7 +115,7 @@ public class HomeController {
 
 	}
 
-	class Quit implements ActionListener {
+	class Quit implements ActionListener { // gestione uscita dal programma
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -123,7 +124,7 @@ public class HomeController {
 
 	}
 
-	class sconto implements ActionListener {
+	class sconto implements ActionListener { // gestione sconto
 		private double valoreSconto;
 
 		public sconto(double valoreSconto) {
@@ -148,7 +149,7 @@ public class HomeController {
 
 	}
 
-	class abbonamento implements ActionListener {
+	class abbonamento implements ActionListener { // gestione apertura abbonamento
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

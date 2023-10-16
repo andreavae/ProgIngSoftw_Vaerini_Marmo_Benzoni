@@ -47,13 +47,14 @@ public class OrdineStandardController {
 		this.ordinestandardif.back(new back());
 		this.ordinestandardif.ingredienti(new ingredienti());
 
-		System.out.println("CATALOGO - ORDINE STANDARD");
+		System.out.println("CATALOGO - ORDINE STANDARD"); // creazione oggetto catalogo
 		Catalogo catalogo = Catalogo.getIstance();
 		List<Prodotto> listaprodotti = catalogo.getCatalogo();
 		System.out.println(listaprodotti);
 	}
 
-	// gestione prodotto
+	// gestione carrello dei prodotti
+
 	public class addCheesecake implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -62,7 +63,6 @@ public class OrdineStandardController {
 		}
 	}
 
-	// gestione prodotto
 	class addCubana implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

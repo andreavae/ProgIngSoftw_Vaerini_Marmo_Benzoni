@@ -61,6 +61,7 @@ public class VisualizzaOrdineController {
 
 	}
 
+	// gestione pulsante cancella
 	class cancella implements ActionListener {
 
 		@Override

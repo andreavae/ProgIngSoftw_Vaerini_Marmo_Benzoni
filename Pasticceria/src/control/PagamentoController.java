@@ -50,7 +50,7 @@ public class PagamentoController {
 		this.pagamentoif.pagamento(new pagamentoOrdinePersonalizzato());
 	}
 
-	public class pagamentostandard implements ActionListener {
+	public class pagamentostandard implements ActionListener { // gestione pagamento normale
 
 		@Override
 		public void actionPerformed(ActionEvent e) { // per gestire l'evento pagamento
@@ -85,7 +85,8 @@ public class PagamentoController {
 
 	}
 
-	class pagamentoOrdinePersonalizzato implements ActionListener {
+	class pagamentoOrdinePersonalizzato implements ActionListener { // gestione del pagamento quando l'utente lo
+																	// personalizza
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -94,8 +95,6 @@ public class PagamentoController {
 			Pagamento pagamento = new Pagamento(ordinepersonalizzato, numerocarta, datascadenza);
 			if (!loginif.getClientePremiumRadioButton().isSelected()) {
 				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
-
-					// qyeryupdate
 					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 					pagamentoif.dispose();
 				} else {
@@ -103,8 +102,6 @@ public class PagamentoController {
 				}
 			} else {
 				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
-
-					// queryupdate
 					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 					pagamentoif.dispose();
 				} else {
