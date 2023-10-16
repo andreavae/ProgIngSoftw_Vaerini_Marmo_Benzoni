@@ -1,47 +1,67 @@
 package testingControl;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import java.awt.event.ActionEvent;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import control.LoginController;
+import control.LoginController.LoginListener;
 import model.User;
 import view.LoginIF;
 
 public class LoginControllerTest {
-	private LoginController loginController;
-	private LoginIF loginIf;
+	private LoginIF loginif;
 	private User user;
+	private LoginController controller;
 
 	@Before
 	public void setUp() {
-		loginIf = mock(LoginIF.class);
-		user = new User("admin", "admin");
-		user = mock(User.class);
-		loginController = new LoginController(loginIf, user);
+		MockitoAnnotations.initMocks(this);
+		loginif = Mockito.mock(LoginIF.class);
+		user = Mockito.mock(User.class);
+		controller = new LoginController(loginif, user);
+	}
+
+	@After
+	public void tearDown() {
+		loginif = null;
+		user = null;
+		controller = null;
 	}
 
 	@Test
-    public void testLoginListenerValid() {
-        when(loginIf.getUsernameField()).thenReturn("admin");
-        when(loginIf.getPasswordField()).thenReturn("admin");
-        when(loginIf.getClientePremiumRadioButton().isSelected()).thenReturn(false);
-        when(loginIf.getClientePremiumRadioButton().isSelected()).thenReturn(false);
+	public void testLoginListenerWithValidUser() {
+		// Simuliamo un utente e password validi
+		Mockito.when(loginif.getUsernameField()).thenReturn("utenteValido");
+		Mockito.when(loginif.getPasswordField()).thenReturn("passwordValida");
+		Mockito.when(loginif.getClientePremiumRadioButton().isSelected()).thenReturn(false);
+		Mockito.when(user.isLoginValid()).thenReturn(true);
 
-        loginController.new LoginListener().actionPerformed(null);
+		// Simuliamo un evento di azione
+		ActionEvent mockEvent = Mockito.mock(ActionEvent.class);
+		controller.new LoginListener().actionPerformed(mockEvent);
 
-        // Assert the expected behavior here
-    }
-	/*
-	 * @Test public void testLoginListenerInvalid() {
-	 * when(loginIf.getUsernameField()).thenReturn("invalidUsername");
-	 * when(loginIf.getPasswordField()).thenReturn("invalidPassword");
-	 * when(loginIf.getClientePremiumRadioButton().isSelected()).thenReturn(false);
-	 * 
-	 * loginController.new LoginListener().actionPerformed(null);
-	 * 
-	 * // Assert the expected behavior here }
-	 */
+		// Verifichiamo che il messaggio di accesso riuscito sia visualizzato
+		Mockito.verify(loginif).setVisible(false);
+	}
+
+	@Test
+	public void testLoginListenerWithInvalidUser() {
+		// Simuliamo un utente o password non validi
+		Mockito.when(loginif.getUsernameField()).thenReturn("utenteNonValido");
+		Mockito.when(loginif.getPasswordField()).thenReturn("passwordNonValida");
+		Mockito.when(loginif.getClientePremiumRadioButton().isSelected()).thenReturn(false);
+		Mockito.when(user.isLoginValid()).thenReturn(false);
+
+		// Simuliamo un evento di azione
+		ActionEvent mockEvent = Mockito.mock(ActionEvent.class);
+		controller.new LoginListener().actionPerformed(mockEvent);
+
+		// Verifichiamo che il messaggio di accesso fallito sia visualizzato
+		Mockito.verify(loginif).setVisible(false);
+	}
 }

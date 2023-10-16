@@ -78,7 +78,7 @@ public class VisualizzaOrdineIF extends JFrame {
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBackground(new Color(255, 80, 120));
 		labelPanel.add(BackButton);
-		JLabel label1 = new JLabel("Totale: " + totale + "€");
+		JLabel label1 = new JLabel("Totale: " + totale + " €");
 		label1.setBackground(new Color(255, 255, 255));
 		label1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		labelPanel.add(label1);
