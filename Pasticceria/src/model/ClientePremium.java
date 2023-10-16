@@ -4,16 +4,16 @@ package model;
 public class ClientePremium extends User {
 	private boolean flagPremium;
 
-	public ClientePremium(String username, String password) {
+	public ClientePremium(String username, String password) { // costruttore
 		super(username, password);
-		this.flagPremium = true;
+		this.flagPremium = true; // distinzione cliente standard
 	}
 
-	public boolean isFlagPremium() {
+	public boolean isFlagPremium() { // verifica del premium
 		return flagPremium;
 	}
 
-	public void setFlagPremium(boolean flagPremium) {
+	public void setFlagPremium(boolean flagPremium) { // impostazione del premium
 		this.flagPremium = flagPremium;
 	}
 

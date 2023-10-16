@@ -46,6 +46,7 @@ public class Ordine {
 		return builder.toString(); // ritorno dl codice
 	}
 
+	// ritorno delle variabili
 	public ArrayList<Prodotto> getListaProd() {
 		return ListaProd;
 	}
