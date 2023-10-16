@@ -21,7 +21,6 @@ public class OrdineStandardController {
 	private User utente;
 	private OrdineStandardIF ordinestandardif;
 	private OrdineStandard carrello;
-	private Prodotto prodotto;
 	private HomeIF homeif;
 	private Ordine ordine;
 	private LoginIF loginif;
