@@ -24,7 +24,7 @@ public class SignIF extends JFrame {
 	 */
 	public SignIF() { // interfaccia Sign //costruttore per l'aspetto grafico
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
-		setBounds(100, 100, 304, 275);
+		setBounds(100, 100, 304, 255);
 		setLocationRelativeTo(null);
 		setResizable(false); // impedisce all'utente di ridimensionare la finestra
 		SignoContentPane = new JPanel();
@@ -67,14 +67,14 @@ public class SignIF extends JFrame {
 		registratiButton.setBackground(new Color(255, 80, 120));
 		registratiButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		registratiButton.setForeground(new Color(255, 255, 255));
-		registratiButton.setBounds(81, 124, 101, 53);
+		registratiButton.setBounds(81, 140, 101, 23);
 		SignoContentPane.add(registratiButton);
 
 		BackButton = new JButton("Back"); // bottone back
 		BackButton.setForeground(new Color(255, 255, 255));
 		BackButton.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		BackButton.setBackground(new Color(255, 80, 120));
-		BackButton.setBounds(189, 202, 89, 23);
+		BackButton.setBounds(189, 180, 89, 23);
 		SignoContentPane.add(BackButton);
 
 	}
