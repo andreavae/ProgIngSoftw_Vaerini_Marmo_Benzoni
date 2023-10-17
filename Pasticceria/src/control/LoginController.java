@@ -15,12 +15,11 @@ import view.LoginIF;
 public class LoginController {
 	private LoginIF loginif; // dichiarazione variabili
 	private User user;
-	private boolean flagVip;
 
 	public LoginController(LoginIF loginif, User user) { // costruttore
 		this.loginif = loginif;
 		this.user = user;
-		this.flagVip = loginif.getClientePremiumRadioButton().isSelected();
+
 		this.loginif.addLoginListener(new LoginListener()); // apertura interfaccia in caso di successo
 		this.loginif.addBackListener(new back());
 	}
@@ -35,7 +34,7 @@ public class LoginController {
 
 			user = new User(username, password); // creato un oggetto User
 			boolean bottonVip = loginif.getClientePremiumRadioButton().isSelected();
-			// boolean flagVip = user.isVipUser(username);
+			boolean flagVip = user.isVipUser(user.getUsername());
 			// System.out.println(flagVip);
 			if (!bottonVip) { // se l'utente non � vip accede come standard
 				if (user.isLoginValid()) {
@@ -49,9 +48,9 @@ public class LoginController {
 				} else {
 					JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
 				}
-			} else {
-				if (flagVip && user.isVipUser(user.getUsername())) { // se l'utente è vip viene confermato oppure mostra
-																		// errore
+			} else if (bottonVip) {
+				if (flagVip) { // se l'utente è vip viene confermato oppure mostra
+								// errore
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
