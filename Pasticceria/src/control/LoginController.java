@@ -48,7 +48,8 @@ public class LoginController {
 					JOptionPane.showMessageDialog(loginif, "Accesso fallito. Riprova, oppure registrati");
 				}
 			} else {
-				if (flagVip) { // se l'utente � vip viene confermato oppure mostra errore
+				if (flagVip && user.isVipUser(user.getUsername())) { // se l'utente è vip viene confermato oppure mostra
+																		// errore
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito. Utente riconociuto come cliente Premium");
 					loginif.setVisible(false);
 					HomeIF homeif = new HomeIF(user, loginif, 0);
