@@ -91,7 +91,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		PianiLabel.setBounds(10, 105, 46, 14);
 		contentPane.add(PianiLabel);
 
-		String[] piani = { "1 (+00.00€)", "2 (+30.00€)", "3 (+50.00)" }; // scelta da 1 a 3 piani
+		String[] piani = { "1 (+00.00€)", "2 (+30.00€)", "3 (+50.00€)" }; // scelta da 1 a 3 piani
 		PianiComboBox = new JComboBox<String>(); // menu a tendina
 		for (String piano : piani) { // inserimento valori nel menu
 			PianiComboBox.addItem(piano);
@@ -113,7 +113,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(OccasioneComboBox);
 
 		String[] nPersone = { "Da  5 a 10 persone (+00.00€)", "Da 10 a 15 persone (+10.00€)", // num persone per la
-																									// torta
+																								// torta
 				"Da 15 a 25 persone (+30.00€)" };
 		nPersoneComboBox = new JComboBox<String>(); // menu a tendina
 		for (String persona : nPersone) { // inserimento valori

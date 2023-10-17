@@ -155,7 +155,8 @@ public class HomeController {
 		public void actionPerformed(ActionEvent e) {
 			Abbonamento abbonamento = new Abbonamento(utente);
 			AbbonamentoIF abbonamentoif = new AbbonamentoIF();
-			AbbonamentoController abbonamentocontroller = new AbbonamentoController(utente, abbonamento, abbonamentoif);
+			AbbonamentoController abbonamentocontroller = new AbbonamentoController(utente, abbonamento, abbonamentoif,
+					homeif);
 			abbonamentoif.setVisible(true);
 		}
 

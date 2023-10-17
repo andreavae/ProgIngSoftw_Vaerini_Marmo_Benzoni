@@ -16,6 +16,7 @@ import control.AbbonamentoController;
 import model.Abbonamento;
 import model.User;
 import view.AbbonamentoIF;
+import view.HomeIF;
 
 public class AbbonamentoControllerTest {
 
@@ -25,15 +26,16 @@ public class AbbonamentoControllerTest {
 	private Abbonamento abbonamento;
 	private User utente;
 	private AbbonamentoController abbonamentoController;
+	private HomeIF homeif;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this); // Inizializza i mock
 
 		// Crea un utente fittizio per i test
-		utente = new User("testUser", "testPassword");
+		utente = new User("admin", "admin");
 
-		abbonamentoController = new AbbonamentoController(utente, abbonamento, abbonamentoif);
+		abbonamentoController = new AbbonamentoController(utente, abbonamento, abbonamentoif, homeif);
 	}
 
 	@Test

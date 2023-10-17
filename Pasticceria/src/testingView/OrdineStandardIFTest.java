@@ -26,7 +26,61 @@ public class OrdineStandardIFTest {
 
 	}
 
-	// Ripeti test simili per gli altri pulsanti dei prodotti
+	@Test
+	public void testAggiungiProdottoCubana() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addCubanaButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoCreamTart() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addCreamtartButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoIris() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addIrisButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoMimosa() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addMimosaButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiSainHonore() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addSaintButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoSacher() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addSacherButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoSetteveli() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addSetteveliButton.doClick();
+
+	}
+
+	@Test
+	public void testAggiungiProdottoTiramisu() {
+		// Simula il clic sul pulsante "Aggiungi Cheesecake"
+		ordineStandardIF.addTiramisuButton.doClick();
+
+	}
 
 	@Test
 	public void testPulsanteVisualizzaOrdine() {
