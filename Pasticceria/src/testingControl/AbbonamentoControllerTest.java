@@ -1,6 +1,5 @@
 package testingControl;
 
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,13 +34,13 @@ public class AbbonamentoControllerTest {
 		// Crea un utente fittizio per i test
 		utente = new User("admin", "admin");
 
-		abbonamentoController = new AbbonamentoController(utente, abbonamento, abbonamentoif, homeif);
+		abbonamentoController = new AbbonamentoController(utente, abbonamentoif, homeif);
 	}
 
 	@Test
     public void testAbbonatiActionPerformed_PagamentoAvvenutoConSuccesso() {
         // Simula il comportamento dell'utente in modo che ritorni true quando si chiama il metodo isSignVip.
-        when(utente.isSignVip(anyString(), anyInt())).thenReturn(true);
+        when(utente.isSignVip(anyString(), anyString())).thenReturn(true);
 
         // Crea un evento fittizio per il pulsante "Diventa Premium"
         ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Diventa Premium");
@@ -56,7 +55,7 @@ public class AbbonamentoControllerTest {
 	@Test
     public void testAbbonatiActionPerformed_PagamentoNonAvvenutoConSuccesso() {
         // Simula il comportamento dell'utente in modo che ritorni false quando si chiama il metodo isSignVip.
-        when(utente.isSignVip(anyString(), anyInt())).thenReturn(false);
+        when(utente.isSignVip(anyString(), anyString())).thenReturn(false);
 
         // Crea un evento fittizio per il pulsante "Diventa Premium"
         ActionEvent actionEvent = new ActionEvent(new Object(), ActionEvent.ACTION_PERFORMED, "Diventa Premium");

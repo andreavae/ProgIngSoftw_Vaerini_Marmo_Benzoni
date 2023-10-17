@@ -39,7 +39,7 @@ class LoginTest {
 	@Test
 	void testisSignVip() {
 		User utente = new User("admin", "admin");
-		boolean flagsignVip = utente.isSignVip("admin", 1);
+		boolean flagsignVip = utente.isSignVip("admin", "2STZKGE5QQ");
 		assertEquals(true, flagsignVip);
 	}
 

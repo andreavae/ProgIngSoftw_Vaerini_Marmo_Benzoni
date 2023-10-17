@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import model.Abbonamento;
 import model.Ordine;
 import model.OrdinePersonalizzato;
 import model.OrdineStandard;
@@ -153,10 +152,8 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Abbonamento abbonamento = new Abbonamento(utente);
 			AbbonamentoIF abbonamentoif = new AbbonamentoIF();
-			AbbonamentoController abbonamentocontroller = new AbbonamentoController(utente, abbonamento, abbonamentoif,
-					homeif);
+			AbbonamentoController abbonamentocontroller = new AbbonamentoController(utente, abbonamentoif, homeif);
 			abbonamentoif.setVisible(true);
 		}
 

@@ -34,8 +34,10 @@ public class LoginController {
 			String password = loginif.getPasswordField();
 
 			user = new User(username, password); // creato un oggetto User
-			boolean flagVip = loginif.getClientePremiumRadioButton().isSelected();
-			if (!flagVip) { // se l'utente non � vip accede come standard
+			boolean bottonVip = loginif.getClientePremiumRadioButton().isSelected();
+			// boolean flagVip = user.isVipUser(username);
+			// System.out.println(flagVip);
+			if (!bottonVip) { // se l'utente non � vip accede come standard
 				if (user.isLoginValid()) {
 					JOptionPane.showMessageDialog(loginif, "Accesso riuscito!");
 					loginif.setVisible(false);

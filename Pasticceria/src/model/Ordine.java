@@ -16,7 +16,7 @@ public class Ordine {
 	private Set<String> CODICE_ORDINE_ASSEGNATI = new HashSet<String>();
 	public User utente;
 	public ArrayList<Prodotto> ListaProd;
-	// public StatoOrdine Stato;
+
 	public double prezzoOrdine;
 	private final String codiceOrdine;
 

@@ -22,7 +22,7 @@ class AbbonamentoTest {
 	void testgetId() {
 		User utente = new User("admin", "admin");
 		Abbonamento abbonamento = new Abbonamento(utente);
-		int expectedId = abbonamento.getId();
+		String expectedId = abbonamento.getId();
 		assertEquals(expectedId, abbonamento.getId());
 
 	}

@@ -215,7 +215,7 @@ public class User {
 		return false;
 	}
 
-	public boolean isSignVip(String username, int codice) {
+	public boolean isSignVip(String username, String codice) {
 		ConnectingOnline connectdb = new ConnectingOnline("//127.0.0.1:3306/PasticceriaDB"); // percorso database
 		connectdb.connect(); // apro connessione
 
@@ -235,6 +235,7 @@ public class User {
 		} catch (SQLException e) {
 			// Gestisci gli errori di query SQL
 		}
+		System.out.println(listautenti);
 		boolean corretto = false;
 		boolean flagusername = listautenti.contains(username);// variabile usata per verificare se user � gia presente
 
@@ -242,6 +243,7 @@ public class User {
 		if (!flagusername) { // se non inserito allora inserisce nel db
 			String queryregistrazione = "INSERT INTO utentipremium (CodAbbonamento, UsernameUtente) VALUES ('" + codice
 					+ "','" + username + "')";
+			System.out.println(queryregistrazione);
 			listautenti.add(username);
 			try {
 				connectdb.setStatement(connectdb.getConnection().createStatement());

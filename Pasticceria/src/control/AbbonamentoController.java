@@ -17,7 +17,7 @@ public class AbbonamentoController {
 	private AbbonamentoIF abbonamentoif;
 	private HomeIF homeif;
 
-	public AbbonamentoController(User utente, Abbonamento abbonamento, AbbonamentoIF abbonamentoif, HomeIF homeif) {
+	public AbbonamentoController(User utente, AbbonamentoIF abbonamentoif, HomeIF homeif) {
 		this.utente = utente;
 		this.abbonamento = abbonamento;
 		this.abbonamentoif = abbonamentoif;
@@ -29,13 +29,17 @@ public class AbbonamentoController {
 	public class abbonati implements ActionListener { // abbonati gestisce gli eventi implememtando l'interfaccia
 		// ActionListener
 		private String username;
-		private int codiceAbbonamento;
+		private String codiceAbbonamento;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Abbonamento abbonamento = new Abbonamento(utente);
 			codiceAbbonamento = abbonamento.getId();
-			username = utente.getUsername();
-			if (utente.isSignVip(username, codiceAbbonamento)) { // si verifica la validit� del pagamento
+			System.out.println(codiceAbbonamento);
+
+			boolean flagSignVip = utente.isSignVip(utente.getUsername(), codiceAbbonamento);
+			if (flagSignVip) { // si verifica la validit� del pagamento
+				System.out.println(flagSignVip);
 				JOptionPane.showMessageDialog(abbonamentoif, "Sei diventato un Cliente Premium");
 				abbonamentoif.dispose(); // chiusura interfaccia
 				homeif.dispose();
