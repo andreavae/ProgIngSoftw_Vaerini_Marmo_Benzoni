@@ -25,9 +25,6 @@ public class Prodotto {
 	}
 
 	// ritorno delle variabili
-	public String getIDprodotto() {
-		return IDprodotto;
-	}
 
 	public String getNome() {
 		return Nome;
@@ -39,10 +36,6 @@ public class Prodotto {
 
 	public String getPathImmagine() {
 		return pathImmagine;
-	}
-
-	public ImageIcon getImageicon() {
-		return imageicon;
 	}
 
 	@Override // visualizzazione

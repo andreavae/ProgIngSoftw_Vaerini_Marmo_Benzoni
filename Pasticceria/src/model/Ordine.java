@@ -51,17 +51,6 @@ public class Ordine {
 	}
 
 	// ritorno delle variabili
-	public ArrayList<Prodotto> getListaProd() {
-		return ListaProd;
-	}
-
-	public User getUtente() {
-		return utente;
-	}
-
-	public double getPrezzoOrdine() {
-		return prezzoOrdine;
-	}
 
 	public String getCodiceOrdine() {
 		return codiceOrdine;
