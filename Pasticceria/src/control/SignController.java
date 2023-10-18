@@ -38,7 +38,7 @@ public class SignController { // dichiarazione variabili
 				loginif.setVisible(true);
 				LoginController controller = new LoginController(loginif, user);
 			} else {
-				JOptionPane.showMessageDialog(signif, "Registrazione fallita. Riprova!");
+				JOptionPane.showMessageDialog(signif, "User giù utilizzato! Riprovare o Registrati.");
 			}
 		}
 	}
