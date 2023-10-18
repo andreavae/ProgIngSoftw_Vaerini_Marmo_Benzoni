@@ -76,11 +76,4 @@ public class OrdinePersonalizzato extends Ordine {
 		return data;
 	}
 
-	// ottenimento del costo totale
-	public double getTotale(double piani, double persone) {
-		totale = piani + persone;
-		System.out.println("TOTALE: " + totale);
-		return totale;
-	}
-
 }

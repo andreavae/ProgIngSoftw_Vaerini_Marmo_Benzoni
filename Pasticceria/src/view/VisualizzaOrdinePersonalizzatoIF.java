@@ -108,7 +108,9 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		contentPane.add(SetNumPersoneLabel);
 
 		// Totale prezzo
-		JLabel TotaleLabel = new JLabel("Totale: " + (torta.getPrezzo() + totale) + "€");
+		double prezzoTotale = totale + torta.getPrezzo();
+		double prezzoConSconto = prezzoTotale - prezzoTotale * sconto;
+		JLabel TotaleLabel = new JLabel("Totale: " + prezzoConSconto + "€");
 		TotaleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		TotaleLabel.setBounds(141, 271, 75, 14);
 		contentPane.add(TotaleLabel);

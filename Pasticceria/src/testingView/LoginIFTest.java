@@ -22,14 +22,14 @@ public class LoginIFTest {
 
 	@Test
 	public void testGetUsernameField() {
-		loginIF.setUsernameFieldText("admin");
+		loginIF.getUsernameField();
 		assertEquals("admin", loginIF.getUsernameField());
 	}
 
 	@Test
 	public void testGetPasswordField() {
-		loginIF.setPasswordFieldText("user");
-		assertEquals("user", loginIF.getPasswordField());
+		loginIF.setPasswordFieldText("admin");
+		assertEquals("admin", loginIF.getPasswordField());
 	}
 
 	@Test

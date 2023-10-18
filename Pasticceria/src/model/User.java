@@ -138,7 +138,7 @@ public class User {
 				}
 			} catch (SQLException e) {
 				// gestione eccezioni durante la chiusura
-				e.printStackTrace();
+
 			}
 
 		}

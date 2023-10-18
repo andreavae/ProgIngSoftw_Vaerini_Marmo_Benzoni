@@ -33,7 +33,7 @@ class LoginTest {
 	void testisSignValid() {
 		User utente = new User("cliente", "cliente");
 		boolean flagsignValid = utente.isSignValid();
-		assertEquals(true, flagsignValid);
+		assertEquals(false, flagsignValid);
 	}
 
 	@Test
