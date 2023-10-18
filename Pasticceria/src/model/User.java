@@ -183,7 +183,6 @@ public class User {
 			}
 		}
 
-		// boolean checkusername = listautenti.contains(username); // verifica se utente
 		// � inserito nell'arraylist
 		return corretto;
 
