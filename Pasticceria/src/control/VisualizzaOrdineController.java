@@ -49,16 +49,8 @@ public class VisualizzaOrdineController {
 			PagamentoIF pagamentoif = new PagamentoIF();
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, visualizzaordineif,
 					carrello, ordine, loginif); // oggetto per la gestione del pagamento
-			if (utente.isVipUser(utente.getUsername())) {
-				ordine = new Ordine(utente);
-
-			} else {
-				ordine = new Ordine(utente);
-
-			}
 			pagamentoif.setVisible(true); // modifica visibilit� interfaccia
 		}
-
 	}
 
 	// gestione pulsante cancella

@@ -52,7 +52,7 @@ public class VisualizzaOrdinePersonalizzatoController {
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, ordinepersonalizzato,
 					visualizzaordinepersonalizzatoif, loginif, ordine);
 			System.out.println("visualizzaordinepersionalizzato: " + ordinepersonalizzato);
-			Ordine o = new OrdinePersonalizzato(utente);
+			ordine = new OrdinePersonalizzato(utente, 0);
 			pagamentoif.setVisible(true); // modifica visibilit� interfaccia
 		}
 

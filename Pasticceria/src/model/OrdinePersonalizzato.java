@@ -14,7 +14,7 @@ public class OrdinePersonalizzato extends Ordine {
 	private double totale;
 	private double costo;
 
-	public OrdinePersonalizzato(User utente) { // costruttore
+	public OrdinePersonalizzato(User utente, double sconto) { // costruttore
 		super(utente);
 		this.costo = costo;
 

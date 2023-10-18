@@ -3,6 +3,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Ordine;
 import model.OrdinePersonalizzato;
 //import control.OrdinePersonalizzatoController.visualizzaOrdinePersonalizzato;
 import model.User;
@@ -20,7 +21,7 @@ public class OrdinePersonalizzatoController {
 
 	// costruttore
 	public OrdinePersonalizzatoController(User utente, OrdinePersonalizzatoIF ordinepersonalizzatoif, HomeIF homeif,
-			OrdinePersonalizzato ordinepersonalizzato, LoginIF loginif) {
+			Ordine ordine, LoginIF loginif) {
 		this.utente = utente;
 		this.ordinepersonalizzatoif = ordinepersonalizzatoif;
 		this.homeif = homeif;
@@ -29,7 +30,7 @@ public class OrdinePersonalizzatoController {
 			throw new IllegalArgumentException("L'oggetto loginif non può essere null.");
 		}
 		// this.nPiani = nPiani;
-		this.ordinepersonalizzato = new OrdinePersonalizzato(utente);
+		this.ordinepersonalizzato = new OrdinePersonalizzato(utente, 0);
 		System.out.println("ordinepersonalizzatocontroller: " + ordinepersonalizzato);
 		// associazione gestori
 		this.ordinepersonalizzatoif.back(new back());

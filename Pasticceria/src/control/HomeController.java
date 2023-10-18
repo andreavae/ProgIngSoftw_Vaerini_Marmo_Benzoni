@@ -87,9 +87,9 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente, 0);
-			OrdinePersonalizzato op = new OrdinePersonalizzato(utente);
+			ordine = new OrdinePersonalizzato(utente, 0);
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif, homeif, op, loginif);
+					ordinepersonalizzatoif, homeif, ordine, loginif);
 			homeif.setVisible(false);
 			ordinepersonalizzatoif.setVisible(true);
 
@@ -102,9 +102,9 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdinePersonalizzatoIF ordinepersonalizzatoif = new OrdinePersonalizzatoIF(utente, 0.3);
-			ordinepersonalizzato = new OrdinePersonalizzato(utente);
+			ordine = new OrdinePersonalizzato(utente, 0.3);
 			OrdinePersonalizzatoController ordinepersonalizzatocontroller = new OrdinePersonalizzatoController(utente,
-					ordinepersonalizzatoif, homeif, ordinepersonalizzato, loginif);
+					ordinepersonalizzatoif, homeif, ordine, loginif);
 			homeif.setVisible(false);
 
 			ordinepersonalizzatoif.setVisible(true);
