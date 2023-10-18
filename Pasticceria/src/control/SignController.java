@@ -30,6 +30,7 @@ public class SignController { // dichiarazione variabili
 																		// campi di testo
 			String password = signif.getSignPasswordField().getText();
 			user = new User(username, password); // creazione oggetto user
+
 			if (user.isSignValid()) { // verifica di successo di registrazione
 				JOptionPane.showMessageDialog(signif, "Registrazione riuscita! Effetturare il Login");
 				signif.dispose();

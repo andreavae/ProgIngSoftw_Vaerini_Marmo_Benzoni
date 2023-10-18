@@ -167,12 +167,14 @@ public class User {
 			// gestione eccezione
 		}
 		boolean corretto = false;
+		System.out.println(listautenti);
 		boolean flagusername = listautenti.contains(username); // variabile usata per verificare se user � gia presente
 		System.out.println(flagusername);
 		if (!flagusername) { // username non presente
 			String queryregistrazione = "INSERT INTO utenti (Username, Password) VALUES ('" + username + "','"
 					+ password + "')"; // query di inserimento nel database
 			listautenti.add(username);
+			corretto = true;
 			try {
 				connectdb.setStatement(connectdb.getConnection().createStatement());
 				connectdb.getStatement().executeUpdate(queryregistrazione);
@@ -181,8 +183,9 @@ public class User {
 			}
 		}
 
-		boolean checkusername = listautenti.contains(username); // verifica se utente � inserito nell'arraylist
-		return checkusername;
+		// boolean checkusername = listautenti.contains(username); // verifica se utente
+		// � inserito nell'arraylist
+		return corretto;
 
 	}
 
