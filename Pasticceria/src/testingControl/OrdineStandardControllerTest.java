@@ -40,8 +40,7 @@ public class OrdineStandardControllerTest {
 	public void setUp() {
 		MockitoAnnotations.initMocks(this); // Inizializza i mock
 
-		ordinestandardController = new OrdineStandardController(utente, ordinestandardif, carrello, null, ordine,
-				loginif);
+		ordinestandardController = new OrdineStandardController(utente, ordinestandardif, homeif, ordine, loginif);
 	}
 
 	@Test

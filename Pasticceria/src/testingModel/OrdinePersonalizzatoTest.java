@@ -18,13 +18,13 @@ public class OrdinePersonalizzatoTest {
 	@Before
 	public void setUp() {
 		User utente = new User("user", "user");
-		ordinePersonalizzato = new OrdinePersonalizzato(utente);
+		ordinePersonalizzato = new OrdinePersonalizzato(utente, 0, 0);
 	}
 
 	@Test
 	public void testNumerodeipiani() {
 		JComboBox<String> nPiani = new JComboBox<>();
-		nPiani.addItem("2 (+30.00€)");
+		nPiani.addItem("2 (+30.00ï¿½)");
 		double costoPiani = ordinePersonalizzato.numerodeipiani(nPiani);
 		assertEquals(30.0, costoPiani, 0.01); // Verifica che il costo dei piani sia corretto
 	}
@@ -40,7 +40,7 @@ public class OrdinePersonalizzatoTest {
 	@Test
 	public void testNumerodipersone() {
 		JComboBox<String> nPersone = new JComboBox<>();
-		nPersone.addItem("Da 10 a 15 persone (+10.00€)");
+		nPersone.addItem("Da 10 a 15 persone (+10.00ï¿½)");
 		double costoPersone = ordinePersonalizzato.numerodipersone(nPersone);
 		assertEquals(10.0, costoPersone, 0.01); // Verifica che il costo delle persone sia corretto
 	}

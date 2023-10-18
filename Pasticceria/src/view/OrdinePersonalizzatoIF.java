@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import model.Catalogo;
+import model.Prodotto;
 import model.User;
 
 public class OrdinePersonalizzatoIF extends JFrame {
@@ -30,6 +33,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 	private JComboBox<String> PianiComboBox;
 	private JComboBox<String> nPersoneComboBox;
 	private JComboBox<String> OccasioneComboBox;
+	private JComboBox<Prodotto> catalogo;
 	private JLabel ScontoLabel;
 	private JLabel ScontoSetLabel;
 
@@ -73,22 +77,22 @@ public class OrdinePersonalizzatoIF extends JFrame {
 
 		NpersoneLabel = new JLabel("Numero di Persone"); // etichetta num persone
 		NpersoneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		NpersoneLabel.setBounds(10, 71, 115, 23);
+		NpersoneLabel.setBounds(10, 149, 115, 23);
 		contentPane.add(NpersoneLabel);
 
 		DataConsegnaLabel = new JLabel("Data di Consegna"); // etichetta data consegna
 		DataConsegnaLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		DataConsegnaLabel.setBounds(10, 166, 121, 23);
+		DataConsegnaLabel.setBounds(10, 244, 121, 23);
 		contentPane.add(DataConsegnaLabel);
 
 		DataConsegnaField = new JTextField(); // inserimento data
-		DataConsegnaField.setBounds(131, 167, 86, 20);
+		DataConsegnaField.setBounds(131, 245, 86, 20);
 		contentPane.add(DataConsegnaField);
 		DataConsegnaField.setColumns(10);
 
 		JLabel PianiLabel = new JLabel("Piani\r\n"); // etichetta piani
 		PianiLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		PianiLabel.setBounds(10, 105, 46, 14);
+		PianiLabel.setBounds(10, 183, 46, 14);
 		contentPane.add(PianiLabel);
 
 		String[] piani = { "1 (+00.00€)", "2 (+30.00€)", "3 (+50.00€)" }; // scelta da 1 a 3 piani
@@ -96,12 +100,12 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		for (String piano : piani) { // inserimento valori nel menu
 			PianiComboBox.addItem(piano);
 		}
-		PianiComboBox.setBounds(131, 101, 150, 22); // Imposta le dimensioni in modo appropriato
+		PianiComboBox.setBounds(131, 179, 150, 22); // Imposta le dimensioni in modo appropriato
 		contentPane.add(PianiComboBox);
 
 		OccasioneLabel = new JLabel("Occasione"); // etichetta occasione
 		OccasioneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		OccasioneLabel.setBounds(10, 136, 81, 14);
+		OccasioneLabel.setBounds(10, 214, 81, 14);
 		contentPane.add(OccasioneLabel);
 
 		String[] occasioni = { "Nessuna occasione", "Compleanno", "Anniversario", "Laurea" }; // tipologia occcasione
@@ -109,7 +113,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		for (String occasione : occasioni) { // inserimento valori
 			OccasioneComboBox.addItem(occasione);
 		}
-		OccasioneComboBox.setBounds(131, 134, 185, 23); // Imposta le dimensioni in modo appropriato
+		OccasioneComboBox.setBounds(131, 212, 185, 23); // Imposta le dimensioni in modo appropriato
 		contentPane.add(OccasioneComboBox);
 
 		String[] nPersone = { "Da  5 a 10 persone (+00.00€)", "Da 10 a 15 persone (+10.00€)", // num persone per la
@@ -119,7 +123,7 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		for (String persona : nPersone) { // inserimento valori
 			nPersoneComboBox.addItem(persona);
 		}
-		nPersoneComboBox.setBounds(131, 71, 285, 23);
+		nPersoneComboBox.setBounds(131, 149, 285, 23);
 		contentPane.add(nPersoneComboBox);
 
 		VisualizzaOrdinePersonalizzatoButton = new JButton("Visualizza Ordine"); // bottone visualizza ordine
@@ -138,6 +142,20 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		ScontoSetLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		ScontoSetLabel.setBounds(417, 11, 46, 14);
 		contentPane.add(ScontoSetLabel);
+
+		JLabel CatalogoLabel = new JLabel("Catalogo");
+		CatalogoLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		CatalogoLabel.setBounds(10, 90, 63, 14);
+		contentPane.add(CatalogoLabel);
+
+		catalogo = new JComboBox<Prodotto>();
+		List<Prodotto> listaCatalogo = Catalogo.getIstance().getCatalogo();
+		for (Prodotto p : listaCatalogo) {
+			catalogo.addItem(p);
+		}
+
+		catalogo.setBounds(131, 86, 285, 22);
+		contentPane.add(catalogo);
 
 	}
 
@@ -168,8 +186,11 @@ public class OrdinePersonalizzatoIF extends JFrame {
 		return DataConsegnaField;
 	}
 
+	public JComboBox<Prodotto> getCatalogo() {
+		return catalogo;
+	}
+
 	public void setDataConsegnaField(JTextField dataConsegnaField) {
 		DataConsegnaField = dataConsegnaField;
 	}
-
 }

@@ -30,6 +30,7 @@ public class Ordine {
 		CODICE_ORDINE_ASSEGNATI.add(codiceOrdine);
 		Catalogo catalogo = Catalogo.getIstance();
 		List<Prodotto> listaprodotti = catalogo.getCatalogo();
+		System.out.println("CATALOGO");
 		System.out.println(listaprodotti);
 
 		this.prezzoOrdine = prezzoOrdine;

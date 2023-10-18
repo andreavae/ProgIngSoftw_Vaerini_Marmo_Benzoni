@@ -28,7 +28,7 @@ public class VisualizzaOrdinePersonalizzatoControllerTest {
 	private LoginIF loginif;
 	@Mock
 	private Ordine ordine;
-
+	@Mock
 	private VisualizzaOrdinePersonalizzatoController visualizzaOrdinePersonalizzatoController;
 
 	@Before
@@ -36,7 +36,7 @@ public class VisualizzaOrdinePersonalizzatoControllerTest {
 		MockitoAnnotations.initMocks(this);
 
 		visualizzaOrdinePersonalizzatoController = new VisualizzaOrdinePersonalizzatoController(utente,
-				visualizzaordinepersonalizzatoif, ordinepersonalizzato, loginif);
+				visualizzaordinepersonalizzatoif, ordinepersonalizzato, loginif, ordine);
 	}
 
 	@Test

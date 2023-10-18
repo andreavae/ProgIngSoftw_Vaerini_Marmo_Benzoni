@@ -20,19 +20,21 @@ public class VisualizzaOrdinePersonalizzatoController {
 	// costruttore
 	public VisualizzaOrdinePersonalizzatoController(User utente,
 			VisualizzaOrdinePersonalizzatoIF visualizzaordinepersonalizzatoif, OrdinePersonalizzato ordinpersonalizzato,
-			LoginIF loginif) {
+			LoginIF loginif, Ordine ordine) {
+
+		this.ordine = ordine;
 		this.utente = utente;
 		this.visualizzaordinepersonalizzatoif = visualizzaordinepersonalizzatoif;
 		this.ordine = ordine;
 		this.ordinepersonalizzato = ordinepersonalizzato;
-		System.out.println("VisualizzaOrdinePersonalizzatoController: " + ordinepersonalizzato);
+
 		this.loginif = loginif;
 		this.visualizzaordinepersonalizzatoif.back(new back());
 		this.visualizzaordinepersonalizzatoif.conferma(new conferma());
 
 	}
 
-	// gestione pulsante back
+	// gestione pulsante backg
 	public class back implements ActionListener {
 
 		@Override
@@ -51,8 +53,8 @@ public class VisualizzaOrdinePersonalizzatoController {
 			PagamentoIF pagamentoif = new PagamentoIF(); // interfaccia pagamento
 			PagamentoController pagamentocontroller = new PagamentoController(utente, pagamentoif, ordinepersonalizzato,
 					visualizzaordinepersonalizzatoif, loginif, ordine);
-			System.out.println("visualizzaordinepersionalizzato: " + ordinepersonalizzato);
-			ordine = new OrdinePersonalizzato(utente, 0);
+			System.out.println("visualizzaordinepersionalizzato: " + ordine);
+
 			pagamentoif.setVisible(true); // modifica visibilit� interfaccia
 		}
 

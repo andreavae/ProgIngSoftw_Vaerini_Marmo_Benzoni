@@ -95,6 +95,7 @@ public class PagamentoController {
 			Pagamento pagamento = new Pagamento(ordinepersonalizzato, numerocarta, datascadenza);
 			if (!loginif.getClientePremiumRadioButton().isSelected()) {
 				if (pagamento.processoPagamento(numerocarta, datascadenza, 1000)) {
+
 					JOptionPane.showMessageDialog(pagamentoif, "Pagamento confermato!");
 					pagamentoif.dispose();
 				} else {

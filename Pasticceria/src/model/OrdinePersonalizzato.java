@@ -13,10 +13,11 @@ public class OrdinePersonalizzato extends Ordine {
 	private String data;
 	private double totale;
 	private double costo;
+	private Double[] prezzi;
 
-	public OrdinePersonalizzato(User utente, double sconto) { // costruttore
+	public OrdinePersonalizzato(User utente, double sconto, double costo) { // costruttore
 		super(utente);
-		this.costo = costo;
+		prezzi = new Double[2];
 
 	}
 
@@ -45,6 +46,13 @@ public class OrdinePersonalizzato extends Ordine {
 		String personestringa = valoreSelezionato.substring(indicesx + 2, indicedx - 1);
 		costoPersone = Double.parseDouble(personestringa);
 		return costoPersone;
+	}
+
+	// estrazione della torta
+	public Prodotto tipoTorta(JComboBox<Prodotto> catalogo) {
+		Prodotto valoreSelezionato = (Prodotto) catalogo.getSelectedItem();
+		System.out.println("TORTA: " + valoreSelezionato);
+		return valoreSelezionato;
 	}
 
 	// estrazione numero delle persone

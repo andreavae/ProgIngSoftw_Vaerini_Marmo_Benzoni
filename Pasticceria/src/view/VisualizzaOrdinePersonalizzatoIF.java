@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import control.OrdinePersonalizzatoController;
+import model.Prodotto;
 import model.User;
 
 public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
@@ -27,7 +28,7 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 	 * Create the frame.
 	 */
 	public VisualizzaOrdinePersonalizzatoIF(User utente, String dataConsegna, String occasione, String piani,
-			String persone, double totale, double sconto) { // costruttore
+			String persone, Prodotto torta, double totale, double sconto) { // costruttore
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // chiusura interfaccia
 		setBounds(100, 100, 512, 352);
@@ -65,51 +66,51 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		// visualizzaione data consegna
 		JLabel DataLabel = new JLabel("Data Consegna:");
 		DataLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		DataLabel.setBounds(10, 81, 114, 23);
+		DataLabel.setBounds(10, 191, 114, 23);
 		contentPane.add(DataLabel);
 
 		JLabel SetDataLabel = new JLabel(dataConsegna);
 		SetDataLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		SetDataLabel.setBounds(141, 85, 92, 14);
+		SetDataLabel.setBounds(141, 195, 92, 14);
 		contentPane.add(SetDataLabel);
 
 		// visualizzazione occasione
 		JLabel OccasioneLabel = new JLabel("Occasione:");
 		OccasioneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		OccasioneLabel.setBounds(10, 115, 92, 23);
+		OccasioneLabel.setBounds(10, 225, 92, 23);
 		contentPane.add(OccasioneLabel);
 
 		JLabel SetOccasioneLabel = new JLabel(occasione);
 		SetOccasioneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		SetOccasioneLabel.setBounds(141, 117, 75, 19);
+		SetOccasioneLabel.setBounds(141, 227, 75, 19);
 		contentPane.add(SetOccasioneLabel);
 
 		// viualizzazione numero piani
 		JLabel PianiLabel = new JLabel("Numero di piani:");
 		PianiLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		PianiLabel.setBounds(10, 149, 92, 34);
+		PianiLabel.setBounds(10, 104, 92, 34);
 		contentPane.add(PianiLabel);
 
 		JLabel SetPianiLabel = new JLabel(piani);
 		SetPianiLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		SetPianiLabel.setBounds(143, 159, 126, 14);
+		SetPianiLabel.setBounds(143, 114, 126, 14);
 		contentPane.add(SetPianiLabel);
 
 		// visualizzazione nuemero persone
 		JLabel NumPersoneLabel = new JLabel("Numero di persone:");
 		NumPersoneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		NumPersoneLabel.setBounds(10, 194, 132, 23);
+		NumPersoneLabel.setBounds(10, 149, 132, 23);
 		contentPane.add(NumPersoneLabel);
 
 		JLabel SetNumPersoneLabel = new JLabel(persone);
 		SetNumPersoneLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		SetNumPersoneLabel.setBounds(145, 198, 263, 14);
+		SetNumPersoneLabel.setBounds(145, 153, 263, 14);
 		contentPane.add(SetNumPersoneLabel);
 
 		// Totale prezzo
-		JLabel TotaleLabel = new JLabel("Totale: " + (totale - (totale * 0.3) + 30) + "€");
+		JLabel TotaleLabel = new JLabel("Totale: " + (torta.getPrezzo() + totale) + "€");
 		TotaleLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		TotaleLabel.setBounds(10, 238, 75, 14);
+		TotaleLabel.setBounds(141, 271, 75, 14);
 		contentPane.add(TotaleLabel);
 
 		// Bottone di conferma ordine
@@ -131,10 +132,15 @@ public class VisualizzaOrdinePersonalizzatoIF extends JFrame {
 		ScontoSetLabel.setBounds(421, 11, 46, 14);
 		contentPane.add(ScontoSetLabel);
 
-		JLabel initMoneyLabel = new JLabel("a partire da 30€");
-		initMoneyLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
-		initMoneyLabel.setBounds(243, 48, 114, 14);
-		contentPane.add(initMoneyLabel);
+		JLabel TortaLabel = new JLabel("Torta");
+		TortaLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		TortaLabel.setBounds(10, 79, 46, 14);
+		contentPane.add(TortaLabel);
+
+		JLabel setTortaLabel = new JLabel("" + torta);
+		setTortaLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		setTortaLabel.setBounds(141, 79, 190, 14);
+		contentPane.add(setTortaLabel);
 
 	}
 
