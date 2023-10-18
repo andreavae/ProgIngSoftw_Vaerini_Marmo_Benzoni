@@ -19,19 +19,18 @@ import view.OrdineStandardIF;
 public class HomeController {
 	private HomeIF homeif;
 	private User utente;
-	private OrdineStandard carrello;
+	// private OrdineStandard carrello;
 	private LoginIF loginif;
 	private OrdinePersonalizzato ordinepersonalizzato;
 	private OrdinePersonalizzatoIF ordinepersonalizzatoif;
+	private Ordine ordine;
 
 	// costruttore per il cliente standard
 	public HomeController(HomeIF homeif, User utente, LoginIF loginif) { // costrutore 1
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
-		// carrello = new OrdineStandard(utente, 0);
-		ordinepersonalizzato = new OrdinePersonalizzato(utente);
-		System.out.println("HomeControoler: " + ordinepersonalizzato);
+
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIF());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIF());
 		this.homeif.quit(new Quit());
@@ -44,9 +43,7 @@ public class HomeController {
 		this.homeif = homeif;
 		this.utente = utente;
 		this.loginif = loginif;
-		// carrello = new OrdineStandard(utente, 0.3);
-		ordinepersonalizzato = new OrdinePersonalizzato(utente);
-		System.out.println("HomeController: " + ordinepersonalizzato);
+
 		this.homeif.openNuovoOrdineIF(new openNuovoOrdineIFVip());
 		this.homeif.openOrdinePersonalizzato(new openOrdinePersonalizzatoIFVip());
 		this.homeif.openSconto(new sconto(0.3));
@@ -58,9 +55,10 @@ public class HomeController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0);
+			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0); // interfaccia dell'ordine std
+			ordine = new OrdineStandard(utente, 0);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente), loginif);
+					homeif, ordine, loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 
@@ -73,8 +71,9 @@ public class HomeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			OrdineStandardIF ordinestandardif = new OrdineStandardIF(utente, 0.3);
+			ordine = new OrdineStandard(utente, 0.3);
 			OrdineStandardController ordinestandardcontroller = new OrdineStandardController(utente, ordinestandardif,
-					carrello, homeif, new Ordine(utente), loginif);
+					homeif, ordine, loginif);
 			homeif.setVisible(false);
 			ordinestandardif.setVisible(true);
 

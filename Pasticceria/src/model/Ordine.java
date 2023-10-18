@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -16,7 +17,6 @@ public class Ordine {
 	private Set<String> CODICE_ORDINE_ASSEGNATI = new HashSet<String>();
 	public User utente;
 	public ArrayList<Prodotto> ListaProd;
-
 	public double prezzoOrdine;
 	private final String codiceOrdine;
 
@@ -28,6 +28,9 @@ public class Ordine {
 		} while (CODICE_ORDINE_ASSEGNATI.contains(CODICE_ORDINE_GENERATO));
 		this.codiceOrdine = CODICE_ORDINE_GENERATO;
 		CODICE_ORDINE_ASSEGNATI.add(codiceOrdine);
+		Catalogo catalogo = Catalogo.getIstance();
+		List<Prodotto> listaprodotti = catalogo.getCatalogo();
+		System.out.println(listaprodotti);
 
 		this.prezzoOrdine = prezzoOrdine;
 	}

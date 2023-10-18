@@ -2,9 +2,7 @@ package control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import model.Catalogo;
 import model.Cliente;
 import model.ClientePremium;
 import model.Ordine;
@@ -25,8 +23,8 @@ public class OrdineStandardController {
 	private Ordine ordine;
 	private LoginIF loginif;
 
-	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, OrdineStandard carrello,
-			HomeIF homeif, Ordine ordine, LoginIF loginif) {
+	public OrdineStandardController(User utente, OrdineStandardIF ordinestandardif, HomeIF homeif, Ordine ordine,
+			LoginIF loginif) {
 		this.utente = utente;
 		this.ordinestandardif = ordinestandardif;
 		this.homeif = homeif;
@@ -45,11 +43,6 @@ public class OrdineStandardController {
 		this.ordinestandardif.visualizzaOrdine(new visualizzaOrdine());
 		this.ordinestandardif.back(new back());
 		this.ordinestandardif.ingredienti(new ingredienti());
-
-		System.out.println("CATALOGO - ORDINE STANDARD"); // creazione oggetto catalogo
-		Catalogo catalogo = Catalogo.getIstance();
-		List<Prodotto> listaprodotti = catalogo.getCatalogo();
-		System.out.println(listaprodotti);
 	}
 
 	// gestione carrello dei prodotti
@@ -139,7 +132,6 @@ public class OrdineStandardController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println(carrello.getCarrello()); // stampa contenuto carrello
-			System.out.println(utente.isVipUser(utente.getUsername()));
 			if (!loginif.getClientePremiumRadioButton().isSelected()) { // se utente non � vip
 				// visualizzazione carrello senza sconto sul totale
 				utente = new Cliente(utente.getUsername(), utente.getPassword());
